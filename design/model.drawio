@@ -1,0 +1,51 @@
+<mxfile host="65bd71144e">
+    <diagram id="IA_H-5P3ou0yhJMq447n" name="Page-1">
+        <mxGraphModel dx="573" dy="531" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="40" width="230" height="410" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;font face=&quot;Verdana&quot; style=&quot;font-size: 24px;&quot;&gt;User&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="165" y="50" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;+ displayName: String, r&lt;br&gt;+ username: String&lt;br&gt;+ password: String&lt;br&gt;+ email: String&lt;br&gt;+ gender: String&lt;br&gt;+ age: Number&lt;br&gt;+ bio: String&amp;nbsp;&lt;br&gt;+ created: Date&lt;br&gt;+ displayPicture: Buffer&lt;br&gt;+ friends: [ObjectId]&lt;br&gt;- url: String&lt;br&gt;- frindsCount: Number&lt;br&gt;&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Verdana;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="80" width="230" height="360" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="40" width="230" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;font face=&quot;Verdana&quot; style=&quot;font-size: 24px;&quot;&gt;FC&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="605" y="50" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;+ provider: String, r&lt;br&gt;+ subject: String, r&lt;br&gt;+ user: ObjectId, r&lt;br&gt;&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Verdana;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="80" width="230" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Verdana;fontSize=14;entryX=0.996;entryY=0.144;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="4" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="520" y="110" as="sourcePoint"/>
+                        <mxPoint x="360" y="150" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="280" width="230" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;font face=&quot;Verdana&quot; style=&quot;font-size: 24px;&quot;&gt;Post&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="575" y="290" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;+ content: String. r&lt;br&gt;+ created: Date, r&lt;br&gt;+ user: ObjectId, r&lt;br&gt;+ pat: [ObjectId, r]&lt;br&gt;- url: String&lt;br&gt;- patCount: Number&lt;br&gt;&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Verdana;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="320" width="230" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Verdana;fontSize=14;entryX=1.005;entryY=0.878;entryDx=0;entryDy=0;entryPerimeter=0;exitX=-0.011;exitY=0.686;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="12" target="4" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="520" y="428.16" as="sourcePoint"/>
+                        <mxPoint x="309.0799999999999" y="450.00000000000006" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

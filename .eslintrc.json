@@ -10,6 +10,8 @@
   },
   "rules": {
     "linebreak-style": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "no-underscore-dangle": "off",
+    "func-names": "off"
   }
 }

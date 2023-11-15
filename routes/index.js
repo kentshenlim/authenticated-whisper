@@ -1,10 +1,14 @@
 const express = require('express');
+const controller = require('../controllers/indexController');
 
 const router = express.Router();
 
-/* GET home page. */
-router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Authenticated Whisper' });
-});
+router.get('/', controller.home_get);
+
+router.get('/profile', controller.profile_get);
+
+router.get('/discover', controller.discover_get);
+
+router.get('/setting', controller.setting_get);
 
 module.exports = router;

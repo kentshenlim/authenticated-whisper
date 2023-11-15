@@ -13,11 +13,11 @@ Place where you vent your feelings without judgement.
 
 ## TODO, DUE 22.11.2023
 
-- TODO: set up controller and route
 - TODO: set up authentication: local, google, facebook, magic link
 - TODO: bcrypt sample password
 - TODO: will need to do a connection connection to handle unresolved friend request
 - TODO: friends feature
+- TODO: opt in opt out for discover, need a boolean in user
 - TODO: write and read and suggest friends
 - TODO: change password
 - TODO: connection? Use graph database or write algorithm using bfs (connection)

@@ -13,7 +13,6 @@ Place where you vent your feelings without judgement.
 
 ## TODO, DUE 22.11.2023
 
-- TODO: set up Tailwind
 - TODO: will need to do a connection connection to handle unresolved friend request
 - TODO: set up authentication: local, google, facebook, magic link
 - TODO: friends feature

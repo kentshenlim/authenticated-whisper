@@ -2,7 +2,9 @@ const asyncHandler = require('express-async-handler');
 
 module.exports = {
   sign_in_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: sign in form, displaying all options');
+    res.render('sign-in', {
+      title: 'Sign In',
+    });
   }),
 
   sign_in_local_post: asyncHandler(async (req, res, next) => {

@@ -2,7 +2,8 @@ const asyncHandler = require('express-async-handler');
 
 module.exports = {
   home_get: asyncHandler(async (req, res, next) => {
-    res.send('Homepage, form if not signed in, otherwise friends feed');
+    if (!req.user) res.redirect('/sign-in');
+    else res.send(`Logged in as ${req.user.displayName}`);
   }),
 
   profile_get: asyncHandler(async (req, res, netx) => {

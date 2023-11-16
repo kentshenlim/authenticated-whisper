@@ -1,19 +1,47 @@
 const asyncHandler = require('express-async-handler');
+const { body, validationResult } = require('express-validator');
+const passport = require('passport');
+require('../middlewares/passportConfig'); // Configure and register passport strategies
 
 module.exports = {
-  sign_in_get: asyncHandler(async (req, res, next) => {
+  sign_in_get: (req, res, next) => {
     res.render('sign-in', {
       title: 'Sign In',
+      errorMessage: req.flash('error')[0], // Wrong credentials message
     });
-  }),
+  },
 
-  sign_in_local_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: sign in post, local');
-  }),
+  sign_in_local_post: [
+    body('username', 'Please fill in username')
+      .isLength({ min: 1 }), // Do not trim
+    body('password', 'Please fill in password')
+      .isLength({ min: 1 }), // Do not trim
+    (req, res, next) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        res.render('sign-in', {
+          title: 'Sign In',
+          filled: {
+            username: req.body.username,
+            password: req.body.password,
+          },
+          errors: errors.mapped(),
+        });
+        return;
+      }
+      next();
+    },
+    passport.authenticate('local', {
+      successRedirect: '/',
+      failureRedirect: '/sign-in', // Error message has been flashed
+      failureFlash: true,
+    })],
 
-  sign_up_local_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: sign up form, local');
-  }),
+  sign_up_local_get: (req, res, next) => {
+    res.render('sign-up', {
+      title: 'Sign Up',
+    });
+  },
 
   sign_up_local_post: asyncHandler(async (req, res, next) => {
     res.send('NOT IMPLEMENTED: sign up post, local');

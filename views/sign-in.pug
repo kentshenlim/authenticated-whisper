@@ -6,9 +6,13 @@ block content
             div App Icon
             form(action='/sign-in' method='post') 
                 label(for='username') Username
-                input#username(type='text', name='password')
+                input#username(type='text', name='username' value=(filled ? filled.username : ''))
+                if (errors && errors.username)
+                    p!= errors.username.msg
                 label(for='password') Password
-                input#password(type='password', name='password')
+                input#password(type='password', name='password' value=(filled ? filled.password : ''))
+                if (errors && errors.password)
+                    p!= errors.password.msg
                 button(type='submit') Sign in with password
             hr
             form(action='/sign-in/federated/google' method='post') 
@@ -20,5 +24,7 @@ block content
             p 
                 a(href='/sign-up') Create an account
                 |  to log in with username and password.
+            if (errorMessage)
+                p #{errorMessage}
 
             

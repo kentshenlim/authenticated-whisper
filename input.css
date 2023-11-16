@@ -6,4 +6,7 @@
   input {
     @apply border-2 border-slate-700;
   }
+  button {
+    @apply bg-blue-400 !important;
+  }
 }

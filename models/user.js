@@ -18,7 +18,7 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    maxLength: 100,
+    maxLength: 50, // Limited by bcryptjs
     required() {
       return this.username; // password cannot exist without username
     },

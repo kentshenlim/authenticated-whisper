@@ -19,6 +19,7 @@ const userArgs = process.argv.slice(2);
 // Get models to manipulate with collections
 // Do not create federated credentials here because it requires real credentials
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs'); // To salt and hash passwords
 const User = require('./models/user');
 const Post = require('./models/post');
 require('./models/fc'); // Still require to create an empty collection anyway
@@ -65,11 +66,26 @@ async function createPost({
 // Posts need to refer to users, so create user first
 async function createUserSampleDocuments() {
   console.log('Adding users');
+  const allPasswordsUnhashed = [
+    process.env.SAMPLE_PASSWORD_00,
+    process.env.SAMPLE_PASSWORD_01,
+    process.env.SAMPLE_PASSWORD_02,
+    process.env.SAMPLE_PASSWORD_03,
+    process.env.SAMPLE_PASSWORD_04,
+    process.env.SAMPLE_PASSWORD_05,
+    process.env.SAMPLE_PASSWORD_06,
+    process.env.SAMPLE_PASSWORD_07,
+  ];
+  // Salt and hash passwords
+  for (let i = 0; i < allPasswordsUnhashed.length; i += 1) {
+    allPasswordsUnhashed[i] = bcrypt.hash(allPasswordsUnhashed[i], 10);
+  }
+  const allPasswords = await Promise.all(allPasswordsUnhashed); // Hashing is asynchronous
   await Promise.all([
     createUser({
       displayName: 'Sophie Johnson',
       username: 'sophieJ',
-      password: process.env.SAMPLE_PASSWORD_00,
+      password: allPasswords[0],
       gender: 'female',
       age: 23,
       bio: 'Exploring the world one day at a time. Coffee enthusiast and book lover.',
@@ -77,21 +93,21 @@ async function createUserSampleDocuments() {
     createUser({
       displayName: 'Alex Thompson',
       username: 'alex_t',
-      password: process.env.SAMPLE_PASSWORD_01,
+      password: allPasswords[1],
       gender: 'male',
       bio: 'Tech geek, music lover, and aspiring chef. Let\'s connect!',
     }, 1),
     createUser({
       displayName: 'Priya Patel',
       username: 'priya123',
-      password: process.env.SAMPLE_PASSWORD_02,
+      password: allPasswords[2],
       gender: 'female',
       bio: 'Software engineer by day, Bollywood dancer by night. Passionate about technology and the arts.',
     }, 2),
     createUser({
       displayName: 'Emily Davis',
       username: 'emily_davis',
-      password: process.env.SAMPLE_PASSWORD_03,
+      password: allPasswords[3],
       gender: 'female',
       age: 21,
       bio: 'Dreamer, artist, and nature lover. Finding beauty in everyday moments.',
@@ -99,7 +115,7 @@ async function createUserSampleDocuments() {
     createUser({
       displayName: 'Michael Smith',
       username: 'mike_smith',
-      password: process.env.SAMPLE_PASSWORD_04,
+      password: allPasswords[4],
       gender: 'male',
       age: 31,
       bio: 'Sports fanatic and fitness enthusiast. Living life to the fullest!',
@@ -107,14 +123,14 @@ async function createUserSampleDocuments() {
     createUser({
       displayName: 'Yuki Tanaka',
       username: 'yuki_t',
-      password: process.env.SAMPLE_PASSWORD_05,
+      password: allPasswords[5],
       gender: 'female',
       bio: 'Art enthusiast, anime lover, and sushi connoisseur. Living life with creativity and joy.',
     }, 5),
     createUser({
       displayName: 'Chen Wei',
       username: 'chen_wei',
-      password: process.env.SAMPLE_PASSWORD_06,
+      password: allPasswords[6],
       gender: 'male',
       age: 26,
       bio: 'Explorer of traditions and modernity. Tea lover and technology geek.',
@@ -122,7 +138,7 @@ async function createUserSampleDocuments() {
     createUser({
       displayName: 'Mei Li',
       username: 'mei_li',
-      password: process.env.SAMPLE_PASSWORD_07,
+      password: allPasswords[7],
       gender: 'female',
       bio: 'Passionate about literature, traveling, and trying new cuisines. Embracing diversity.',
     }, 7),

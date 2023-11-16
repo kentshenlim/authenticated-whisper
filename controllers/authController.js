@@ -3,6 +3,8 @@ const { body, validationResult } = require('express-validator');
 const passport = require('passport');
 require('../middlewares/passportConfig'); // Configure and register passport strategies
 
+const User = require('../models/user');
+
 module.exports = {
   sign_in_get: (req, res, next) => {
     res.render('sign-in', {
@@ -31,7 +33,7 @@ module.exports = {
       }
       next();
     },
-    passport.authenticate('local', {
+    passport.authenticate('username and password', {
       successRedirect: '/',
       failureRedirect: '/sign-in', // Error message has been flashed
       failureFlash: true,

@@ -7,6 +7,23 @@ block content
             form(action='/sign-up' method='post') 
                 label(for='username') Username
                 input#username(type='text' name='username')
+                div 
+                    p Your username must contain
+                    ul
+                        li At least 6 characters 
+                        li No spaces
                 label(for='password') Password
-                input#password(type='password', name='password')
+                input#password(type='password' name='password')
+                div 
+                    p Your password must contain
+                    ul
+                        li At least 8 characters
+                        li At least 3 of the following
+                            ul
+                                li Lower case letters (a-z)
+                                li Upper case letters (A-Z)
+                                li Numbers (0-9)
+                                li Special characters (e.g. !@#$%^&*)
                 button(type="submit") Sign Up
+            p Already have an account? 
+                a(href='/sign-in') Log in

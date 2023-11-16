@@ -548,3 +548,7 @@ button {
 .block {
   display: block;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}

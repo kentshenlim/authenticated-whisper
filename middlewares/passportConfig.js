@@ -6,12 +6,13 @@ const User = require('../models/user');
 
 (() => {
   passport.use(
+    'username and password',
     new LocalStrategy(async (username, password, done) => {
       try {
         const user = await User.findOne({ username }).exec();
         if (!user) {
           return done(null, false, {
-            message: 'Incorrect username of password',
+            message: 'Incorrect username or password',
           });
         } // Username does not exist
         const isPasswordMatch = await bcrypt.compare(password, user.password);

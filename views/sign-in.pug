@@ -4,26 +4,26 @@ block content
     section
         div
             div App Icon
+            h2 Welcome
+            p(class='uppercase') Please log in
             form(action='/sign-in' method='post') 
                 label(for='username') Username
-                input#username(type='text', name='username' value=(filled ? filled.username : ''))
+                input#username(type='text', name='username' placeholder='Enter your username' value=(filled ? filled.username : ''))
                 if (errors && errors.username)
                     p!= errors.username.msg
                 label(for='password') Password
-                input#password(type='password', name='password' value=(filled ? filled.password : ''))
+                input#password(type='password', name='password' placeholder='Enter your password' value=(filled ? filled.password : ''))
                 if (errors && errors.password)
                     p!= errors.password.msg
-                button(type='submit') Sign in with password
+                button(type='submit') Log In
+                a(href='/sign-up') Sign Up
             hr
             form(action='/sign-in/federated/google' method='post') 
-                button(type='submit') Sign in with Google
+                button(type='submit') Log In with Google
             form(action='/sign-in/federated/facebook' method='post') 
-                button(type='submit') Sign in with Facebook
+                button(type='submit') Log In with Facebook
             hr
-            a(href='/sign-in/email') Email me a magic link
-            p 
-                a(href='/sign-up') Create an account
-                |  to log in with username and password.
+            a(href='/sign-in/email') Email Me A Link
             if (errorMessage)
                 p #{errorMessage}
 

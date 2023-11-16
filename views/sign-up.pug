@@ -1,29 +1,32 @@
-extends layout
+extends layout_auth
 
 block content
-    section
-        div
-            div App Icon
-            form(action='/sign-up' method='post') 
-                label(for='username') Username
-                input#username(type='text' name='username')
-                div 
-                    p Your username must contain
-                    ul
-                        li At least 6 characters 
-                        li No spaces
-                label(for='password') Password
-                input#password(type='password' name='password')
-                div 
-                    p Your password must contain
-                    ul
-                        li At least 8 characters
-                        li At least 3 of the following
-                            ul
-                                li Lower case letters (a-z)
-                                li Upper case letters (A-Z)
-                                li Numbers (0-9)
-                                li Special characters (e.g. !@#$%^&*)
-                button(type="submit") Sign Up
-            p Already have an account? 
-                a(href='/sign-in') Log in
+    h1(class='text-2xl text-center') Sign Up
+    p(class='text-center') Sign up with username and password — your data stays private
+    form(action='/sign-up' method='post') 
+        div(class='label-input-wrapper')
+            label(for='username' class='form-label') Username
+            input#username(type='text' name='username' placeholder='Enter your username' class='form-input' autofocus)
+            div(class='hidden')
+                p Your username must contain
+                ul
+                    li At least 6 characters 
+                    li No spaces
+        div(class='label-input-wrapper')
+            label(for='password' class='form-label') Password
+            input#password(type='password' name='password' placeholder='Enter your password' class='form-input')
+            div(class='hidden') 
+                p Your password must contain
+                ul
+                    li At least 8 characters
+                    li At least 3 of the following
+                        ul
+                            li Lower case letters (a-z)
+                            li Upper case letters (A-Z)
+                            li Numbers (0-9)
+                            li Special characters (e.g. !@#$%^&*)
+        hr(class='my-3')
+        p(class='text-sm text-center') By signing up, you agree to our terms of service and privacy policy.
+        button(type='submit' class='mt-2 mb-2 text-white bg-purple-500 form-button hover:bg-purple-400') Sign Up
+    p Already have an account? 
+        a(href='/sign-in' class='text-link') Log in

@@ -22,12 +22,21 @@
   }
   .hr-with-text {
     @apply text-center border-b-2 leading-[0.1rem] border-purple-500 my-4;
-    @apply [&>span]:bg-white [&>span]:px-1;
+    @apply [&>span]:main-bg [&>span]:px-1;
+  }
+  .text-link {
+    @apply font-semibold text-link-color;
   }
 }
 
 @layer utilities {
   .text-warning {
     @apply text-red-500;
+  }
+  .text-link-color {
+    @apply text-purple-500;
+  }
+  .main-bg {
+    @apply bg-purple-100;
   }
 }

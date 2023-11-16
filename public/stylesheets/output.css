@@ -607,6 +607,40 @@ video {
   color: rgb(168 85 247 / var(--tw-text-opacity));
 }
 
+.form-instruction {
+  margin-top: 0.5rem;
+  display: none;
+  border-radius: 0.125rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(192 132 252 / var(--tw-border-opacity));
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.peer:focus ~ .form-instruction {
+  display: block;
+}
+
+.form-instruction-list {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.form-instruction-list>li:before {
+  padding-right: 1rem;
+  padding-left: 0px;
+}
+
+.form-instruction-list>li {
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
 .my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
@@ -737,6 +771,22 @@ video {
   background-color: rgb(243 232 255 / var(--tw-bg-opacity));
 }
 
+/* Classes added dynamically, always include into output */
+
+.list-ticked {
+  list-style-type: none !important;
+}
+
+.list-ticked::before {
+  --tw-content: '✓' !important;
+  content: var(--tw-content) !important;
+}
+
+.list-ticked {
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity));
+}
+
 .hover\:bg-blue-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
@@ -755,6 +805,10 @@ video {
 .hover\:bg-slate-300:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+
+.peer\/username:focus ~ .peer-focus\/username\:block {
+  display: block;
 }
 
 .\[\&\>\*\:not\(img\)\]\:w-full>*:not(img) {

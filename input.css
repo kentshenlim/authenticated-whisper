@@ -27,11 +27,27 @@
   .text-link {
     @apply font-semibold text-link-color;
   }
+  .form-instruction {
+    @apply hidden px-3 py-2 mt-2 text-sm border border-purple-400 rounded-sm peer-focus:block;
+  }
+  .form-instruction-list {
+    @apply px-2;
+    @apply [&>li:before]:pr-4 [&>li:before]:pl-0 [&>li]:list-disc [&>li]:list-inside;
+  }
+}
+
+/* Classes added dynamically, always include into output */
+.list-ticked {
+  @apply before:content-['✓'] list-none !important;
+  @apply text-safe;
 }
 
 @layer utilities {
   .text-warning {
     @apply text-red-500;
+  }
+  .text-safe {
+    @apply text-green-600;
   }
   .text-link-color {
     @apply text-purple-500;

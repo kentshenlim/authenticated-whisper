@@ -2,31 +2,33 @@ extends layout_auth
 
 block content
     h1(class='text-2xl text-center') Sign Up
-    p(class='text-center') Sign up with username and password — your data stays private
+    p(class='text-center') Sign up with username and password — your credentials stay private
     form(action='/sign-up' method='post') 
         div(class='label-input-wrapper')
             label(for='username' class='form-label') Username
-            input#username(type='text' name='username' placeholder='Enter your username' class='form-input' autofocus)
-            div(class='hidden')
+            input#username(type='text' name='username' placeholder='Enter your username' class='form-input peer' autocomplete='off')
+            div(class='form-instruction')
                 p Your username must contain
-                ul
-                    li At least 6 characters 
-                    li No spaces
+                ul(class='form-instruction-list')
+                    li#check-char-count-username At least 6 characters 
+                    li#check-space-username No spaces
         div(class='label-input-wrapper')
             label(for='password' class='form-label') Password
-            input#password(type='password' name='password' placeholder='Enter your password' class='form-input')
-            div(class='hidden') 
-                p Your password must contain
-                ul
-                    li At least 8 characters
-                    li At least 3 of the following
-                        ul
-                            li Lower case letters (a-z)
-                            li Upper case letters (A-Z)
-                            li Numbers (0-9)
-                            li Special characters (e.g. !@#$%^&*)
+            input#password(type='password' name='password' placeholder='Enter your password' class='form-input peer')
+            div(class='form-instruction') 
+                p Your password must contain:
+                ul(class='form-instruction-list')
+                    li#check-char-count At least 8 characters
+                    li#check-char-type At least 3 of the following:
+                        ul(class='form-instruction-list')
+                            li#check-lower Lower case letters (a-z)
+                            li#check-upper Upper case letters (A-Z)
+                            li#check-digit Digits (0-9)
+                            li#check-special Special characters (e.g. !@#$%^&*)
         hr(class='my-3')
         p(class='text-sm text-center') By signing up, you agree to our terms of service and privacy policy.
         button(type='submit' class='mt-2 mb-2 text-white bg-purple-500 form-button hover:bg-purple-400') Sign Up
     p Already have an account? 
         a(href='/sign-in' class='text-link') Log in
+
+    script(src='/javascripts/validateSignUp.js' defer)

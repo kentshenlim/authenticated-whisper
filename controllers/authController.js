@@ -35,7 +35,7 @@ module.exports = {
     },
     passport.authenticate('username and password', {
       successRedirect: '/',
-      failureRedirect: '/sign-in', // Error message has been flashed
+      failureRedirect: '/sign-in#auth-err', // Error message has been flashed
       failureFlash: true,
     })],
 

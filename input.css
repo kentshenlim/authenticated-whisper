@@ -3,10 +3,31 @@
 @tailwind utilities;
 
 @layer base {
-  input {
-    @apply border-2 border-slate-700;
+}
+
+@layer components {
+  .form-label {
+    @apply block mb-2 font-semibold;
   }
-  button {
-    @apply bg-blue-400 !important;
+  .form-input {
+    @apply w-full px-3 py-2 border border-gray-400 rounded-md outline-none;
+    @apply focus:border-purple-600 focus:border-2 hover:border-purple-700;
+    @apply [&:has(~p.text-warning)]:border-red-400;
+  }
+  .form-button {
+    @apply w-full px-3 py-2.5 rounded-md;
+  }
+  .label-input-wrapper {
+    @apply w-full mb-2;
+  }
+  .hr-with-text {
+    @apply text-center border-b-2 leading-[0.1rem] border-purple-500 my-4;
+    @apply [&>span]:bg-white [&>span]:px-1;
+  }
+}
+
+@layer utilities {
+  .text-warning {
+    @apply text-red-500;
   }
 }

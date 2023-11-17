@@ -138,6 +138,12 @@ module.exports = {
     });
   },
 
+  signed_in_email_get: passport.authenticate('magic link', {
+    successReturnToOrRedirect: '/',
+    failureRedirect: '/sign-in',
+    failureFlash: true,
+  }),
+
   sign_out: (req, res, next) => {
     req.logout((err) => {
       if (err) return next(err);

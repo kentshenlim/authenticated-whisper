@@ -120,30 +120,29 @@ const FC = require('../models/fc');
       },
       // Second argument is send function
       (user, token) => {
+        const link = `http://localhost:3000/sign-in/email/verify?token=${token}`;
         const mailData = {
           from: process.env.MAGIC_LINK_EMAIL,
           to: user.email,
-          subject: 'Test',
-          text: 'Easy peasy',
+          subject: 'Sign in to authenticated-whisper',
+          html: '<h1> Welcome</h1>. Click the link below to finish signing in to authenticated-whisper. \r\n\r\n' + `<a href=${link}>${link}</a>`,
         };
         return transporter.sendMail(mailData);
       },
       // Third argument is verify function
-      async (user) => new Promise(async (resolve, reject) => {
-        try {
-          const userExist = await User.findOne({ email: user.email }).exec();
-          if (!userExist) {
-            const userNew = new User({
-              displayName: user.email,
-              email: user.email,
-            });
-            await userNew.save();
-            resolve(userNew);
-          } else resolve(userExist);
-        } catch (err) {
-          reject(err);
-        }
-      }),
+      async (user) => {
+        const userExist = await User.findOne({
+          email: user.email,
+        }).exec();
+        if (!userExist) {
+          const userNew = new User({
+            displayName: user.email,
+            email: user.email,
+          });
+          await userNew.save();
+          return userNew;
+        } return userExist;
+      },
     ),
   );
 

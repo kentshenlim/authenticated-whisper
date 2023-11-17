@@ -12,7 +12,7 @@ const FC = require('../models/fc');
 (() => {
   // Username and password
   passport.use(
-    'username and password',
+    'username-password',
     new LocalStrategy(async (username, password, done) => {
       try {
         const user = await User.findOne({ username }).exec();
@@ -36,7 +36,7 @@ const FC = require('../models/fc');
 
   // Google OAuth2
   passport.use(
-    'google OAuth',
+    'google-OAuth',
     new GoogleStrategy({
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -68,7 +68,7 @@ const FC = require('../models/fc');
 
   // Facebook OAuth2
   passport.use(
-    'facebook OAuth',
+    'facebook-OAuth',
     new FacebookStrategy({
       clientID: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
@@ -109,7 +109,7 @@ const FC = require('../models/fc');
     },
   });
   passport.use(
-    'magic link',
+    'magic-link',
     new MagicLinkStrategy(
       // First argument is config object
       {

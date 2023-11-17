@@ -1,6 +1,14 @@
 extends layout
 
 block content
-    h1(class='form-title') Get a Magic Link
-    p(class='text-center') We have emailed you a link to this address, check your email and click the link.
-    p Didn't get an email? Try again
+    h1(class='form-title [&~*]:text-center [&~*]:mb-2') An email is on its way!
+    p We sent an email to 
+        span(class='font-semibold') #{email}.
+    p You'll find a magic link that will sign you into the app. It can be used only once.
+    p The link expires in 30 mins, so be sure to use it soon.
+    h1(class='text-lg font-semibold') Go check your email!
+    
+    p Didn't get an email? Try again 
+        a(href='/sign-in/email' class='text-link') here.
+    p Want to sign in with another method? Head 
+        a(href='/sign-in' class='text-link') here.

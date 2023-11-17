@@ -37,7 +37,7 @@ module.exports = {
       }
       next();
     },
-    passport.authenticate('username and password', {
+    passport.authenticate('username-password', {
       successRedirect: '/',
       failureRedirect: '/sign-in#auth-err', // Error message has been flashed
       failureFlash: true,
@@ -100,17 +100,17 @@ module.exports = {
     }),
   ],
 
-  sign_in_google_post: passport.authenticate('google OAuth'),
+  sign_in_google_post: passport.authenticate('google-OAuth'),
 
-  signed_in_google_get: passport.authenticate('google OAuth', {
+  signed_in_google_get: passport.authenticate('google-OAuth', {
     successRedirect: '/',
     failureRedirect: '/sign-in#auth-err',
     failureFlash: true,
   }),
 
-  sign_in_facebook_post: passport.authenticate('facebook OAuth'),
+  sign_in_facebook_post: passport.authenticate('facebook-OAuth'),
 
-  signed_in_facebook_get: passport.authenticate('facebook OAuth', {
+  signed_in_facebook_get: passport.authenticate('facebook-OAuth', {
     successRedirect: '/',
     failureRedirect: '/sign-in#auth-err',
     failureFlash: true,
@@ -123,22 +123,19 @@ module.exports = {
   },
 
   sign_in_email_post: [
-    passport.authenticate('magic link', {
-      action: 'requestToken',
-      failureRedirect: '/sign-in',
-    }),
+    // passport.authenticate('magic-link', {
+    //   action: 'requestToken',
+    //   failureRedirect: '/sign-in',
+    // }),
     (req, res, next) => {
-      res.redirect('/sign-in/email/check');
+      res.render('auth/email-check', {
+        title: 'Email Sent',
+        email: req.body.email,
+      });
     },
   ],
 
-  check_email_get: (req, res, next) => {
-    res.render('auth/email-check', {
-      title: 'Check your Mailbox',
-    });
-  },
-
-  signed_in_email_get: passport.authenticate('magic link', {
+  signed_in_email_get: passport.authenticate('magic-link', {
     successReturnToOrRedirect: '/',
     failureRedirect: '/sign-in',
     failureFlash: true,

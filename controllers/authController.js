@@ -53,7 +53,7 @@ module.exports = {
     body('username')
       .custom(asyncHandler(async (value) => {
         const spaceRegex = /\s/;
-        if (spaceRegex.test(value) || value.length < 6) throw new Error('Username entered does not fulfill requirement.');
+        if (spaceRegex.test(value) || value.length < 6) throw new Error('Username entered does not meet requirements.');
         const userExist = await User.findOne({ username: value }).exec();
         if (userExist) throw new Error('A user with that username already exists');
         else return true;
@@ -72,7 +72,7 @@ module.exports = {
         testScheme.forEach((test) => {
           if (test.test(value)) score += 1;
         });
-        if (value.length < 8 || score < 2) throw new Error('Password entered does not fulfill requirement.');
+        if (value.length < 8 || score < 2) throw new Error('Password must meet complexity requirements');
         else return true; // Must have this, see https://github.com/express-validator/express-validator/issues/619
       }),
     asyncHandler(async (req, res, next) => {

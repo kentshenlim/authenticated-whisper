@@ -120,7 +120,7 @@ const FC = require('../models/fc');
       },
       // Second argument is send function
       (user, token) => {
-        const link = `http://localhost:3000/sign-in/email/verify?token=${token}`;
+        const link = `${process.env.DOMAIN_NAME}/sign-in/email/verify?token=${token}`;
         const mailData = {
           from: process.env.MAGIC_LINK_EMAIL,
           to: user.email,

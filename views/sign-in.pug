@@ -1,12 +1,12 @@
 extends layout_auth
 
 block content
-    h1(class='text-2xl text-center') Welcome
+    h1(class='form-title') Welcome
     p(class='text-center') Log in to authenticated-whisper to continue
     form(action='/sign-in' method='post') 
         div(class='label-input-wrapper')
             label(for='username' class='form-label') Username
-            input#username(type='text', name='username' placeholder='Enter your username' required value=(filled ? filled.username : '') class='form-input')
+            input#username(type='text', name='username' placeholder='Enter your username' autocomplete='off' required value=(filled ? filled.username : '') class='form-input')
             if (errors && errors.username)
                 p(class='text-warning')!= errors.username.msg
         div(class='label-input-wrapper')

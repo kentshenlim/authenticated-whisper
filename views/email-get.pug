@@ -1,7 +1,7 @@
 extends layout_auth
 
 block content
-    h1(class='text-2xl text-center') Get a Magic Link
+    h1(class='form-title') Get a Magic Link
     p(class='text-center') Enter your email address, and we'll send you a magic link to facilitate your sign-in.
     form(action='/sign-in/email' method='post')
         div(class='label-input-wrapper')

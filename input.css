@@ -27,12 +27,18 @@
   .text-link {
     @apply font-semibold text-link-color;
   }
+  .text-warning {
+    @apply font-semibold text-warning-color;
+  }
   .form-instruction {
     @apply hidden px-3 py-2 mt-2 text-sm border border-purple-400 rounded-sm;
   }
   .form-instruction-list {
     @apply px-2;
     @apply [&>li:before]:pr-4 [&>li:before]:pl-0 [&>li]:list-disc [&>li]:list-inside;
+  }
+  .form-title {
+    @apply text-2xl font-semibold text-center text-purple-800;
   }
 }
 
@@ -47,7 +53,7 @@
 }
 
 @layer utilities {
-  .text-warning {
+  .text-warning-color {
     @apply text-red-500;
   }
   .text-safe {

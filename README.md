@@ -14,7 +14,7 @@ Place where you vent your feelings without judgement.
 ## TODO, DUE 22.11.2023
 
 - TODO: set up authentication: local, google, facebook, magic link
-- TODO: need to replace base URL, no localhost
+- TODO: redirect the whole auth to home if already logged in, not individually
 - TODO: group all auth views into a directory
 - TODO: will need to do a connection connection to handle unresolved friend request
 - TODO: friends feature

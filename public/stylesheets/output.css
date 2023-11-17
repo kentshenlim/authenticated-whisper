@@ -607,6 +607,12 @@ video {
   color: rgb(168 85 247 / var(--tw-text-opacity));
 }
 
+.text-warning {
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
 .form-instruction {
   margin-top: 0.5rem;
   display: none;
@@ -635,6 +641,15 @@ video {
 .form-instruction-list>li {
   list-style-position: inside;
   list-style-type: disc;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(107 33 168 / var(--tw-text-opacity));
 }
 
 .my-3 {
@@ -709,6 +724,10 @@ video {
   background-color: rgb(168 85 247 / var(--tw-bg-opacity));
 }
 
+.bg-purple-500\/80 {
+  background-color: rgb(168 85 247 / 0.8);
+}
+
 .bg-red-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
@@ -717,10 +736,6 @@ video {
 .bg-slate-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
-}
-
-.bg-purple-500\/80 {
-  background-color: rgb(168 85 247 / 0.8);
 }
 
 .px-4 {
@@ -742,11 +757,6 @@ video {
   text-align: center;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -755,11 +765,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-warning {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 .main-bg {

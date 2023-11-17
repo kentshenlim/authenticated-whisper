@@ -1,14 +1,14 @@
 extends layout_auth
 
 block content
-    h1(class='text-2xl text-center') Sign Up
+    h1(class='form-title') Sign Up
     p(class='text-center') Sign up with username and password — your credentials stay private
     form(action='/sign-up' method='post') 
         div(class='label-input-wrapper')
             label(for='username' class='form-label') Username
             input#username(type='text' name='username' placeholder='Enter your username' autocomplete='off' required value=(filled ? filled.username : '') class='form-input')
             if (errors && errors.username)
-                p(class='text-warning')!= errors.username.msg
+                p(class='text-sm text-warning')!= errors.username.msg
             div#tips-username(class='form-instruction')
                 p Your username must contain
                 ul(class='form-instruction-list')
@@ -18,7 +18,7 @@ block content
             label(for='password' class='form-label') Password
             input#password(type='password' name='password' placeholder='Enter your password' required value=(filled ? filled.password : '') class='form-input')
             if (errors && errors.password)
-                p(class='text-warning')!= errors.password.msg
+                p(class='text-sm text-warning')!= errors.password.msg
             div#tips-password(class='form-instruction') 
                 p Your password must contain:
                 ul(class='form-instruction-list')

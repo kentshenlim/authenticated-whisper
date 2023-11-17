@@ -1,11 +1,13 @@
 (() => {
   const usernameInput = document.getElementById('username');
+  const usernameTips = document.getElementById('tips-username');
   const [checkCharCount, checkSpace] = [
     document.getElementById('check-char-count-username'),
     document.getElementById('check-space-username'),
   ];
 
   function checkUsername() {
+    usernameTips.classList.add('active');
     const username = document.getElementById('username').value;
 
     // Character-count check
@@ -23,6 +25,7 @@
 
 (() => {
   const passwordInput = document.getElementById('password');
+  const passwordTips = document.getElementById('tips-password');
   const [
     checkCharCount,
     checkCharType,
@@ -40,6 +43,7 @@
   ];
 
   function checkPassword() {
+    passwordTips.classList.add('active');
     const password = document.getElementById('password').value;
 
     // Character-count check

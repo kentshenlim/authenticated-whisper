@@ -6,16 +6,20 @@ block content
     form(action='/sign-up' method='post') 
         div(class='label-input-wrapper')
             label(for='username' class='form-label') Username
-            input#username(type='text' name='username' placeholder='Enter your username' class='form-input peer' autocomplete='off')
-            div(class='form-instruction')
+            input#username(type='text' name='username' placeholder='Enter your username' autocomplete='off' required value=(filled ? filled.username : '') class='form-input')
+            if (errors && errors.username)
+                p(class='text-warning')!= errors.username.msg
+            div#tips-username(class='form-instruction')
                 p Your username must contain
                 ul(class='form-instruction-list')
                     li#check-char-count-username At least 6 characters 
                     li#check-space-username No spaces
         div(class='label-input-wrapper')
             label(for='password' class='form-label') Password
-            input#password(type='password' name='password' placeholder='Enter your password' class='form-input peer')
-            div(class='form-instruction') 
+            input#password(type='password' name='password' placeholder='Enter your password' required value=(filled ? filled.password : '') class='form-input')
+            if (errors && errors.password)
+                p(class='text-warning')!= errors.password.msg
+            div#tips-password(class='form-instruction') 
                 p Your password must contain:
                 ul(class='form-instruction-list')
                     li#check-char-count At least 8 characters

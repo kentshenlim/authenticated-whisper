@@ -28,7 +28,7 @@
     @apply font-semibold text-link-color;
   }
   .form-instruction {
-    @apply hidden px-3 py-2 mt-2 text-sm border border-purple-400 rounded-sm peer-focus:block;
+    @apply hidden px-3 py-2 mt-2 text-sm border border-purple-400 rounded-sm;
   }
   .form-instruction-list {
     @apply px-2;
@@ -40,6 +40,10 @@
 .list-ticked {
   @apply before:content-['✓'] list-none !important;
   @apply text-safe;
+}
+
+.form-instruction.active {
+  @apply block !important;
 }
 
 @layer utilities {

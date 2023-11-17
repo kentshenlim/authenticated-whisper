@@ -10,7 +10,7 @@ const userSchema = new Schema({
   },
   username: {
     type: String,
-    maxLength: 20,
+    maxLength: 255,
     unique: true,
     required() {
       return this.password; // username cannot exist without password
@@ -18,7 +18,6 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    maxLength: 50, // Limited by bcryptjs
     required() {
       return this.username; // password cannot exist without username
     },

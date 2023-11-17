@@ -10,7 +10,7 @@ module.exports = {
   sign_in_get: (req, res, next) => {
     if (req.user) res.redirect('/'); // Already logged in
     else {
-      res.render('sign-in', {
+      res.render('auth/sign-in', {
         title: 'Sign In',
         errorMessage: req.flash('error')[0], // Wrong credentials message
       });
@@ -25,7 +25,7 @@ module.exports = {
     (req, res, next) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        res.render('sign-in', {
+        res.render('auth/sign-in', {
           title: 'Sign In',
           filled: {
             username: req.body.username,
@@ -44,7 +44,7 @@ module.exports = {
     })],
 
   sign_up_local_get: (req, res, next) => {
-    res.render('sign-up', {
+    res.render('auth/sign-up', {
       title: 'Sign Up',
     });
   },
@@ -82,7 +82,7 @@ module.exports = {
           username: req.body.username,
           password: req.body.password,
         };
-        res.render('sign-up', {
+        res.render('auth/sign-up', {
           title: 'Sign Up',
           filled,
           errors: errors.mapped(),
@@ -117,7 +117,7 @@ module.exports = {
   }),
 
   sign_in_email_get: (req, res, next) => {
-    res.render('email-get', {
+    res.render('auth/email-get', {
       title: 'Get a Magic Link',
     });
   },
@@ -133,7 +133,7 @@ module.exports = {
   ],
 
   check_email_get: (req, res, next) => {
-    res.render('email-check', {
+    res.render('auth/email-check', {
       title: 'Check your Mailbox',
     });
   },

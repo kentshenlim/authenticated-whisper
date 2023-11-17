@@ -3,6 +3,8 @@ const LocalStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
 const GoogleStrategy = require('passport-google-oidc');
 const FacebookStrategy = require('passport-facebook');
+const MagicLinkStrategy = require('passport-magic-link').Strategy;
+const nodemailer = require('nodemailer');
 
 const User = require('../models/user');
 const FC = require('../models/fc');
@@ -64,6 +66,7 @@ const FC = require('../models/fc');
     }),
   );
 
+  // Facebook OAuth2
   passport.use(
     'facebook OAuth',
     new FacebookStrategy({
@@ -95,6 +98,53 @@ const FC = require('../models/fc');
         return done(err);
       }
     }),
+  );
+
+  // Email magic link
+  const transporter = nodemailer.createTransport({
+    service: 'hotmail',
+    auth: {
+      user: process.env.MAGIC_LINK_EMAIL,
+      pass: process.env.MAGIC_LINK_PASSWORD,
+    },
+  });
+  passport.use(
+    'magic link',
+    new MagicLinkStrategy(
+      // First argument is config object
+      {
+        secret: process.env.MAGIC_LINK_SECRET,
+        userFields: ['email'],
+        tokenField: 'token',
+        verifyUserAfterToken: true,
+      },
+      // Second argument is send function
+      (user, token) => {
+        const mailData = {
+          from: process.env.MAGIC_LINK_EMAIL,
+          to: user.email,
+          subject: 'Test',
+          text: 'Easy peasy',
+        };
+        return transporter.sendMail(mailData);
+      },
+      // Third argument is verify function
+      async (user) => new Promise(async (resolve, reject) => {
+        try {
+          const userExist = await User.findOne({ email: user.email }).exec();
+          if (!userExist) {
+            const userNew = new User({
+              displayName: user.email,
+              email: user.email,
+            });
+            await userNew.save();
+            resolve(userNew);
+          } else resolve(userExist);
+        } catch (err) {
+          reject(err);
+        }
+      }),
+    ),
   );
 
   passport.serializeUser((user, done) => {

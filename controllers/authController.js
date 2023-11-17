@@ -116,17 +116,27 @@ module.exports = {
     failureFlash: true,
   }),
 
-  sign_in_email_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: enter email form ');
-  }),
+  sign_in_email_get: (req, res, next) => {
+    res.render('email-get', {
+      title: 'Get a Magic Link',
+    });
+  },
 
-  check_email_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: check your email, and resend link');
-  }),
+  sign_in_email_post: [
+    passport.authenticate('magic link', {
+      action: 'requestToken',
+      failureRedirect: '/sign-in',
+    }),
+    (req, res, next) => {
+      res.redirect('/sign-in/email/check');
+    },
+  ],
 
-  signed_in_email_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: from clicking email link, need to redirect');
-  }),
+  check_email_get: (req, res, next) => {
+    res.render('email-check', {
+      title: 'Check your Mailbox',
+    });
+  },
 
   sign_out: (req, res, next) => {
     req.logout((err) => {

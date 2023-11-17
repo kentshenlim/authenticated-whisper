@@ -21,10 +21,12 @@
     "http-errors": "~1.6.3",
     "mongoose": "^8.0.0",
     "morgan": "~1.9.1",
+    "nodemailer": "^6.9.7",
     "passport": "^0.6.0",
     "passport-facebook": "^3.0.0",
     "passport-google-oidc": "^0.1.0",
     "passport-local": "^1.0.0",
+    "passport-magic-link": "^2.1.0",
     "pug": "2.0.0-beta11"
   },
   "main": "app.js",

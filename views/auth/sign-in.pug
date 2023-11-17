@@ -2,7 +2,7 @@ extends layout
 
 block content
     h1(class='form-title') Welcome
-    p(class='text-center') Log in to authenticated-whisper to continue
+    p(class='mb-4 text-center') Log in to authenticated-whisper to continue
     form(action='/sign-in' method='post') 
         div(class='label-input-wrapper')
             label(for='username' class='form-label') Username
@@ -28,7 +28,7 @@ block content
             p(class='w-full') Log In with Facebook
     h2(class='hr-with-text')
         span or
-    a(href='/sign-in/email' class='flex items-center block text-center border form-button bg-slate-100 border-slate-400 hover:bg-slate-300') 
+    a(href='/sign-in/email' class='flex items-center text-center border form-button bg-slate-100 border-slate-400 hover:bg-slate-300') 
         ion-icon(name='color-wand-outline')
         p(class='w-full') Email Me a Link
     if (errorMessage)

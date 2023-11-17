@@ -2,7 +2,7 @@ extends layout
 
 block content
     h1(class='form-title') Get a Magic Link
-    p(class='text-center') Enter your email address, and we'll send you a magic link to facilitate your sign-in.
+    p(class='mb-4 text-center') Enter your email address, and we'll send you a magic link to facilitate your sign-in.
     form(action='/sign-in/email' method='post')
         div(class='label-input-wrapper')
             label(for='email' class='form-label') Email

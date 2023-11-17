@@ -13,7 +13,6 @@ Place where you vent your feelings without judgement.
 
 ## TODO, DUE 22.11.2023
 
-- TODO: width of email not the same as the other, gap between p and form
 - TODO: set up authentication: local, google, facebook, magic link
 - TODO: redirect the whole auth to home if already logged in, not individually
 - TODO: will need to do a connection connection to handle unresolved friend request

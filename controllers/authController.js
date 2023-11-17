@@ -108,12 +108,12 @@ module.exports = {
     failureFlash: true,
   }),
 
-  sign_in_facebook_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: get or post, directed user to Facebook OAuth');
-  }),
+  sign_in_facebook_post: passport.authenticate('facebook OAuth'),
 
-  signed_in_facebook_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: get, directed by facebook to here after successful auth');
+  signed_in_facebook_get: passport.authenticate('facebook OAuth', {
+    successRedirect: '/',
+    failureRedirect: '/sign-in#auth-err',
+    failureFlash: true,
   }),
 
   sign_in_email_get: asyncHandler(async (req, res, next) => {

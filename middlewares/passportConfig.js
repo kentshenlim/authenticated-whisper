@@ -2,6 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
 const GoogleStrategy = require('passport-google-oidc');
+const FacebookStrategy = require('passport-facebook');
 
 const User = require('../models/user');
 const FC = require('../models/fc');
@@ -55,6 +56,39 @@ const FC = require('../models/fc');
           return done(null, userNew); // Authorize login
         }
         // Else, existing account
+        const user = await User.findById(fC.user).exec();
+        return done(null, user);
+      } catch (err) {
+        return done(err);
+      }
+    }),
+  );
+
+  passport.use(
+    'facebook OAuth',
+    new FacebookStrategy({
+      clientID: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+      callbackURL: '/oauth2/redirect/facebook',
+      state: true,
+    }, async (accessToken, refreshToken, profile, done) => {
+      try {
+        const fC = await FC.findOne({
+          provider: 'https://www.facebook.com',
+          subject: profile.id,
+        }).exec();
+        if (!fC) {
+          const userNew = new User({
+            displayName: profile.displayName,
+          });
+          const fCNew = new FC({
+            provider: 'https://www.facebook.com',
+            subject: profile.id,
+            user: userNew._id,
+          });
+          await Promise.all([userNew.save(), fCNew.save()]);
+          return done(null, userNew);
+        }
         const user = await User.findById(fC.user).exec();
         return done(null, user);
       } catch (err) {

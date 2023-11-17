@@ -25,4 +25,6 @@ router.get('/sign-in/email/check', controller.check_email_get);
 
 router.post('/sign-in/email/verify', controller.signed_in_email_post);
 
+router.get('/sign-out', controller.sign_out);
+
 module.exports = router;

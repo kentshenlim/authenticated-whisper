@@ -12,6 +12,7 @@ const userSchema = new Schema({
     type: String,
     maxLength: 255,
     unique: true,
+    sparse: true, // Don't index if not specified, otherwise will have dup error
     required() {
       return this.password; // username cannot exist without password
     },
@@ -26,6 +27,7 @@ const userSchema = new Schema({
     type: String,
     maxLength: 100,
     unique: true,
+    sparse: true, // Email also not required + unique, so use sparse
     validate: {
       validator(v) {
         // eslint-disable-next-line no-useless-escape

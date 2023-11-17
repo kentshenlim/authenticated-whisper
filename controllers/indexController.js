@@ -3,7 +3,11 @@ const asyncHandler = require('express-async-handler');
 module.exports = {
   home_get: asyncHandler(async (req, res, next) => {
     if (!req.user) res.redirect('/sign-in');
-    else res.send(`Logged in as ${req.user.displayName}`);
+    else {
+      res.render('index', {
+        title: 'authenticated-whisper',
+      });
+    }
   }),
 
   profile_get: asyncHandler(async (req, res, netx) => {

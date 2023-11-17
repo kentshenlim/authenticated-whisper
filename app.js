@@ -44,6 +44,12 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Pass user to local environment
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use('/user', userRouter);

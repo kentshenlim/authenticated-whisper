@@ -53,7 +53,7 @@ module.exports = {
     body('username')
       .custom(asyncHandler(async (value) => {
         const spaceRegex = /\s/;
-        if (spaceRegex.test(value) || value.length < 6) throw new Error('Invalid username');
+        if (spaceRegex.test(value) || value.length < 6) throw new Error('Username entered does not fulfill requirement.');
         const userExist = await User.findOne({ username: value }).exec();
         if (userExist) throw new Error('A user with that username already exists');
         else return true;
@@ -72,7 +72,7 @@ module.exports = {
         testScheme.forEach((test) => {
           if (test.test(value)) score += 1;
         });
-        if (value.length < 8 || score < 2) throw new Error('Invalid password');
+        if (value.length < 8 || score < 2) throw new Error('Password entered does not fulfill requirement.');
         else return true; // Must have this, see https://github.com/express-validator/express-validator/issues/619
       }),
     asyncHandler(async (req, res, next) => {
@@ -100,16 +100,16 @@ module.exports = {
     }),
   ],
 
-  sign_in_google_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: get or post, directed user to Google OAuth');
+  sign_in_google_post: passport.authenticate('google OAuth'),
+
+  signed_in_google_get: passport.authenticate('google OAuth', {
+    successRedirect: '/',
+    failureRedirect: '/sign-in#auth-err',
+    failureFlash: true,
   }),
 
   sign_in_facebook_post: asyncHandler(async (req, res, next) => {
     res.send('NOT IMPLEMENTED: get or post, directed user to Facebook OAuth');
-  }),
-
-  signed_in_google_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: get, directed by google to here after successful auth');
   }),
 
   signed_in_facebook_get: asyncHandler(async (req, res, next) => {
@@ -127,4 +127,11 @@ module.exports = {
   signed_in_email_post: asyncHandler(async (req, res, next) => {
     res.send('NOT IMPLEMENTED: from clicking email link, need to redirect');
   }),
+
+  sign_out: (req, res, next) => {
+    req.logout((err) => {
+      if (err) return next(err);
+      return res.redirect('/sign-in');
+    });
+  },
 };

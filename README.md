@@ -5,6 +5,7 @@ Place where you vent your feelings without judgement.
 ## Tools
 
 - Passport.js
+- nodemailer
 
 ## Features
 

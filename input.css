@@ -40,6 +40,11 @@
   .form-title {
     @apply text-2xl font-semibold text-center text-purple-800;
   }
+
+  .pop-up-notification {
+    @apply min-w-[50%] text-center px-3 py-2 rounded-md bg-green-300/50 fixed backdrop-blur-sm font-semibold text-emerald-600 flex items-center gap-2;
+    @apply transition-opacity delay-[2000ms] pointer-events-none;
+  }
 }
 
 /* Classes added dynamically, always include into output */

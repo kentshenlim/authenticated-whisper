@@ -3,6 +3,7 @@ const { body, validationResult } = require('express-validator');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 require('../middlewares/passportConfig'); // Configure and register passport strategies
+const qs = require('qs');
 
 const User = require('../models/user');
 
@@ -10,9 +11,11 @@ module.exports = {
   sign_in_get: (req, res, next) => {
     if (req.user) res.redirect('/'); // Already logged in
     else {
+      const { notify } = req.query;
       res.render('auth/sign-in', {
         title: 'Sign In',
         errorMessage: req.flash('error')[0], // Wrong credentials message
+        notify,
       });
     }
   },
@@ -96,7 +99,8 @@ module.exports = {
         password: hashedPassword,
       });
       await user.save();
-      res.redirect('/sign-in');
+      const qStr = qs.stringify({ notify: 'Registration successful!' });
+      res.redirect(`/sign-in?${qStr}`);
     }),
   ],
 
@@ -144,7 +148,8 @@ module.exports = {
   sign_out: (req, res, next) => {
     req.logout((err) => {
       if (err) return next(err);
-      return res.redirect('/sign-in');
+      const qStr = qs.stringify({ notify: 'Logged out successfully!' });
+      return res.redirect(`/sign-in?${qStr}`);
     });
   },
 };

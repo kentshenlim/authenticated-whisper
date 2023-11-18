@@ -678,8 +678,30 @@ video {
   transition-delay: 2000ms;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .relative {
   position: relative;
+}
+
+.inset-0 {
+  inset: 0px;
+}
+
+.inset-x-0 {
+  left: 0px;
+  right: 0px;
+}
+
+.inset-y-0 {
+  top: 0px;
+  bottom: 0px;
+}
+
+.bottom-0 {
+  bottom: 0px;
 }
 
 .my-3 {
@@ -707,6 +729,18 @@ video {
   display: flex;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
+.h-\[40px\] {
+  height: 40px;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -721,6 +755,18 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
+.w-5 {
+  width: 1.25rem;
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .max-w-\[535px\] {
@@ -739,6 +785,10 @@ video {
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .gap-1 {
   gap: 0.25rem;
 }
@@ -747,14 +797,22 @@ video {
   border-width: 1px;
 }
 
+.border-2 {
+  border-width: 2px;
+}
+
 .border-slate-400 {
   --tw-border-opacity: 1;
   border-color: rgb(148 163 184 / var(--tw-border-opacity));
 }
 
-.bg-blue-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+.border-red-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(248 113 113 / var(--tw-border-opacity));
+}
+
+.bg-blue-600\/80 {
+  background-color: rgb(37 99 235 / 0.8);
 }
 
 .bg-purple-500 {
@@ -762,13 +820,12 @@ video {
   background-color: rgb(168 85 247 / var(--tw-bg-opacity));
 }
 
-.bg-purple-500\/80 {
-  background-color: rgb(168 85 247 / 0.8);
+.bg-purple-500\/70 {
+  background-color: rgb(168 85 247 / 0.7);
 }
 
-.bg-red-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+.bg-red-600\/80 {
+  background-color: rgb(220 38 38 / 0.8);
 }
 
 .bg-slate-100 {
@@ -780,24 +837,51 @@ video {
   background-color: rgb(254 252 232 / 0.8);
 }
 
-.bg-blue-600\/70 {
-  background-color: rgb(37 99 235 / 0.7);
+.bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
-.bg-red-600\/70 {
-  background-color: rgb(220 38 38 / 0.7);
+.bg-purple-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 33 168 / var(--tw-bg-opacity));
 }
 
-.bg-blue-600\/80 {
-  background-color: rgb(37 99 235 / 0.8);
+.bg-purple-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 232 255 / var(--tw-bg-opacity));
 }
 
-.bg-red-600\/80 {
-  background-color: rgb(220 38 38 / 0.8);
+.bg-purple-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(216 180 254 / var(--tw-bg-opacity));
 }
 
-.bg-purple-500\/70 {
-  background-color: rgb(168 85 247 / 0.7);
+.bg-purple-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(192 132 252 / var(--tw-bg-opacity));
+}
+
+.bg-purple-300\/70 {
+  background-color: rgb(216 180 254 / 0.7);
+}
+
+.bg-purple-200\/70 {
+  background-color: rgb(233 213 255 / 0.7);
+}
+
+.bg-purple-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 245 255 / var(--tw-bg-opacity));
+}
+
+.bg-slate-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+}
+
+.bg-purple-200\/60 {
+  background-color: rgb(233 213 255 / 0.6);
 }
 
 .px-4 {
@@ -815,6 +899,28 @@ video {
   padding-bottom: 1rem;
 }
 
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.py-1\.5 {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+
+.pb-1\.5 {
+  padding-bottom: 0.375rem;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -829,6 +935,31 @@ video {
   line-height: 1.25rem;
 }
 
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
 .font-semibold {
   font-weight: 600;
 }
@@ -836,6 +967,11 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-purple-500 {
+  --tw-text-opacity: 1;
+  color: rgb(168 85 247 / var(--tw-text-opacity));
 }
 
 .main-bg {
@@ -863,9 +999,14 @@ video {
   display: block !important;
 }
 
-.hover\:bg-blue-500:hover {
+.hover\:bg-blue-400:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-purple-300:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(216 180 254 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-purple-400:hover {
@@ -873,9 +1014,9 @@ video {
   background-color: rgb(192 132 252 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-red-500:hover {
+.hover\:bg-red-400:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-slate-300:hover {
@@ -888,23 +1029,74 @@ video {
   background-color: rgb(254 249 195 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-blue-400:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-purple-300:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(216 180 254 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-red-400:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
-}
-
 .\[\&\>\*\:not\(img\)\]\:w-full>*:not(img) {
   width: 100%;
+}
+
+.\[\&\>a\]\:flex>a {
+  display: flex;
+}
+
+.\[\&\>a\]\:flex-col>a {
+  flex-direction: column;
+}
+
+.\[\&\>a\]\:items-center>a {
+  align-items: center;
+}
+
+.\[\&_a\]\:border-4 a {
+  border-width: 4px;
+}
+
+.\[\&_a\]\:border-2 a {
+  border-width: 2px;
+}
+
+.\[\&_img\]\:h-5 img {
+  height: 1.25rem;
+}
+
+.\[\&_img\]\:h-6 img {
+  height: 1.5rem;
+}
+
+.\[\&_img\]\:w-6 img {
+  width: 1.5rem;
+}
+
+.\[\&_ion-icon\]\:text-4xl ion-icon {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.\[\&_ion-icon\]\:text-3xl ion-icon {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.\[\&_ion-icon\]\:text-2xl ion-icon {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.\[\&_ion-icon\]\:text-purple-500 ion-icon {
+  --tw-text-opacity: 1;
+  color: rgb(168 85 247 / var(--tw-text-opacity));
+}
+
+.\[\&_p\]\:text-sm p {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.\[\&_p\]\:text-xs p {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.\[\&_p\]\:font-semibold p {
+  font-weight: 600;
 }
 
 .\[\&\~\*\]\:mb-2~* {

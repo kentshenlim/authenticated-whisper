@@ -5,17 +5,30 @@ module.exports = {
     if (!req.user) res.redirect('/sign-in');
     else {
       res.render('index', {
-        title: 'authenticated-whisper',
+        title: 'Home',
+        current: 'home',
       });
     }
   }),
 
-  profile_get: asyncHandler(async (req, res, netx) => {
-    res.send('Just redirect to user with your id');
+  discover_get: asyncHandler(async (req, res, next) => {
+    if (!req.user) res.redirect('/sign-in');
+    else {
+      res.render('index', {
+        title: 'Discover',
+        current: 'discover',
+      });
+    }
   }),
 
-  discover_get: asyncHandler(async (req, res, next) => {
-    res.send('Discover page, only show users opt in for this, showing their post');
+  me_get: asyncHandler(async (req, res, next) => {
+    if (!req.user) res.redirect('/sign-in');
+    else {
+      res.render('index', {
+        title: 'Me',
+        current: 'me',
+      });
+    }
   }),
 
   setting_get: asyncHandler(async (req, res, next) => {

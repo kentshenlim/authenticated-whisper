@@ -14,6 +14,7 @@ Place where you vent your feelings without judgement.
 
 ## TODO, DUE 22.11.2023
 
+- TODO: tab title at top
 - TODO: will need to do a connection connection to handle unresolved friend request
 - TODO: friends feature
 - TODO: opt in opt out for discover, need a boolean in user
@@ -26,3 +27,4 @@ Place where you vent your feelings without judgement.
 - TODO: join ago
 - TODO: create two sample profile for demo, exposing the password
 - TODO: limit email sender rate strictly to avoid spam
+- TODO: truncate possibly long field input by user

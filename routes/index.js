@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.get('/', controller.home_get);
 
-router.get('/profile', controller.profile_get);
-
 router.get('/discover', controller.discover_get);
+
+router.get('/me', controller.me_get);
 
 router.get('/setting', controller.setting_get);
 

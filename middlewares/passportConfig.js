@@ -121,11 +121,17 @@ const FC = require('../models/fc');
       // Second argument is send function
       (user, token) => {
         const link = `${process.env.DOMAIN_NAME}/sign-in/email/verify?token=${token}`;
+        const h1 = '<h1>Log in to <span style="color: #a855f7cc;">authenticated-whisper</span></h1>';
+        const p = '<p>You asked us to send you a magic link for quickly signing into your authenticated-whisper account. <span style="font-weight: bold;">DO NOT click the button if you have not make the request.</span></p>';
+        const btn = `<a href=${link} style="align-self: center; font-size: 20px;display: inline-block; background: #a855f7cc; color: white; padding: 5px 10px; text-decoration: none; border-radius:5px;">Sign in to authenticated-whisper</a>`;
+        const note1 = '<p>The button will expire in 30 mins and can be used only once.</p>';
+        const note2 = '<p style="color: gray; font-size: 12px; text-align: left;">If you did not initiate this request, it is possible that someone may have inadvertently entered your email. If so, please disregard this email. Please report to the administrator by replying to this email if you suspect someone is abusing this email sender.</p>';
+        const note3 = '<p style="color: gray; font-size: 12px; text-align: left;">This is an open-source project for practice; GitHub repository: https://github.com/kentshenlim/authenticated-whisper</p>';
         const mailData = {
           from: process.env.MAGIC_LINK_EMAIL,
           to: user.email,
           subject: 'Sign in to authenticated-whisper',
-          html: '<h1> Welcome</h1>. Click the link below to finish signing in to authenticated-whisper. \r\n\r\n' + `<a href=${link}>${link}</a>`,
+          html: `<div style="padding: 3rem 1.5rem; border-radius: 0.5rem; margin: 0 auto; display: flex; flex-direction: column; text-align: center; max-width:75ch; border: solid #a855f7cc 2px;">${h1}${p}${btn}${note1}${note2}${note3}</div>`,
         };
         return transporter.sendMail(mailData);
       },

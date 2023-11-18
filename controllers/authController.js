@@ -127,10 +127,10 @@ module.exports = {
   },
 
   sign_in_email_post: [
-    // passport.authenticate('magic-link', {
-    //   action: 'requestToken',
-    //   failureRedirect: '/sign-in',
-    // }),
+    passport.authenticate('magic-link', {
+      action: 'requestToken',
+      failureRedirect: '/sign-in',
+    }),
     (req, res, next) => {
       res.render('auth/email-check', {
         title: 'Email Sent',

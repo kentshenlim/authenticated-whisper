@@ -14,7 +14,6 @@ Place where you vent your feelings without judgement.
 
 ## TODO, DUE 22.11.2023
 
-- TODO: set up authentication: local, google, facebook, magic link
 - TODO: redirect the whole auth to home if already logged in, not individually
 - TODO: will need to do a connection connection to handle unresolved friend request
 - TODO: friends feature
@@ -27,3 +26,4 @@ Place where you vent your feelings without judgement.
 - TODO: profile pic upload feature, otherwise use Jdenticon
 - TODO: join ago
 - TODO: create two sample profile for demo, exposing the password
+- TODO: limit email sender rate strictly to avoid spam

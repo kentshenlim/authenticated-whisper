@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    div(class='[&>*]:px-side [&>*]:bg-white')
+        section(class='mb-4')
+            div(class='flex py-4')
+                img(src='/images/app-icon.png' alt='DP' class='w-1/5')
+                div(class='flex-auto px-3')
+                    h1(class='text-lg font-semibold') #{user.displayName}
+                    p Username: #{user.username || 'unset'}
+
+        section(class='mb-4')
+            div(class='[&>a]:flex [&>a]:gap-3 py-2 [&_img]:w-6 [&_p]:flex-auto')
+                a(href='/my/posts')
+                    img(src='images/bug-outline.svg', alt='Bug icon')
+                    p About Us
+
+        section(class='mb-4')
+            div(class='[&>a]:flex [&>a]:py-2 [&>a]:gap-3 [&_img]:w-6 [&_p]:flex-auto')
+                a(href='/my/posts' class='border-b border-slate-100/70')
+                    img(src='images/aperture-outline.svg' alt='Aperture icon')
+                    p My Posts
+                a(href='/my/friends')
+                    img(src='images/people-outline.svg' alt='People icon')
+                    p Friends
+
+        section(class='mb-4')
+            div(class='[&>a]:flex [&>a]:gap-3 py-2 [&_img]:w-6 [&_p]:flex-auto')
+                a(href='/settings')
+                    img(src='images/settings-outline.svg', alt='Settings icon')
+                    p Settings
+
+
+

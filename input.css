@@ -70,4 +70,7 @@
   .main-bg {
     @apply bg-purple-100;
   }
+  .px-side {
+    @apply px-3;
+  }
 }

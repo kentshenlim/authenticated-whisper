@@ -155,6 +155,7 @@ const FC = require('../models/fc');
   passport.serializeUser((user, done) => {
     done(null, {
       displayName: user.displayName,
+      username: user.username,
     });
   });
 

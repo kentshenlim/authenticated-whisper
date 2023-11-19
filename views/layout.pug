@@ -7,7 +7,7 @@ html
   body(class='flex flex-col h-screen bg-slate-50 [&>:nth-child(2)]:flex-auto [&>:nth-child(2)]:overflow-auto')
     section(class='flex-none bg-purple-50')
       div(class='py-2 text-center')
-        h2(class='font-semibold capitalize text-md') #{current}
+        h2(class='font-semibold capitalize text-md')= current == 'home' ? 'authenticated-whisper' : current == 'discover' ? 'discover' : 'profile'
 
     block content
 

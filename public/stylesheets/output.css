@@ -764,6 +764,10 @@ video {
   height: 100vh;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -792,6 +796,10 @@ video {
   width: 100vw;
 }
 
+.w-10 {
+  width: 2.5rem;
+}
+
 .max-w-\[535px\] {
   max-width: 535px;
 }
@@ -815,6 +823,10 @@ video {
 
 .items-center {
   align-items: center;
+}
+
+.items-stretch {
+  align-items: stretch;
 }
 
 .justify-center {
@@ -853,6 +865,21 @@ video {
 .border-slate-400 {
   --tw-border-opacity: 1;
   border-color: rgb(148 163 184 / var(--tw-border-opacity));
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
+.border-blue-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(59 130 246 / var(--tw-border-opacity));
 }
 
 .bg-blue-600\/80 {
@@ -1031,6 +1058,11 @@ video {
   background-color: rgb(243 232 255 / var(--tw-bg-opacity));
 }
 
+.px-side {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 /* Classes added dynamically, always include into output */
 
 .list-ticked {
@@ -1081,6 +1113,14 @@ video {
   background-color: rgb(254 249 195 / var(--tw-bg-opacity));
 }
 
+.\[\&\:not\(\:first-child\)\]\:mt-3:not(:first-child) {
+  margin-top: 0.75rem;
+}
+
+.\[\&\:not\(\:first-child\)\]\:mt-4:not(:first-child) {
+  margin-top: 1rem;
+}
+
 .\[\&\:not\(\:last-child\)\]\:mb-2:not(:last-child) {
   margin-bottom: 0.5rem;
 }
@@ -1096,6 +1136,15 @@ video {
 
 .\[\&\>\*\:not\(img\)\]\:w-full>*:not(img) {
   width: 100%;
+}
+
+.\[\&\>\*\]\:border>* {
+  border-width: 1px;
+}
+
+.\[\&\>\*\]\:border-red-500>* {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
 .\[\&\>\*\]\:bg-white>* {

@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const mongoose = require('mongoose');
 const Post = require('../models/post');
+const User = require('../models/user');
 
 module.exports = {
   about_get: (req, res, next) => {
@@ -23,16 +24,31 @@ module.exports = {
         posts[k] = Post.hydrate(posts[k]);
       }
     }
-
     res.render('me/posts', {
       title: 'My Whispers',
       postsArr,
     });
   }),
 
-  my_friends_get: (req, res, next) => {
-    res.send('All my friends');
-  },
+  my_friends_get: asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.user._id, { friends: 1 }).populate('friends', 'displayName username').exec();
+    const { friends } = user;
+    // Grouping
+    const map = {};
+    for (let i = 0; i < friends.length; i += 1) {
+      const char = friends[i].displayName[0].toUpperCase();
+      if (!(char in map)) map[char] = [];
+      map[char].push(friends[i]);
+    }
+    const keys = Object.keys(map);
+    keys.sort();// Lexicographically
+    const friendsGrouped = keys.map((key) => map[key]);
+
+    res.render('me/friends', {
+      title: 'Friends',
+      friendsGrouped,
+    });
+  }),
 
   settings_get: (req, res, next) => {
     res.send('My settings');

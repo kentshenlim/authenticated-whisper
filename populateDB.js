@@ -78,6 +78,10 @@ async function createUserSampleDocuments() {
     process.env.SAMPLE_PASSWORD_05,
     process.env.SAMPLE_PASSWORD_06,
     process.env.SAMPLE_PASSWORD_07,
+    process.env.SAMPLE_PASSWORD_08,
+    process.env.SAMPLE_PASSWORD_09,
+    process.env.SAMPLE_PASSWORD_10,
+    process.env.SAMPLE_PASSWORD_11,
   ];
   // Salt and hash passwords
   for (let i = 0; i < allPasswordsUnhashed.length; i += 1) {
@@ -145,6 +149,34 @@ async function createUserSampleDocuments() {
       gender: 'female',
       bio: 'Passionate about literature, traveling, and trying new cuisines. Embracing diversity.',
     }, 7),
+    createUser({
+      displayName: 'Emily Wilson',
+      username: 'emily_wilson',
+      password: allPasswords[8],
+      gender: 'female',
+      bio: 'Bookworm, coffee lover, and aspiring world traveler. On a journey to explore the unknown.',
+    }, 8),
+    createUser({
+      displayName: 'Chris Miller',
+      username: 'chris_miller',
+      password: allPasswords[9],
+      gender: 'male',
+      bio: 'Fitness fanatic and health advocate. Inspiring others to lead an active and balanced lifestyle.',
+    }, 9),
+    createUser({
+      displayName: 'Eva Rodriguez',
+      username: 'eva_rodriguez',
+      password: allPasswords[10],
+      gender: 'female',
+      bio: 'Tech geek and aspiring entrepreneur. Building a future where innovation knows no bounds.',
+    }, 10),
+    createUser({
+      displayName: 'Avery Taylor',
+      username: 'avery_taylor',
+      password: allPasswords[11],
+      gender: 'female',
+      bio: 'Passionate about social justice and creating a more inclusive world. Advocate for change.',
+    }, 11),
   ]);
 }
 
@@ -236,6 +268,10 @@ async function createSampleConnections() {
     [3, 5],
     [0, 3],
     [2, 7],
+    [0, 8],
+    [0, 9],
+    [0, 10],
+    [0, 11],
   ];
   const arr = [];
   connections.forEach(([n1, n2]) => {

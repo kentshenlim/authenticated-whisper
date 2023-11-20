@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/output.css')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  body(class='flex flex-col h-screen bg-slate-50 [&>:nth-child(2)]:flex-auto [&>:nth-child(2)]:overflow-auto')
+    section(class='flex-none bg-purple-50')
+      div(class='relative py-2 text-center')
+        a(href='/me' class='absolute left-2') &lt;
+        h2(class='font-semibold capitalize text-md') #{title}
+
+    block content
+
+

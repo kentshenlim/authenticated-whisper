@@ -5,7 +5,7 @@ module.exports = {
     if (!req.user) res.redirect('/sign-in');
     else {
       res.render('index', {
-        title: 'Home',
+        title: 'authenticated-whisper',
         current: 'home',
       });
     }
@@ -25,7 +25,7 @@ module.exports = {
     if (!req.user) res.redirect('/sign-in');
     else {
       res.render('me', {
-        title: 'Me',
+        title: 'Profile',
         current: 'me',
       });
     }

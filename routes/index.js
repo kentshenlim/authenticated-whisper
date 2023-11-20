@@ -9,6 +9,6 @@ router.get('/discover', controller.discover_get);
 
 router.get('/me', controller.me_get);
 
-router.get('/setting', controller.setting_get);
+router.get('/settings', controller.setting_get);
 
 module.exports = router;

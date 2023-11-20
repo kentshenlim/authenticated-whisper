@@ -11,8 +11,9 @@ const session = require('express-session');
 const flash = require('express-flash');
 const passport = require('passport');
 
-const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+const indexRouter = require('./routes/index');
+const meRouter = require('./routes/me');
 const userRouter = require('./routes/user');
 const postRouter = require('./routes/post');
 
@@ -52,6 +53,7 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
+app.use('/', meRouter);
 app.use('/user', userRouter);
 app.use('/post', postRouter);
 

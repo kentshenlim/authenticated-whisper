@@ -27,3 +27,4 @@ Place where you vent your feelings without judgement.
 - TODO: create two sample profile for demo, exposing the password
 - TODO: limit email sender rate strictly to avoid spam
 - TODO: truncate possibly long field input by user
+- TODO: image all pointer none

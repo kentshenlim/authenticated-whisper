@@ -154,9 +154,10 @@ const FC = require('../models/fc');
 
   passport.serializeUser((user, done) => {
     done(null, {
+      _id: user._id,
       displayName: user.displayName,
       username: user.username,
-      _id: user._id,
+      displayPicture: user.jdenticonSrc, // Need to convert to base 64 for browser rendering
     });
   });
 

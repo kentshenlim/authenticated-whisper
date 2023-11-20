@@ -4,7 +4,7 @@ block content
     div(class='[&>*]:px-side [&>*]:bg-white')
         section(class='mb-4')
             div(class='flex py-4')
-                img(src='/images/app-icon.png' alt='DP' class='w-1/5')
+                img(src=user.displayPicture alt='DP' class='w-1/5') 
                 div(class='flex-auto px-3')
                     h1(class='text-lg font-semibold') #{user.displayName}
                     p Username: #{user.username || 'unset'}

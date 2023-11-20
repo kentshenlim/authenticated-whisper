@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const jdenticon = require('jdenticon');
 
 const { Schema } = mongoose;
 
@@ -47,9 +48,6 @@ const userSchema = new Schema({
     type: String,
     maxLength: 120,
   },
-  displayPicture: {
-    type: Schema.Types.Buffer,
-  },
   friends: {
     type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     default: [], // MongoDB will set array on undefined actually to prevent err
@@ -67,6 +65,12 @@ userSchema.virtual('url').get(function () {
 
 userSchema.virtual('friendsCount').get(function () {
   return this.friends.length;
+});
+
+userSchema.virtual('jdenticonSrc').get(function () {
+  const png = jdenticon.toPng(this.username, 200);
+  const base64 = btoa(String.fromCharCode.apply(null, new Uint8Array(png)));
+  return `data:image/png;base64,${base64}`;
 });
 
 // Instances

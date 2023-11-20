@@ -55,8 +55,11 @@ async function createPost({
   content,
   user,
   pat,
+  created,
 }, idx) {
-  const post = new Post({ content, user, pat });
+  const post = new Post({
+    content, user, pat, created,
+  });
   await post.save();
   posts[idx] = post;
   console.log(`Added a post from ${user.displayName}`);
@@ -152,25 +155,75 @@ async function createPostSampleDocuments() {
       content:
           "Feeling overwhelmed today. Sometimes life hits you hard, and it's okay not to be okay.",
       user: users[0],
+      created: new Date('2023-10-10'),
     }, 0),
     createPost({
       content:
           "Dealing with self-doubt. It's a tough battle, but I'll keep pushing forward. 💪",
       user: users[2],
+      created: new Date('2023-09-17'),
     }, 1),
     createPost({
       content:
           "Navigating through a maze of emotions. It's okay to feel lost sometimes.",
       user: users[2],
+      created: new Date('2022-11-14'),
     }, 2),
     createPost({
       content: 'Heartbroken and trying to make sense of it all.',
       user: users[3],
+      created: new Date('2023-05-04'),
     }, 3),
     createPost({
       content: "Frustrated with setbacks, but I won't let them define me. Every obstacle is a stepping stone.",
       user: users[4],
+      created: new Date('2022-12-05'),
     }, 4),
+    createPost({
+      content: "Struggling with self-doubt lately. It's tough when your inner critic is louder than any external voices.",
+      user: users[0],
+      created: new Date('2023-03-06'),
+    }, 5),
+    createPost({
+      content: "Feeling isolated and lonely. It's hard to connect with others when the weight of the world feels heavy.",
+      user: users[0],
+      created: new Date('2023-03-06'),
+    }, 6),
+    createPost({
+      content: "Dealing with imposter syndrome at work. Constantly questioning my abilities and fearing I'll be exposed.",
+      user: users[0],
+      created: new Date('2023-03-19'),
+    }, 7),
+    createPost({
+      content: "Feeling stuck in a cycle of negative thoughts. Trying to break free but it's easier said than done.",
+      user: users[0],
+      created: new Date('2023-04-28'),
+    }, 8),
+    createPost({
+      content: 'Anxiety levels through the roof today. The smallest tasks feel like insurmountable challenges.',
+      user: users[0],
+      created: new Date('2023-01-11'),
+    }, 9),
+    createPost({
+      content: "Overthinking every decision and fearing the consequences. The 'what ifs' are paralyzing.",
+      user: users[0],
+      created: new Date('2023-09-28'),
+    }, 10),
+    createPost({
+      content: "Wrestling with a sense of inadequacy. It's exhausting trying to measure up to unrealistic standards.",
+      user: users[0],
+      created: new Date('2022-11-13'),
+    }, 11),
+    createPost({
+      content: 'Feeling unappreciated and unnoticed. Everyone needs validation, and today it feels out of reach.',
+      user: users[0],
+      created: new Date('2022-09-11'),
+    }, 12),
+    createPost({
+      content: 'Struggling with a sense of purpose. Wondering if what I do really matters in the grand scheme of things.',
+      user: users[0],
+      created: new Date('2021-05-12'),
+    }, 13),
   ]);
 }
 

@@ -10,11 +10,28 @@ block content
             div
                 h1(class='text-lg font-medium text-right') #{user.displayName}
 
-        section
-            if (posts && posts.length)
+        section(class='mb-6')
+            if (postsArr && postsArr.length)
+                //- Each item in postsArr = [posts on one day]
                 ul
-                    each post in posts
-                        li= post.dayString
-                        li= post.content
+                    each day, index in postsArr
+                        if (index === 0 && day[0].yearString != String(new Date().getFullYear()))
+                            h1(class='my-5 text-3xl font-medium')= day[0].yearString
+                        else if (index > 0 && day[0].yearString != postsArr[index - 1][0].yearString)
+                            h1(class='my-5 text-3xl font-medium')= day[0].yearString
+                        li(class='flex [&:not(:last-child)]:mb-3')
+                            h2(class='flex-none w-16')
+                                span(class='text-2xl font-medium')= day[0].dayString
+                                span 
+                                span(class='text-sm font-medium')= day[0].monthString
+                            ul
+                                each post in day
+                                    li
+                                        a(class='px-1 bg-gray-200/70  line-clamp-2 [&:not(:last-child)]:mb-2' href='/posts/' + post._id)= post.content
+
             else
                 p No posts
+
+        section(class='mt-12 mb-4')
+            div(class='w-1/3 mx-auto border border-gray-200')
+

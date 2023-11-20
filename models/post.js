@@ -30,11 +30,15 @@ postSchema.virtual('patCount').get(function () {
 });
 
 postSchema.virtual('dayString').get(function () {
-  return formatDate(this.created, 'd');
+  return formatDate(this.created, 'dd');
 });
 
 postSchema.virtual('monthString').get(function () {
   return formatDate(this.created, 'MMM');
+});
+
+postSchema.virtual('yearString').get(function () {
+  return formatDate(this.created, 'yyyy');
 });
 
 module.exports = mongoose.model('Post', postSchema);

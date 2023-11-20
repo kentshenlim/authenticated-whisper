@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const formatDate = require('date-fns/format');
 
 const { Schema } = mongoose;
 
@@ -26,6 +27,14 @@ const postSchema = new Schema({
 // Virtuals
 postSchema.virtual('patCount').get(function () {
   return this.pat.length;
+});
+
+postSchema.virtual('dayString').get(function () {
+  return formatDate(this.created, 'd');
+});
+
+postSchema.virtual('monthString').get(function () {
+  return formatDate(this.created, 'MMM');
 });
 
 module.exports = mongoose.model('Post', postSchema);

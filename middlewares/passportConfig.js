@@ -156,6 +156,7 @@ const FC = require('../models/fc');
     done(null, {
       displayName: user.displayName,
       username: user.username,
+      _id: user._id,
     });
   });
 

@@ -21,7 +21,7 @@ block content
             section#delete-section(class='absolute z-10 hidden w-3/4 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2')
                 form(action='/post/delete' method='post' class='font-medium text-center rounded-lg bg-slate-100')
                     h1(class='py-6') Delete this whisper permanently?
-                    input(type='hidden' value=post._id required=true)
+                    input(type='hidden' value=post._id name='id' required=true)
                     div(class='border-t-2 flex [&>*]:flex-auto [&>*]:py-2 [&>*:hover]:bg-gray-200')
                         button#cancel-btn(type='button' class='border-r') Cancel
                         button(type='submit' class='border-l text-warning') Delete

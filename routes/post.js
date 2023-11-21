@@ -7,6 +7,8 @@ router.get('/create', controller.create_form_get);
 
 router.post('/create', controller.create_form_post);
 
+router.post('/delete', controller.delete_post);
+
 router.get('/:id', controller.detail_get);
 
 router.post('/:id/add-pat', controller.add_pat_post);

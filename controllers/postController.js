@@ -18,8 +18,8 @@ module.exports = {
     const postOwner = post.user;
     const crtUser = await User.findById(req.user._id).exec();
     if (!(crtUser.canViewHisPost(postOwner._id))) {
-      const err = new Error('Resource not found');
-      err.status = 404;
+      const err = new Error('Forbidden access');
+      err.status = 403;
       return next(err);
     }
     return res.render('post/details', {
@@ -67,6 +67,21 @@ module.exports = {
       return res.redirect('/');
     }),
   ],
+
+  delete_post: asyncHandler(async (req, res, next) => {
+    // Current post must belong to current user
+    if (!req.user) return res.redirect('/sign-in');
+    const postID = req.body.id;
+    const post = await Post.findById(postID).exec();
+    if (!post) return res.redirect('/'); // Consider done
+    if (post.user._id.toString() !== req.user._id) { // Not user's post
+      const err = new Error('Forbidden access');
+      err.status = 403;
+      return next(err);
+    }
+    await Post.findByIdAndDelete(postID).exec();
+    return res.redirect('/');
+  }),
 
   add_pat_post: asyncHandler(async (req, res, next) => {
     res.send('NOT IMPLEMENTED: this path should be fetched by frontend callback');

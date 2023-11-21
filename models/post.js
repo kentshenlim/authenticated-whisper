@@ -25,6 +25,10 @@ const postSchema = new Schema({
 });
 
 // Virtuals
+postSchema.virtual('url').get(function () {
+  return `/post/${this._id}`;
+});
+
 postSchema.virtual('patCount').get(function () {
   return this.pat.length;
 });

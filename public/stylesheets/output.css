@@ -1142,6 +1142,10 @@ video {
   margin-bottom: 0.75rem;
 }
 
+.\[\&\:not\(\:last-child\)\]\:mb-1:not(:last-child) {
+  margin-bottom: 0.25rem;
+}
+
 .\[\&\>\*\:not\(\:first-child\)\]\:px-side>*:not(:first-child) {
   padding-left: 0.75rem;
   padding-right: 0.75rem;

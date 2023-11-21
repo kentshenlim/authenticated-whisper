@@ -26,8 +26,8 @@ block content
                                 span(class='text-sm font-medium')= day[0].monthString
                             ul
                                 each post in day
-                                    li
-                                        a(class='px-1 bg-gray-200/70  line-clamp-2 [&:not(:last-child)]:mb-2' href='/posts/' + post._id)= post.content
+                                    li(class='[&:not(:last-child)]:mb-1')
+                                        a(class='px-1 bg-gray-200/70 line-clamp-2' href=post.url)= post.content
 
             else
                 p(class='italic') Currently, it's calm in your space. Whenever you're ready to vent, we're here for you.

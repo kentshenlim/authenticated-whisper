@@ -30,8 +30,4 @@ module.exports = {
       });
     }
   }),
-
-  setting_get: asyncHandler(async (req, res, next) => {
-    res.send('Change password or link to email etc, might need to split to separate router');
-  }),
 };

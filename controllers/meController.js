@@ -55,6 +55,8 @@ module.exports = {
   }),
 
   settings_get: (req, res, next) => {
-    res.send('My settings');
+    res.render('me/settings', {
+      title: 'Settings',
+    });
   },
 };

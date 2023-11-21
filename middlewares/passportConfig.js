@@ -157,7 +157,7 @@ const FC = require('../models/fc');
       _id: user._id,
       displayName: user.displayName,
       username: user.username,
-      displayPicture: user.jdenticonSrc, // Need to convert to base 64 for browser rendering
+      displayPicture: user.displayPicture, // Need to convert to base 64 for browser rendering
     });
   });
 

@@ -192,7 +192,7 @@ async function createPostSampleDocuments() {
     createPost({
       content:
           "Dealing with self-doubt. It's a tough battle, but I'll keep pushing forward. 💪",
-      user: users[2],
+      user: users[1],
       created: new Date('2023-09-17'),
     }, 1),
     createPost({
@@ -256,6 +256,41 @@ async function createPostSampleDocuments() {
       user: users[0],
       created: new Date('2021-05-12'),
     }, 13),
+    createPost({
+      content: 'Just finished a thrilling book! Any recommendations for the next one?',
+      user: users[1],
+      created: new Date('2021-06-25'),
+    }, 14),
+    createPost({
+      content: "Feeling grateful for the little things in life. What's something that made your day better?",
+      user: users[1],
+      created: new Date('2021-07-08'),
+    }, 15),
+    createPost({
+      content: 'Enjoying a peaceful weekend getaway. Sometimes, you just need a break.',
+      user: users[1],
+      created: new Date('2021-08-14'),
+    }, 16),
+    createPost({
+      content: 'Trying out a new hobby – painting. It’s so therapeutic!',
+      user: users[8],
+      created: new Date('2021-09-02'),
+    }, 17),
+    createPost({
+      content: 'Reflecting on the past year and setting goals for the next. What are your resolutions?',
+      user: users[9],
+      created: new Date('2021-12-30'),
+    }, 18),
+    createPost({
+      content: 'Excited about my upcoming travel plans. Any travel enthusiasts here?',
+      user: users[10],
+      created: new Date('2022-03-10'),
+    }, 19),
+    createPost({
+      content: 'Coding late into the night. The deadline is approaching, but I love the challenge!',
+      user: users[10],
+      created: new Date('2022-04-05'),
+    }, 20),
   ]);
 }
 

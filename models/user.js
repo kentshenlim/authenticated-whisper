@@ -67,7 +67,7 @@ userSchema.virtual('friendsCount').get(function () {
   return this.friends.length;
 });
 
-userSchema.virtual('jdenticonSrc').get(function () {
+userSchema.virtual('displayPicture').get(function () {
   const png = jdenticon.toPng(this.username, 200);
   const base64 = btoa(String.fromCharCode.apply(null, new Uint8Array(png)));
   return `data:image/png;base64,${base64}`;

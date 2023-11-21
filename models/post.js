@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const formatDate = require('date-fns/format');
+const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 
 const { Schema } = mongoose;
 
@@ -43,6 +44,10 @@ postSchema.virtual('monthString').get(function () {
 
 postSchema.virtual('yearString').get(function () {
   return formatDate(this.created, 'yyyy');
+});
+
+postSchema.virtual('agoString').get(function () {
+  return formatDistanceToNow(this.created);
 });
 
 module.exports = mongoose.model('Post', postSchema);

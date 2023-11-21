@@ -1,12 +1,29 @@
 extends ../layout/layout_no_menu
 
 block content
+    - const isOwner = (user._id == post.user._id);
+
     div(class='[&>*]:px-side mt-4')
         section
             div(class='flex gap-1')
                 a(href=post.user.url class='flex-none') 
                     img(src=post.user.displayPicture alt='User icon' class='w-12')
-                div(class='flex-auto [&>*:not(:last-child)]:mb-2')
+                div(class='flex-auto [&>*:not(:last-child)]:mb-1')
                     a(href=post.user.url class='text-link')= post.user.displayName
                     p= post.content
-                    p(class='text-sm text-gray-500')= post.displayDateString
+                    div
+                        span(class='text-sm text-gray-500')= post.displayDateString
+                        if (isOwner)
+                            button(class='ml-2')
+                                img(src='/images/trash-outline.svg' alt='Trash icon' class='w-3')
+
+        if (isOwner)
+            section(class='absolute w-3/4 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2')
+                form(action='/post/delete' method='post' class='font-medium text-center bg-green-300 rounded-lg')
+                    h1(class='py-6') Delete this whisper permanently?
+                    input(type='hidden' value=post._id required=true)
+                    div(class='border-t-2 flex [&>*]:flex-auto [&>*]:py-2')
+                        button(type='button' class='border-r') Cancel
+                        button(type='submit' class='border-l text-warning') Delete
+
+

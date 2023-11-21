@@ -12,7 +12,7 @@ module.exports = {
       .populate('user', 'displayName username')
       .sort({ created: -1 })
       .exec();
-    return res.render('index', {
+    return res.render('home/index', {
       title: 'authenticated-whisper',
       current: 'home',
       friendPosts,
@@ -21,7 +21,7 @@ module.exports = {
 
   discover_get: asyncHandler(async (req, res, next) => {
     if (!req.user) return res.redirect('/sign-in');
-    return res.render('index', {
+    return res.render('home/index', {
       title: 'Discover',
       current: 'discover',
     });
@@ -29,7 +29,7 @@ module.exports = {
 
   me_get: (req, res, next) => {
     if (!req.user) return res.redirect('/sign-in');
-    return res.render('me', {
+    return res.render('home/me', {
       title: 'Profile',
       current: 'me',
     });

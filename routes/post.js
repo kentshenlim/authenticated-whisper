@@ -3,7 +3,7 @@ const controller = require('../controllers/postController');
 
 const router = express.Router();
 
-router.get('/:id', controller.post_view_get);
+router.get('/:id', controller.detail_get);
 
 router.post('/:id/add-pat', controller.add_pat_post);
 

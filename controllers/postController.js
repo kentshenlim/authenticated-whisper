@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler');
 
 module.exports = {
-  post_view_get: asyncHandler(async (req, res, next) => {
+  detail_get: asyncHandler(async (req, res, next) => {
     res.send(`NOT IMPLEMENTED: get detail for ${req.params.id}`);
   }),
 

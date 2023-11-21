@@ -10,7 +10,7 @@ ul
                 span(class='text-2xl font-medium')= day[0].dayString
                 span 
                 span(class='text-sm font-medium')= day[0].monthString
-            ul
+            ul(class='flex-auto')
                 each post in day
                     li(class='[&:not(:last-child)]:mb-1')
                         a(class='px-1 bg-gray-200/70 line-clamp-2' href=post.url)= post.content

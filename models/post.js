@@ -15,6 +15,10 @@ const postSchema = new Schema({
     ref: 'User',
     required: true,
   },
+  isPublic: {
+    type: Boolean,
+    default: false,
+  },
   pat: {
     type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     default: [],

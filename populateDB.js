@@ -54,11 +54,12 @@ async function createUser({
 async function createPost({
   content,
   user,
+  isPublic,
   pat,
   created,
 }, idx) {
   const post = new Post({
-    content, user, pat, created,
+    content, user, isPublic, pat, created,
   });
   await post.save();
   posts[idx] = post;
@@ -187,12 +188,14 @@ async function createPostSampleDocuments() {
       content:
           "Feeling overwhelmed today. Sometimes life hits you hard, and it's okay not to be okay.",
       user: users[0],
+      isPublic: true,
       created: new Date('2023-10-10T14:50:00'),
     }, 0),
     createPost({
       content:
           "Dealing with self-doubt. It's a tough battle, but I'll keep pushing forward. 💪",
       user: users[1],
+      isPublic: true,
       created: new Date('2023-09-17T09:51:00'),
     }, 1),
     createPost({
@@ -214,6 +217,7 @@ async function createPostSampleDocuments() {
     createPost({
       content: "Struggling with self-doubt lately. It's tough when your inner critic is louder than any external voices.",
       user: users[0],
+      isPublic: true,
       created: new Date('2023-03-06T09:19:41'),
     }, 5),
     createPost({

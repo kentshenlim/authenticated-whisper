@@ -15,6 +15,7 @@ Place where you vent your feelings without judgement.
 ## TODO, DUE 22.11.2023
 
 - TODO: user view, post view
+- TODO: user pat total
 - TODO: will need to do a connection connection to handle unresolved friend request
 - TODO: friends feature
 - TODO: opt in opt out for discover, need a boolean in user

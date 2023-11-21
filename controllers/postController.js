@@ -27,6 +27,12 @@ module.exports = {
     });
   }),
 
+  create_form_get: (req, res, next) => {
+    res.render('post/create_form', {
+      title: 'Whisper',
+    });
+  },
+
   add_pat_post: asyncHandler(async (req, res, next) => {
     res.send('NOT IMPLEMENTED: this path should be fetched by frontend callback');
   }),

@@ -5,12 +5,14 @@ const User = require('../models/user');
 
 module.exports = {
   about_get: (req, res, next) => {
-    res.render('me/about', {
+    if (!req.user) return res.redirect('/sign-in');
+    return res.render('me/about', {
       title: 'About Us',
     });
   },
 
   my_posts_get: asyncHandler(async (req, res, next) => {
+    if (!req.user) return res.redirect('/sign-in');
     const postsGrouped = await Post.aggregate([
       { $match: { user: new mongoose.Types.ObjectId(req.user._id) } },
       { $group: { _id: { $dateToString: { format: '%Y-%m-%d', date: '$created' } }, posts: { $push: '$$ROOT' } } },
@@ -24,13 +26,14 @@ module.exports = {
         posts[k] = Post.hydrate(posts[k]);
       }
     }
-    res.render('me/posts', {
+    return res.render('me/posts', {
       title: 'My Whispers',
       postsArr,
     });
   }),
 
   my_friends_get: asyncHandler(async (req, res, next) => {
+    if (!req.user) return res.redirect('/sign-in');
     const user = await User.findById(req.user._id, { friends: 1 }).populate('friends', 'displayName username').exec();
     const { friends } = user;
     // Grouping
@@ -48,14 +51,15 @@ module.exports = {
     if (map['#']) keys.push('#'); // As last
     const friendsGrouped = keys.map((key) => map[key]);
 
-    res.render('me/friends', {
+    return res.render('me/friends', {
       title: 'Friends',
       friendsGrouped,
     });
   }),
 
   settings_get: (req, res, next) => {
-    res.render('me/settings', {
+    if (!req.user) return res.redirect('/sign-in');
+    return res.render('me/settings', {
       title: 'Settings',
     });
   },

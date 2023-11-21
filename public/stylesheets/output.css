@@ -861,6 +861,10 @@ video {
   border-width: 1px;
 }
 
+.border-2 {
+  border-width: 2px;
+}
+
 .border-b {
   border-bottom-width: 1px;
 }
@@ -954,6 +958,11 @@ video {
   background-color: rgb(254 252 232 / 0.8);
 }
 
+.bg-green-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+}
+
 .bg-\[url\(\"\/images\/dandelion\.jpg\"\)\] {
   background-image: url("/images/dandelion.jpg");
 }
@@ -999,6 +1008,11 @@ video {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .pb-1 {

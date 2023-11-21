@@ -21,7 +21,7 @@ module.exports = {
     }
   }),
 
-  me_get: asyncHandler(async (req, res, next) => {
+  me_get: (req, res, next) => {
     if (!req.user) res.redirect('/sign-in');
     else {
       res.render('me', {
@@ -29,5 +29,5 @@ module.exports = {
         current: 'me',
       });
     }
-  }),
+  },
 };

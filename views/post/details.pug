@@ -14,16 +14,21 @@ block content
                     div
                         span(class='text-sm text-gray-500')= post.displayDateString
                         if (isOwner)
-                            button(class='ml-2')
+                            button#bin-btn(class='ml-2')
                                 img(src='/images/trash-outline.svg' alt='Trash icon' class='w-3')
 
         if (isOwner)
-            section(class='absolute w-3/4 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2')
-                form(action='/post/delete' method='post' class='font-medium text-center bg-green-300 rounded-lg')
+            section#delete-section(class='absolute z-10 hidden w-3/4 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2')
+                form(action='/post/delete' method='post' class='font-medium text-center rounded-lg bg-slate-100')
                     h1(class='py-6') Delete this whisper permanently?
                     input(type='hidden' value=post._id required=true)
-                    div(class='border-t-2 flex [&>*]:flex-auto [&>*]:py-2')
-                        button(type='button' class='border-r') Cancel
+                    div(class='border-t-2 flex [&>*]:flex-auto [&>*]:py-2 [&>*:hover]:bg-gray-200')
+                        button#cancel-btn(type='button' class='border-r') Cancel
                         button(type='submit' class='border-l text-warning') Delete
+            
+            section#overlay-section(class='hidden')
+                div(class='absolute inset-0 bg-black/50')
+
+    script(src='/javascripts/deleteOverlay.js' defer)
 
 

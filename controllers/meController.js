@@ -36,12 +36,16 @@ module.exports = {
     // Grouping
     const map = {};
     for (let i = 0; i < friends.length; i += 1) {
-      const char = friends[i].displayName[0].toUpperCase();
+      const firstChar = friends[i].displayName[0];
+      let char;
+      if (!firstChar.match(/[a-z]/i)) char = '#';
+      else char = firstChar.toUpperCase();
       if (!(char in map)) map[char] = [];
       map[char].push(friends[i]);
     }
-    const keys = Object.keys(map);
+    const keys = Object.keys(map).filter((key) => key !== '#'); // Take out the #
     keys.sort();// Lexicographically
+    if (map['#']) keys.push('#'); // As last
     const friendsGrouped = keys.map((key) => map[key]);
 
     res.render('me/friends', {

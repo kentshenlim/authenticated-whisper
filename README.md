@@ -20,6 +20,7 @@ Place where you vent your feelings without judgement.
 - TODO: opt in opt out for discover, need a boolean in user
 - TODO: write and read and suggest friends
 - TODO: change password
+- TODO: effect of changing displayName on friends list
 - TODO: connection? Use graph database or write algorithm using bfs (connection)
 - TODO: app icon
 - TODO: MVC

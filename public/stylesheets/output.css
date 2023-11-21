@@ -741,6 +741,22 @@ video {
   margin-top: 0.5rem;
 }
 
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -764,10 +780,6 @@ video {
   height: 100vh;
 }
 
-.h-full {
-  height: 100%;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
@@ -778,6 +790,10 @@ video {
 
 .w-1\/5 {
   width: 20%;
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .w-16 {
@@ -794,10 +810,6 @@ video {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-10 {
-  width: 2.5rem;
 }
 
 .max-w-\[535px\] {
@@ -825,10 +837,6 @@ video {
   align-items: center;
 }
 
-.items-stretch {
-  align-items: stretch;
-}
-
 .justify-center {
   justify-content: center;
 }
@@ -843,6 +851,10 @@ video {
 
 .rounded-md {
   border-radius: 0.375rem;
+}
+
+.rounded-sm {
+  border-radius: 0.125rem;
 }
 
 .border {
@@ -867,9 +879,9 @@ video {
   border-color: rgb(148 163 184 / var(--tw-border-opacity));
 }
 
-.border-black {
+.border-blue-400 {
   --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-color: rgb(96 165 250 / var(--tw-border-opacity));
 }
 
 .border-red-500 {
@@ -877,9 +889,19 @@ video {
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
-.border-blue-500 {
+.border-b-red-400 {
   --tw-border-opacity: 1;
-  border-color: rgb(59 130 246 / var(--tw-border-opacity));
+  border-bottom-color: rgb(248 113 113 / var(--tw-border-opacity));
+}
+
+.border-b-gray-200 {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+
+.border-b-gray-300 {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
 .bg-blue-600\/80 {
@@ -923,27 +945,13 @@ video {
   background-color: rgb(248 250 252 / var(--tw-bg-opacity));
 }
 
-.bg-yellow-50\/80 {
-  background-color: rgb(254 252 232 / 0.8);
-}
-
-.bg-red-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
-}
-
-.bg-slate-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-white\/50 {
-  background-color: rgb(255 255 255 / 0.5);
+.bg-yellow-50\/80 {
+  background-color: rgb(254 252 232 / 0.8);
 }
 
 .bg-\[url\(\"\/images\/dandelion\.jpg\"\)\] {
@@ -981,6 +989,16 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .pb-1 {
@@ -1058,11 +1076,6 @@ video {
   background-color: rgb(243 232 255 / var(--tw-bg-opacity));
 }
 
-.px-side {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
 /* Classes added dynamically, always include into output */
 
 .list-ticked {
@@ -1113,8 +1126,8 @@ video {
   background-color: rgb(254 249 195 / var(--tw-bg-opacity));
 }
 
-.\[\&\:not\(\:first-child\)\]\:mt-3:not(:first-child) {
-  margin-top: 0.75rem;
+.group:not(:last-child) .group-\[\:not\(\:last-child\)\]\:border-b {
+  border-bottom-width: 1px;
 }
 
 .\[\&\:not\(\:first-child\)\]\:mt-4:not(:first-child) {
@@ -1136,15 +1149,6 @@ video {
 
 .\[\&\>\*\:not\(img\)\]\:w-full>*:not(img) {
   width: 100%;
-}
-
-.\[\&\>\*\]\:border>* {
-  border-width: 1px;
-}
-
-.\[\&\>\*\]\:border-red-500>* {
-  --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
 .\[\&\>\*\]\:bg-white>* {

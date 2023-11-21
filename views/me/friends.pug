@@ -7,14 +7,19 @@ block content
                 ul
                     each group in friendsGrouped
                         h1(class='[&:not(:first-child)]:mt-4 font-medium')= group[0].displayName[0].toUpperCase()
-                        each friend in group
-                            li
-                                a(href='/users/' + friend._id class='flex') 
-                                    img(src=friend.jdenticonSrc alt='DP' class='flex-none w-10')
-                                    div(class='flex items-center flex-auto')
-                                        p(class='px-4')= friend.displayName
+                        ul(class='border-b border-b-gray-300')
+                            each friend in group
+                                li(class='mb-1 group')
+                                    a(href='/users/' + friend._id class='flex') 
+                                        img(src=friend.jdenticonSrc alt='DP' class='flex-none w-10 border rounded-sm border-b-gray-300')
+                                        div(class='flex items-center flex-auto px-1 ml-2 border-b-gray-300 group-[:not(:last-child)]:border-b')
+                                            p= friend.displayName
 
-
+                div(class='mt-4')
+                - const friendCount = friendsGrouped.reduce((carry, next) => carry + next.length, 0);
+                    p(class='text-center') #{friendCount} #{friendCount > 1 ? 'friends' : 'friend'}
 
             else
-                p No friends
+                p(class='py-2 italic') No friends yet. Explore other whisperers at 
+                    a(href='/discover' class='text-link') discover
+                    | !

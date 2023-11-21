@@ -187,109 +187,109 @@ async function createPostSampleDocuments() {
       content:
           "Feeling overwhelmed today. Sometimes life hits you hard, and it's okay not to be okay.",
       user: users[0],
-      created: new Date('2023-10-10'),
+      created: new Date('2023-10-10T14:50:00'),
     }, 0),
     createPost({
       content:
           "Dealing with self-doubt. It's a tough battle, but I'll keep pushing forward. 💪",
       user: users[1],
-      created: new Date('2023-09-17'),
+      created: new Date('2023-09-17T09:51:00'),
     }, 1),
     createPost({
       content:
           "Navigating through a maze of emotions. It's okay to feel lost sometimes.",
       user: users[2],
-      created: new Date('2022-11-14'),
+      created: new Date('2022-11-14T13:02:12'),
     }, 2),
     createPost({
       content: 'Heartbroken and trying to make sense of it all.',
       user: users[3],
-      created: new Date('2023-05-04'),
+      created: new Date('2023-05-04T12:03:31'),
     }, 3),
     createPost({
       content: "Frustrated with setbacks, but I won't let them define me. Every obstacle is a stepping stone.",
       user: users[4],
-      created: new Date('2022-12-05'),
+      created: new Date('2022-12-05T08:52:12'),
     }, 4),
     createPost({
       content: "Struggling with self-doubt lately. It's tough when your inner critic is louder than any external voices.",
       user: users[0],
-      created: new Date('2023-03-06'),
+      created: new Date('2023-03-06T09:19:41'),
     }, 5),
     createPost({
       content: "Feeling isolated and lonely. It's hard to connect with others when the weight of the world feels heavy.",
       user: users[0],
-      created: new Date('2023-03-06'),
+      created: new Date('2023-03-06T02:12:31'),
     }, 6),
     createPost({
       content: "Dealing with imposter syndrome at work. Constantly questioning my abilities and fearing I'll be exposed.",
       user: users[0],
-      created: new Date('2023-03-19'),
+      created: new Date('2023-03-19T11:41:12'),
     }, 7),
     createPost({
       content: "Feeling stuck in a cycle of negative thoughts. Trying to break free but it's easier said than done.",
       user: users[0],
-      created: new Date('2023-04-28'),
+      created: new Date('2023-04-28T15:21:35'),
     }, 8),
     createPost({
       content: 'Anxiety levels through the roof today. The smallest tasks feel like insurmountable challenges.',
       user: users[0],
-      created: new Date('2023-01-11'),
+      created: new Date('2023-01-11T19:24:55'),
     }, 9),
     createPost({
       content: "Overthinking every decision and fearing the consequences. The 'what ifs' are paralyzing.",
       user: users[0],
-      created: new Date('2023-09-28'),
+      created: new Date('2023-09-28T20:00:12'),
     }, 10),
     createPost({
       content: "Wrestling with a sense of inadequacy. It's exhausting trying to measure up to unrealistic standards.",
       user: users[0],
-      created: new Date('2022-11-13'),
+      created: new Date('2022-11-13T23:16:51'),
     }, 11),
     createPost({
       content: 'Feeling unappreciated and unnoticed. Everyone needs validation, and today it feels out of reach.',
       user: users[0],
-      created: new Date('2022-09-11'),
+      created: new Date('2022-09-11T23:54:12'),
     }, 12),
     createPost({
       content: 'Struggling with a sense of purpose. Wondering if what I do really matters in the grand scheme of things.',
       user: users[0],
-      created: new Date('2021-05-12'),
+      created: new Date('2021-05-12T23:17:28'),
     }, 13),
     createPost({
       content: 'Just finished a thrilling book! Any recommendations for the next one?',
       user: users[1],
-      created: new Date('2021-06-25'),
+      created: new Date('2021-06-25T21:23:53'),
     }, 14),
     createPost({
       content: "Feeling grateful for the little things in life. What's something that made your day better?",
       user: users[1],
-      created: new Date('2021-07-08'),
+      created: new Date('2021-07-08T22:12:51'),
     }, 15),
     createPost({
       content: 'Enjoying a peaceful weekend getaway. Sometimes, you just need a break.',
       user: users[1],
-      created: new Date('2021-08-14'),
+      created: new Date('2021-08-14T22:31:23'),
     }, 16),
     createPost({
       content: 'Trying out a new hobby – painting. It’s so therapeutic!',
       user: users[8],
-      created: new Date('2021-09-02'),
+      created: new Date('2021-09-02T15:29:21'),
     }, 17),
     createPost({
       content: 'Reflecting on the past year and setting goals for the next. What are your resolutions?',
       user: users[9],
-      created: new Date('2021-12-30'),
+      created: new Date('2021-12-30T18:31:32'),
     }, 18),
     createPost({
       content: 'Excited about my upcoming travel plans. Any travel enthusiasts here?',
       user: users[10],
-      created: new Date('2022-03-10'),
+      created: new Date('2022-03-10T16:31:43'),
     }, 19),
     createPost({
       content: 'Coding late into the night. The deadline is approaching, but I love the challenge!',
       user: users[10],
-      created: new Date('2022-04-05'),
+      created: new Date('2022-04-05T23:00:21'),
     }, 20),
   ]);
 }

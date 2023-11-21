@@ -1,0 +1,12 @@
+extends ../layout/layout_no_menu
+
+block content
+    div(class='[&>*]:px-side mt-4')
+        section
+            div(class='flex gap-1')
+                a(href=post.user.url class='flex-none') 
+                    img(src=post.user.displayPicture alt='User icon' class='w-12')
+                div(class='flex-auto [&>*:not(:last-child)]:mb-2')
+                    a(href=post.user.url class='text-link')= post.user.displayName
+                    p= post.content
+                    p(class='text-sm text-gray-500')= post.displayDateString

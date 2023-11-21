@@ -16,7 +16,8 @@ block content
               div(class='[&>*:not(:last-child)]:mb-1')
                 a(href=friendPost.user.url class='text-link') 
                   p= friendPost.user.displayName
-                h1= friendPost.content
+                a(href=friendPost.url) 
+                  h1= friendPost.content
                 h1(class='text-sm text-gray-500 first-letter:uppercase')= friendPost.agoString + ' ago'
       else
         h1(class='italic') It seems like none of your friends has whispered yet...

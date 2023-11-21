@@ -50,4 +50,8 @@ postSchema.virtual('agoString').get(function () {
   return formatDistanceToNow(this.created);
 });
 
+postSchema.virtual('displayDateString').get(function () {
+  return formatDate(this.created, 'd MMMM yyyy kk:mm');
+});
+
 module.exports = mongoose.model('Post', postSchema);

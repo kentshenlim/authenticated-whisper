@@ -88,6 +88,11 @@ userSchema.methods.isFriend = function (friendID) {
   return false;
 };
 
+userSchema.methods.canViewHisPost = function (userID) {
+  if (userID.toString() === this._id.toString()) return true; // Can view own post
+  return this.isFriend(userID); // Can view only friends' post
+};
+
 // Statics
 // Note when using this method, you need to catch the error outside
 // For example await User.beFriend(id1, id2), then catch.

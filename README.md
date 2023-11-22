@@ -15,10 +15,10 @@ Place where you vent your feelings without judgement.
 
 ## TODO
 
-- TODO: user view, user view attached to the profile top bar as well
-- TODO: stranger view
+- TODO: add event listeners to relationship tags
 - TODO: will need to do a connection connection to handle unresolved friend request
-- TODO: friends feature, display friend request
+- TODO: friends feature, display friend request (discover)
+- TODO: search by username (discover)
 - TODO: change password
 - TODO: app icon
 - TODO: MVC

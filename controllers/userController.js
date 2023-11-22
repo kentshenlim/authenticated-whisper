@@ -26,7 +26,7 @@ module.exports = {
       });
     });
     // Relationship between this user and authenticated user
-    const relationship = getRelationship(req.user._id, user);
+    const relationship = await getRelationship(req.user._id, user);
     // Need to check whether can view post or not
     // Viewership is mutual, so just need to check if this user can view mine
     // Might need to add another more pertinent method if want to block moment

@@ -1090,6 +1090,56 @@ video {
   background-color: rgb(254 252 232 / 0.8);
 }
 
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
+.bg-gray-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
+
+.bg-stone-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(168 162 158 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 163 163 / var(--tw-bg-opacity));
+}
+
+.bg-sky-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 165 233 / var(--tw-bg-opacity));
+}
+
+.bg-cyan-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 211 238 / var(--tw-bg-opacity));
+}
+
+.bg-rose-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 164 175 / var(--tw-bg-opacity));
+}
+
+.bg-rose-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(136 19 55 / var(--tw-bg-opacity));
+}
+
+.bg-purple-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(192 132 252 / var(--tw-bg-opacity));
+}
+
 .bg-\[url\(\"\/images\/dandelion\.jpg\"\)\] {
   background-image: url("/images/dandelion.jpg");
 }
@@ -1418,6 +1468,24 @@ video {
 .\[\&\>a\]\:py-2>a {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.\[\&\>button\]\:rounded-md>button {
+  border-radius: 0.375rem;
+}
+
+.\[\&\>button\]\:px-1>button {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.\[\&\>button\]\:py-\[2px\]>button {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.\[\&\>button\]\:text-right>button {
+  text-align: right;
 }
 
 .\[\&\>p\]\:text-justify>p {

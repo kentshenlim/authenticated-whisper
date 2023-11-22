@@ -9,10 +9,8 @@ router.post('/create', controller.create_form_post);
 
 router.post('/delete', controller.delete_post);
 
+router.post('/:id/pat-toggle', controller.pat_toggle_post);
+
 router.get('/:id', controller.detail_get);
-
-router.post('/:id/add-pat', controller.add_pat_post);
-
-router.post('/:id/remove-pat', controller.remove_pat_post);
 
 module.exports = router;

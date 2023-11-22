@@ -1,4 +1,3 @@
-div(class='inline-flex items-center h-6 gap-1 px-1 border rounded-md bg-slate-200/70')
+div(id=post._id class='inline-flex items-center gap-1 px-1 border rounded-md h-7 bg-slate-200/70 hover:cursor-pointer hover:bg-slate-300 pat-clicker')
     img(src='/images/heart-outline.svg' alt='Love icon' class='w-3')
-    if (post.patCount !== 0)
-        span #{post.patCount}
+    span(class=`${post.patCount ? '' : 'hidden'} pat-count`) #{post.patCount}

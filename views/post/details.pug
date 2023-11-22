@@ -30,6 +30,8 @@ block content
             section#overlay-section(class='hidden')
                 div(class='absolute inset-0 bg-black/50')
 
-    script(src='/javascripts/deleteOverlay.js' defer)
+    if (isOwner)
+        script(src='/javascripts/deleteOverlay.js' defer)
+    script(src='/javascripts/patClicker.js' defer)
 
 

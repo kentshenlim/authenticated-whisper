@@ -83,11 +83,22 @@ module.exports = {
     return res.redirect('/');
   }),
 
-  add_pat_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: this path should be fetched by frontend callback');
-  }),
-
-  remove_pat_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: this path should be fetched by frontend callback');
+  pat_toggle_post: asyncHandler(async (req, res, next) => {
+    if (!req.user) return res.redirect('/sign-in');
+    const post = await Post.findById(req.params.id); // Stored in URl, from id added to pad DOM
+    if (!post) {
+      const err = new Error('Resource not found');
+      err.status = 404;
+      return next(err);
+    }
+    // Allow anyone to pat, not just friends, so no need check for friends
+    const userID = req.user._id;
+    if (post.hasUserPatted(userID)) { // Then he is un-patting
+      post.removePat(userID);
+    } else { // Then he is patting
+      post.addPat(userID);
+    }
+    await post.save();
+    return res.json({ updatedPatCount: post.patCount });
   }),
 };

@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-}
-
 @layer components {
   .form-label {
     @apply block mb-2 font-semibold;

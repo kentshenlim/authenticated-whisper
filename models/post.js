@@ -58,4 +58,27 @@ postSchema.virtual('displayDateString').get(function () {
   return formatDate(this.created, 'd MMMM yyyy kk:mm');
 });
 
+// Instances
+postSchema.methods.hasUserPatted = function (userID) {
+  const allPattedUsers = this.pat;
+  for (let i = 0; i < allPattedUsers.length; i += 1) {
+    if (allPattedUsers[i].toString() === userID) return true;
+  }
+  return false;
+};
+
+postSchema.methods.addPat = function (userID) {
+  this.pat.push(userID);
+};
+
+postSchema.methods.removePat = function (userID) {
+  const allPattedUsers = this.pat;
+  for (let i = 0; i < allPattedUsers.length; i += 1) {
+    if (allPattedUsers[i].toString() === userID) {
+      this.pat.splice(i, 1);
+      break;
+    }
+  }
+};
+
 module.exports = mongoose.model('Post', postSchema);

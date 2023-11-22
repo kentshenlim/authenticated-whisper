@@ -9,7 +9,7 @@ Place where you vent your feelings without judgement.
 
 ## Features
 
-- Log in with username and password, Google, Facebook
+- Log in with username and password, Google, Facebook, magic link
 - Friends
 
 ## TODO, DUE 22.11.2023

@@ -816,20 +816,16 @@ video {
   height: 0.75rem;
 }
 
+.h-7 {
+  height: 1.75rem;
+}
+
 .h-\[33vh\] {
   height: 33vh;
 }
 
 .h-screen {
   height: 100vh;
-}
-
-.h-5 {
-  height: 1.25rem;
-}
-
-.h-6 {
-  height: 1.5rem;
 }
 
 .min-h-screen {
@@ -1240,6 +1236,10 @@ video {
 .after\:content-\[\"\*\"\]::after {
   --tw-content: "*";
   content: var(--tw-content);
+}
+
+.hover\:cursor-pointer:hover {
+  cursor: pointer;
 }
 
 .hover\:bg-blue-400:hover {

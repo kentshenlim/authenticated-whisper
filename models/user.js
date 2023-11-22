@@ -42,9 +42,6 @@ const userSchema = new Schema({
     type: String,
     enum: ['male', 'female'],
   },
-  age: {
-    type: Number,
-  },
   bio: {
     type: String,
     maxLength: 120,

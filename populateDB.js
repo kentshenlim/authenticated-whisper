@@ -39,12 +39,11 @@ async function createUser({
   password,
   email,
   gender,
-  age,
   bio,
   friends,
 }, idx) {
   const user = new User({
-    displayName, username, password, email, gender, age, bio, friends,
+    displayName, username, password, email, gender, bio, friends,
   });
   await user.save();
   users[idx] = user;
@@ -95,7 +94,6 @@ async function createUserSampleDocuments() {
       username: 'sophieJ',
       password: allPasswords[0],
       gender: 'female',
-      age: 23,
       bio: 'Exploring the world one day at a time. Coffee enthusiast and book lover.',
     }, 0),
     createUser({
@@ -117,7 +115,6 @@ async function createUserSampleDocuments() {
       username: 'emily_davis',
       password: allPasswords[3],
       gender: 'female',
-      age: 21,
       bio: 'Dreamer, artist, and nature lover. Finding beauty in everyday moments.',
     }, 3),
     createUser({
@@ -125,7 +122,6 @@ async function createUserSampleDocuments() {
       username: 'mike_smith',
       password: allPasswords[4],
       gender: 'male',
-      age: 31,
       bio: 'Sports fanatic and fitness enthusiast. Living life to the fullest!',
     }, 4),
     createUser({
@@ -140,7 +136,6 @@ async function createUserSampleDocuments() {
       username: 'chen_wei',
       password: allPasswords[6],
       gender: 'male',
-      age: 26,
       bio: 'Explorer of traditions and modernity. Tea lover and technology geek.',
     }, 6),
     createUser({

@@ -20,9 +20,10 @@ Place where you vent your feelings without judgement.
 - TODO: friends feature, display friend request (discover)
 - TODO: search by username (discover)
 - TODO: change password
-- TODO: app icon
 - TODO: MVC
 - TODO: create two sample profile for demo, exposing the password
 - TODO: limit email sender rate strictly to avoid spam
 - TODO: truncate possibly long field input by user
 - TODO: image all pointer none
+- TODO: need to fix width when large screen + pop up notification
+- TODO: change all username and password to fulfill complexity req

@@ -28,6 +28,7 @@ const FriendRequest = require('./models/friendRequest');
 // Connection preparation and data population
 const users = []; // Array of documents created, to get id for referencing
 const posts = [];
+const friendRequests = [];
 mongoose.set('strictQuery', false); // Prepare for Mongoose 7
 const mongoDB = userArgs[0];
 
@@ -64,6 +65,20 @@ async function createPost({
   await post.save();
   posts[idx] = post;
   console.log(`Added a post from ${user.displayName}`);
+}
+
+async function createFriendRequest({
+  sender,
+  recipient,
+  status,
+  created,
+}, idx) {
+  const fR = new FriendRequest({
+    sender, recipient, status, created,
+  });
+  await fR.save();
+  friendRequests[idx] = fR;
+  console.log(`Added friend request from ${sender.displayName} to ${recipient.displayName} with status "${status}"`);
 }
 
 // Function to actually create sample documents
@@ -356,14 +371,31 @@ async function createSampleConnections() {
   await Promise.all(arr);
 }
 
+// Friend requests
+async function createFriendRequestSampleDocuments() {
+  console.log('Adding friend requests');
+  const requests = [
+    { sender: users[0], recipient: users[13], status: 'pending' },
+    { sender: users[0], recipient: users[14], status: 'rejected' },
+    { sender: users[15], recipient: users[0], status: 'pending' },
+    { sender: users[16], recipient: users[0], status: 'rejected' },
+  ];
+  const arr = [];
+  requests.forEach((request) => {
+    arr.push(createFriendRequest(request));
+  });
+  await Promise.all(arr);
+}
+
 async function main() {
   console.log('Debug: About to connect');
   await mongoose.connect(mongoDB);
   console.log('Debug: Should be connected?');
   await createUserSampleDocuments(); // User first
-  await Promise.all([ // Post and connection then
+  await Promise.all([ // Post, connection, and friend requests then
     createPostSampleDocuments(),
     createSampleConnections(),
+    createFriendRequestSampleDocuments(),
   ]);
   console.log('Debug: Closing mongoose');
   mongoose.connection.close();

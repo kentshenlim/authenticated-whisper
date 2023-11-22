@@ -1,4 +1,8 @@
-- console.log(hasUserPatted)
+//- Like button
+//- Expose the following for this component:
+//- hasUserPatted: whether the authenticated user has liked the current post
+//- post: the post to which current like button attached
+
 div(id=post._id class='inline-flex items-center gap-1 px-1 border rounded-md h-7 bg-slate-200/70 hover:cursor-pointer hover:bg-slate-300 pat-clicker')
     if (!hasUserPatted)
         img(src='/images/heart-outline.svg' alt='Love icon' class='w-3')

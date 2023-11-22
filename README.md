@@ -11,6 +11,7 @@ Place where you vent your feelings without judgement.
 
 - Log in with username and password, Google, Facebook, magic link
 - Friends
+- Like features
 
 ## TODO, DUE 22.11.2023
 

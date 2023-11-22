@@ -25,6 +25,7 @@ module.exports = {
     return res.render('post/details', {
       title: 'Details',
       post,
+      hasUserPatted: post.hasUserPatted(req.user._id),
     });
   }),
 
@@ -93,12 +94,15 @@ module.exports = {
     }
     // Allow anyone to pat, not just friends, so no need check for friends
     const userID = req.user._id;
+    let pattedNow;
     if (post.hasUserPatted(userID)) { // Then he is un-patting
       post.removePat(userID);
+      pattedNow = false;
     } else { // Then he is patting
       post.addPat(userID);
+      pattedNow = true;
     }
     await post.save();
-    return res.json({ updatedPatCount: post.patCount });
+    return res.json({ updatedPatCount: post.patCount, pattedNow });
   }),
 };

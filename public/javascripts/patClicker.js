@@ -12,8 +12,9 @@
       });
       if (res.ok) { // Pat or un-pat successfully (DB has been updated successfully)
         const data = await res.json(); // {updatedPatCount}
-        console.log(data);
         pat.childNodes[1].textContent = data.updatedPatCount; // The span
+        pat.childNodes[1].style.display = data.updatedPatCount ? 'inline' : 'none';
+        pat.childNodes[0].src = `/images/${data.pattedNow ? 'heart' : 'heart-outline'}.svg`;
       }
     });
   });

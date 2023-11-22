@@ -19,8 +19,15 @@ block content
                 a(href=friendPost.url) 
                   h1= friendPost.content
                 h1(class='text-sm text-gray-500 first-letter:uppercase')= friendPost.agoString + ' ago'
+                //- Need to define variables specific to post
+                //- Required by pat-bar components to render correctly
+                - const post = friendPost;
+                - const hasUserPatted = friendPost.hasUserPatted(user._id);
+                include ../components/pat-bar
       else
         h1(class='italic') It seems like none of your friends has whispered yet...
+
+  script(src='/javascripts/patClicker.js' defer)
 
       
 

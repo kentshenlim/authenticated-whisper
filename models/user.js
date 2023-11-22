@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const jdenticon = require('jdenticon');
+const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 
 const { Schema } = mongoose;
 
@@ -71,6 +72,10 @@ userSchema.virtual('displayPicture').get(function () {
   const png = jdenticon.toPng(this.username, 200);
   const base64 = btoa(String.fromCharCode.apply(null, new Uint8Array(png)));
   return `data:image/png;base64,${base64}`;
+});
+
+userSchema.virtual('joinedAgo').get(function () {
+  return formatDistanceToNow(this.created);
 });
 
 // Instances

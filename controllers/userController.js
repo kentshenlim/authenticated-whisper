@@ -1,16 +1,32 @@
 const asyncHandler = require('express-async-handler');
 const User = require('../models/user');
 const Post = require('../models/post');
+const searchGroupPosts = require('../middlewares/searchGroupPosts');
 
 module.exports = {
   details_get: asyncHandler(async (req, res, next) => {
     if (!req.user) return res.redirect('/sign-in');
-    const user = await User.findById(req.params.id).exec();
+    const [user, postsArr] = await Promise.all([
+      User.findById(req.params.id).exec(),
+      searchGroupPosts(req.params.id),
+    ]);
     if (!user) {
       const err = new Error('Resource not found');
       err.status = 404;
       return next(err);
     }
+    // Total number of heart, posts and friends, always render
+    let totalPatCount = 0;
+    let totalWhisperCount = 0;
+    postsArr.forEach((day) => {
+      day.forEach((post) => {
+        totalPatCount += post.patCount;
+        totalWhisperCount += 1;
+      });
+    });
+    // Relationship between this user and authenticated user
+    let relationship;
+    if (req.user._id === req.params.id) relationship = 'self';
     // Need to check whether can view post or not
     // Viewership is mutual, so just need to check if this user can view mine
     // Might need to add another more pertinent method if want to block moment
@@ -18,15 +34,21 @@ module.exports = {
       return res.render('user/details', {
         title: user.displayName,
         user,
-        posts: [],
+        postsArr: [], // Do not show post
+        totalPatCount,
+        totalWhisperCount,
+        friendsCount: user.friendsCount,
+        relationship,
       });
     }
-    // Then only need to query for posts
-    const posts = await Post.find({ user: req.params.id }).exec();
     return res.render('user/details', {
       title: user.displayName,
       user,
-      posts,
+      postsArr,
+      totalPatCount,
+      totalWhisperCount,
+      friendsCount: user.friendsCount,
+      relationship,
     });
   }),
 

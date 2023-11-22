@@ -1,11 +1,26 @@
 //- Background picture, display picture, display name
 //- Expose the following variable for this component:
 //- user: the user to be displayed
+//- totalPatCount: optional, total number of pat counts received
+//- totalWhisperCount: optional, total number of posts
+//- friendsCount: optional, total number of friends
 
 section
     div(class='relative h-[33vh] bg-[url("/images/dandelion.jpg")] bg-cover bg-bottom mb-10')
         img(src=user.displayPicture alt='DP' class='absolute bottom-0 w-20 translate-y-1/2 right-[0.5rem] border rounded-md bg-white')
 
 section(class='mb-6')
-    div
-        h1(class='text-lg font-medium text-right') #{user.displayName}
+    div(class='flex gap-2')
+        if (totalPatCount !== undefined && totalPatCount !== 0)
+            div(class='flex items-center')
+                img(src='/images/heart.svg' alt='Love icon' class='w-3')
+                span(class='font-medium') #{totalPatCount}
+        if (totalWhisperCount !== undefined && totalWhisperCount !== 0)
+            div(class='flex items-center')
+                img(src='/images/document.svg' alt='Document icon' class='w-3')
+                span(class='font-medium') #{totalWhisperCount}
+        if (friendsCount !== undefined && friendsCount !== 0)
+            div(class='flex items-center')
+                img(src='/images/people.svg' alt='People icon' class='w-3')
+                span(class='font-medium') #{friendsCount}
+        h1(class='flex-auto text-lg font-medium text-right') #{user.displayName}

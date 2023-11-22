@@ -5,8 +5,8 @@ block content
         section
             if (friendsGrouped && friendsGrouped.length)
                 ul
-                    each group in friendsGrouped
-                        h1(class='[&:not(:first-child)]:mt-4 font-medium')= group[0].displayName[0].toUpperCase()
+                    each group, index in friendsGrouped
+                        h1(class='[&:not(:first-child)]:mt-4 font-medium')= firstChars[index]
                         ul(class='border-b border-b-gray-300')
                             each friend in group
                                 li(class='mb-1 group')
@@ -15,9 +15,9 @@ block content
                                         div(class='flex items-center flex-auto px-1 ml-2 border-b-gray-300 group-[:not(:last-child)]:border-b')
                                             p= friend.displayName
 
-                div(class='mt-4')
-                - const friendCount = friendsGrouped.reduce((carry, next) => carry + next.length, 0);
-                    p(class='text-center') #{friendCount} #{friendCount > 1 ? 'friends' : 'friend'}
+                div(class='my-4')
+                    - const friendCount = friendsGrouped.reduce((carry, next) => carry + next.length, 0);
+                        p(class='text-center') #{friendCount} #{friendCount > 1 ? 'friends' : 'friend'}
 
             else
                 p(class='py-2 italic') No friends yet. Explore other whisperers at 

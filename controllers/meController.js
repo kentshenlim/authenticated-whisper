@@ -30,7 +30,7 @@ module.exports = {
     for (let i = 0; i < friends.length; i += 1) {
       const firstChar = friends[i].displayName[0];
       let char;
-      if (!firstChar.match(/[a-z]/i)) char = '#';
+      if (!(/[a-zA-Z]/.test(firstChar))) char = '#';
       else char = firstChar.toUpperCase();
       if (!(char in map)) map[char] = [];
       map[char].push(friends[i]);
@@ -43,6 +43,7 @@ module.exports = {
     return res.render('me/friends', {
       title: 'Friends',
       friendsGrouped,
+      firstChars: keys,
     });
   }),
 

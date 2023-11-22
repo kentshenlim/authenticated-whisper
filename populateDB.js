@@ -23,6 +23,7 @@ const bcrypt = require('bcryptjs'); // To salt and hash passwords
 const User = require('./models/user');
 const Post = require('./models/post');
 require('./models/fc'); // Still require to create an empty collection anyway
+const FriendRequest = require('./models/friendRequest');
 
 // Connection preparation and data population
 const users = []; // Array of documents created, to get id for referencing
@@ -83,6 +84,11 @@ async function createUserSampleDocuments() {
     process.env.SAMPLE_PASSWORD_10,
     process.env.SAMPLE_PASSWORD_11,
     process.env.SAMPLE_PASSWORD_12,
+    process.env.SAMPLE_PASSWORD_13,
+    process.env.SAMPLE_PASSWORD_14,
+    process.env.SAMPLE_PASSWORD_15,
+    process.env.SAMPLE_PASSWORD_16,
+    process.env.SAMPLE_PASSWORD_17,
   ];
   // Salt and hash passwords
   for (let i = 0; i < allPasswordsUnhashed.length; i += 1) {
@@ -179,6 +185,31 @@ async function createUserSampleDocuments() {
       username: 'jason_lam',
       password: allPasswords[12],
     }, 12),
+    createUser({
+      displayName: 'Jonathan Henry',
+      username: 'jonathan_henry',
+      password: allPasswords[13],
+    }, 13),
+    createUser({
+      displayName: 'Justin Gate',
+      username: 'justin_gate',
+      password: allPasswords[14],
+    }, 14),
+    createUser({
+      displayName: 'Hoki Tobayashi',
+      username: 'hoki_tobayashi',
+      password: allPasswords[15],
+    }, 15),
+    createUser({
+      displayName: '丁诚',
+      username: 'ding_cheng',
+      password: allPasswords[16],
+    }, 16),
+    createUser({
+      displayName: '吴晓严',
+      username: 'xiaoyan',
+      password: allPasswords[17],
+    }, 17),
   ]);
 }
 
@@ -191,6 +222,7 @@ async function createPostSampleDocuments() {
       user: users[0],
       isPublic: true,
       created: new Date('2023-10-10T14:50:00'),
+      pat: [users[0], users[1], users[10], users[11]],
     }, 0),
     createPost({
       content:
@@ -198,6 +230,7 @@ async function createPostSampleDocuments() {
       user: users[1],
       isPublic: true,
       created: new Date('2023-09-17T09:51:00'),
+      pat: [users[0]],
     }, 1),
     createPost({
       content:
@@ -295,6 +328,7 @@ async function createPostSampleDocuments() {
       content: 'Coding late into the night. The deadline is approaching, but I love the challenge!',
       user: users[10],
       created: new Date('2022-04-05T23:00:21'),
+      pat: [users[0]],
     }, 20),
   ]);
 }
@@ -313,6 +347,7 @@ async function createSampleConnections() {
     [0, 10],
     [0, 11],
     [0, 12],
+    [0, 17],
   ];
   const arr = [];
   connections.forEach(([n1, n2]) => {

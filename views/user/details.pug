@@ -11,8 +11,8 @@ block content
         section(class='mt-2 mb-6')
             div(class='flex text-sm')
                 p(class='flex-auto text-left text-gray-500') Joined #{user.joinedAgo} ago
-                if (relationship !== 'self')
-                    button(class='px-1 py-[2px] text-right bg-purple-300 rounded-md button') Add friend
+                if (relationship === 'friend')
+                    button(class='px-1 py-[2px] text-right bg-green-400 text-white rounded-md button') Friend
     
 
         section(class='mb-6')

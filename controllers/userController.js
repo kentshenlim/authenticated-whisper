@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler');
 const User = require('../models/user');
 const Post = require('../models/post');
 const searchGroupPosts = require('../middlewares/searchGroupPosts');
+const getRelationship = require('../middlewares/getRelationship');
 
 module.exports = {
   details_get: asyncHandler(async (req, res, next) => {
@@ -25,8 +26,7 @@ module.exports = {
       });
     });
     // Relationship between this user and authenticated user
-    let relationship;
-    if (req.user._id === req.params.id) relationship = 'self';
+    const relationship = getRelationship(req.user._id, user);
     // Need to check whether can view post or not
     // Viewership is mutual, so just need to check if this user can view mine
     // Might need to add another more pertinent method if want to block moment

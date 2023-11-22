@@ -18,7 +18,7 @@ Place where you vent your feelings without judgement.
 - TODO: user view, user view attached to the profile top bar as well
 - TODO: user pat total
 - TODO: will need to do a connection connection to handle unresolved friend request
-- TODO: friends feature
+- TODO: friends feature, display friend request
 - TODO: change password
 - TODO: effect of changing displayName on friends list
 - TODO: app icon

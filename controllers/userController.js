@@ -34,6 +34,7 @@ module.exports = {
       return res.render('user/details', {
         title: user.displayName,
         user,
+        gender: user.gender ? user.gender : undefined,
         postsArr: [], // Do not show post
         totalPatCount,
         totalWhisperCount,
@@ -44,6 +45,7 @@ module.exports = {
     return res.render('user/details', {
       title: user.displayName,
       user,
+      gender: user.gender ? user.gender : undefined,
       postsArr,
       totalPatCount,
       totalWhisperCount,

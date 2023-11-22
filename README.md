@@ -16,7 +16,7 @@ Place where you vent your feelings without judgement.
 ## TODO, DUE 22.11.2023
 
 - TODO: user view, user view attached to the profile top bar as well
-- TODO: user pat total
+- TODO: stranger view
 - TODO: will need to do a connection connection to handle unresolved friend request
 - TODO: friends feature, display friend request
 - TODO: change password

@@ -82,6 +82,7 @@ async function createUserSampleDocuments() {
     process.env.SAMPLE_PASSWORD_09,
     process.env.SAMPLE_PASSWORD_10,
     process.env.SAMPLE_PASSWORD_11,
+    process.env.SAMPLE_PASSWORD_12,
   ];
   // Salt and hash passwords
   for (let i = 0; i < allPasswordsUnhashed.length; i += 1) {
@@ -173,6 +174,11 @@ async function createUserSampleDocuments() {
       gender: 'female',
       bio: 'Passionate about social justice and creating a more inclusive world. Advocate for change.',
     }, 11),
+    createUser({
+      displayName: 'Jason Lam',
+      username: 'jason_lam',
+      password: allPasswords[12],
+    }, 12),
   ]);
 }
 
@@ -306,6 +312,7 @@ async function createSampleConnections() {
     [0, 9],
     [0, 10],
     [0, 11],
+    [0, 12],
   ];
   const arr = [];
   connections.forEach(([n1, n2]) => {

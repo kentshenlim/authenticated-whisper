@@ -82,13 +82,16 @@ userSchema.methods.addFriend = async function (friendID) {
 userSchema.methods.isFriend = function (friendID) {
   const { friends } = this;
   for (let i = 0; i < friends.length; i += 1) {
-    // Safer to compare by strings
+    // Allow passing string friendID rather than full-fledged ObjectId
+    if (friends[i].toString() === friendID) return true;
+    // Also allow passing friendID as full-fledged ObjectId
     if (friends[i].toString() === friendID.toString()) return true;
   }
   return false;
 };
 
 userSchema.methods.canViewHisPost = function (userID) {
+  if (userID === this._id.toString()) return true; // Can view own post
   if (userID.toString() === this._id.toString()) return true; // Can view own post
   return this.isFriend(userID); // Can view only friends' post
 };

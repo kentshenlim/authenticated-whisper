@@ -2,13 +2,7 @@ extends ../layout/layout_no_menu
 
 block content
     div(class='[&>*:not(:first-child)]:px-side')
-        section
-            div(class='relative h-[33vh] bg-[url("/images/dandelion.jpg")] bg-cover bg-bottom mb-10')
-                img(src=user.displayPicture alt='DP' class='absolute bottom-0 w-20 translate-y-1/2 right-[0.5rem] border rounded-md bg-white')
-
-        section(class='mb-6')
-            div
-                h1(class='text-lg font-medium text-right') #{user.displayName}
+        include ../components/bg-dp-name
 
         section(class='mb-6')
             if (postsArr && postsArr.length)

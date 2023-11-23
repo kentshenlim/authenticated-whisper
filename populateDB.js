@@ -70,15 +70,14 @@ async function createPost({
 async function createFriendRequest({
   sender,
   recipient,
-  status,
   created,
 }, idx) {
   const fR = new FriendRequest({
-    sender, recipient, status, created,
+    sender, recipient, created,
   });
   await fR.save();
   friendRequests[idx] = fR;
-  console.log(`Added friend request from ${sender.displayName} to ${recipient.displayName} with status "${status}"`);
+  console.log(`Added friend request from ${sender.displayName} to ${recipient.displayName}`);
 }
 
 // Function to actually create sample documents
@@ -345,6 +344,12 @@ async function createPostSampleDocuments() {
       created: new Date('2022-04-05T23:00:21'),
       pat: [users[0]],
     }, 20),
+    createPost({
+      content: 'Got nothing to say...',
+      user: users[15],
+      created: new Date('2022-02-01T12:04:42'),
+      pat: [users[15]],
+    }, 21),
   ]);
 }
 
@@ -375,10 +380,10 @@ async function createSampleConnections() {
 async function createFriendRequestSampleDocuments() {
   console.log('Adding friend requests');
   const requests = [
-    { sender: users[0], recipient: users[13], status: 'pending' },
-    { sender: users[0], recipient: users[14], status: 'rejected' },
-    { sender: users[15], recipient: users[0], status: 'pending' },
-    { sender: users[16], recipient: users[0], status: 'rejected' },
+    { sender: users[0], recipient: users[13] },
+    { sender: users[0], recipient: users[14] },
+    { sender: users[15], recipient: users[0] },
+    { sender: users[16], recipient: users[0] },
   ];
   const arr = [];
   requests.forEach((request) => {

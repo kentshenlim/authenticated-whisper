@@ -10,14 +10,11 @@ module.exports = async function (authenticatedUserID, user) {
     sender: authenticatedUserID,
     recipient: user._id,
   });
-  if (meSent) return 'sent_pending'; // Don't show rejected
+  if (meSent) return 'sent_pending';
   const meReceive = await FriendRequest.findOne({
     sender: user._id,
     recipient: authenticatedUserID,
   });
-  if (meReceive) {
-    if (meReceive.status === 'pending') return 'receive_pending'; // Have not accepted
-    return 'receive_rejected'; // Have rejected
-  }
+  if (meReceive) return 'receive_pending';
   return 'stranger';
 };

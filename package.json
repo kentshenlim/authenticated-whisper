@@ -29,7 +29,8 @@
     "passport-google-oidc": "^0.1.0",
     "passport-local": "^1.0.0",
     "passport-magic-link": "^2.1.0",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "qs": "^6.11.2"
   },
   "main": "app.js",
   "keywords": [],

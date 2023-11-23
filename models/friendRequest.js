@@ -1,3 +1,5 @@
+// Pending friend requests
+// Do not store accepted or rejected requests
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
@@ -12,11 +14,6 @@ const fRSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,
-  },
-  status: {
-    type: String,
-    enum: ['pending', 'rejected'], // Delete the document once accepted
-    default: 'pending',
   },
   created: { // Required to limit friend request
     type: Date,

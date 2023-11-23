@@ -9,16 +9,16 @@ block content
                 p(class='text-sm text-justify')= user.bio
 
         section(class='mt-2 mb-8')
-            div(class='flex text-sm [&>button]:px-1 [&>button]:py-[2px] [&>button]:text-right [&>button]:rounded-md')
+            div(class='flex text-sm [&_button]:px-1 [&_button]:py-[2px] [&_button]:text-right [&_button]:rounded-md')
                 p(class='flex-auto text-left text-gray-500') Joined #{user.joinedAgo} ago
                 if (relationship === 'friend')
                     button(class='text-white bg-green-400') Friend
                 else if (relationship === 'sent_pending')
                     button(class='text-white bg-neutral-400') Request sent
                 else if (relationship === 'receive_pending')
-                    button(class='text-white bg-cyan-400') Accept
-                else if (relationship === 'receive_rejected')
-                    button(class='text-white bg-rose-900') Rejected
+                    form(action=user.url + '/accept-friend' method='post')
+                        input(type='hidden' name='id' value=user._id required=true)
+                        button(class='text-white bg-orange-400' type='submit') Accept request
                 else if (relationship === 'stranger')
                     button(class='text-white bg-purple-400') Add
 

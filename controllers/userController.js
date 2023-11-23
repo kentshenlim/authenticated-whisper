@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const User = require('../models/user');
-const Post = require('../models/post');
+const FriendRequest = require('../models/friendRequest');
 const searchGroupPosts = require('../middlewares/searchGroupPosts');
 const getRelationship = require('../middlewares/getRelationship');
 
@@ -52,6 +52,24 @@ module.exports = {
       friendsCount: user.friendsCount,
       relationship,
     });
+  }),
+
+  accept_friend_post: asyncHandler(async (req, res, next) => {
+    if (!req.user) return res.redirect('/sign-in');
+    const [friendNew, friendRequest] = await Promise.all([
+      User.findById(req.body.id).exec(),
+      FriendRequest.findOne({ sender: req.body.id, recipient: req.user._id }).exec(),
+    ]);
+    if (!friendNew || !friendRequest) {
+      const err = new Error('Resource not found');
+      err.status = 404;
+      return next(err);
+    }
+    await Promise.all([
+      User.beFriend(req.user._id, req.body.id),
+      FriendRequest.findOneAndDelete({ sender: req.body.id, recipient: req.user._id }).exec(),
+    ]);
+    return res.redirect(friendNew.url);
   }),
 
   add_friend_post: asyncHandler(async (req, res, next) => {

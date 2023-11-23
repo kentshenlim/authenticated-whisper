@@ -67,7 +67,7 @@ module.exports = {
     }
     await Promise.all([
       User.beFriend(req.user._id, req.body.id),
-      FriendRequest.findOneAndDelete({ sender: req.body.id, recipient: req.user._id }).exec(),
+      friendRequest.deleteOne(),
     ]);
     return res.redirect(friendNew.url);
   }),
@@ -104,6 +104,19 @@ module.exports = {
   }),
 
   cancel_friend_request_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: this path should be fetched by frontend callback');
+    if (!req.user) return res.redirect('/sign-in');
+    const [recipient, friendRequest] = await Promise.all([
+      User.findById(req.body.id).exec(),
+      FriendRequest.findOne({
+        sender: req.user._id, recipient: req.body.id,
+      }).exec(),
+    ]);
+    if (!recipient || !friendRequest) {
+      const err = new Error('Resource not found');
+      err.status = 404;
+      return next(err);
+    }
+    await friendRequest.deleteOne();
+    return res.redirect(recipient.url);
   }),
 };

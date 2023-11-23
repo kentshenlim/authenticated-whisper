@@ -3,7 +3,7 @@ extends ../layout/layout_menu
 block content
     div(class='[&>*]:px-side [&>*]:bg-white')
         section(class='mb-4')
-            div(class='flex py-4')
+            a(href='/user/' + user._id class='flex py-4')
                 img(src=user.displayPicture alt='DP' class='w-1/5') 
                 div(class='flex-auto px-3')
                     h1(class='text-lg font-semibold') #{user.displayName}
@@ -29,6 +29,3 @@ block content
                 a(href='/settings')
                     img(src='images/settings-outline.svg', alt='Settings icon')
                     p Settings
-
-
-

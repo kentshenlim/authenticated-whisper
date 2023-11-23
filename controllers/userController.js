@@ -54,11 +54,24 @@ module.exports = {
     });
   }),
 
+  // For the four handlers below, the server will only pass json response
+  // The server will not be responsible for next render
+  // The json will be read by client for next render by fetch()
+  // This is to avoid back fiasco
+  // If the server is responsible for next render, res.redirect() to same URL
+  // will lead to back fiasco, in which back button need to be clicked multiple
+  // times to go back to "true" previous screen, terrible UX
+  // Because the redirect is now handled by browser, need to recheck the URL
+  // used in client-sided JS (friend-request.js)
   accept_friend_post: asyncHandler(async (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
+    if (!req.user) {
+      const err = new Error('Unauthorized access');
+      err.status = 401;
+      return next(err);
+    }
     const [friendNew, friendRequest] = await Promise.all([
-      User.findById(req.body.id).exec(),
-      FriendRequest.findOne({ sender: req.body.id, recipient: req.user._id }).exec(),
+      User.findById(req.params.id).exec(),
+      FriendRequest.findOne({ sender: req.params.id, recipient: req.user._id }).exec(),
     ]);
     if (!friendNew || !friendRequest) {
       const err = new Error('Resource not found');
@@ -66,15 +79,19 @@ module.exports = {
       return next(err);
     }
     await Promise.all([
-      User.beFriend(req.user._id, req.body.id),
+      User.beFriend(req.user._id, req.params.id),
       friendRequest.deleteOne(),
     ]);
-    return res.redirect(friendNew.url);
+    return res.json({});
   }),
 
   remove_friend_post: asyncHandler(async (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
-    const friend = await User.findById(req.body.id).exec();
+    if (!req.user) {
+      const err = new Error('Unauthorized access');
+      err.status = 401;
+      return next(err);
+    }
+    const friend = await User.findById(req.params.id).exec();
     // User does not exist
     if (!friend) {
       const err = new Error('Resource not found');
@@ -82,14 +99,18 @@ module.exports = {
       return next(err);
     }
     // Not already friend, consider it done
-    if (!friend.isFriend(req.user._id)) return res.redirect(friend.url);
-    await User.unFriend(req.user._id, req.body.id);
-    return res.redirect(friend.url);
+    if (!friend.isFriend(req.user._id)) return res.json({});
+    await User.unFriend(req.user._id, req.params.id);
+    return res.json({});
   }),
 
   request_friend_post: asyncHandler(async (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
-    const recipient = await User.findById(req.body.id).exec();
+    if (!req.user) {
+      const err = new Error('Unauthorized access');
+      err.status = 401;
+      return next(err);
+    }
+    const recipient = await User.findById(req.params.id).exec();
     if (!recipient) {
       const err = new Error('Resource not found');
       err.status = 404;
@@ -97,18 +118,22 @@ module.exports = {
     }
     const friendRequest = new FriendRequest({
       sender: req.user._id,
-      recipient: req.body.id,
+      recipient: req.params.id,
     });
     await friendRequest.save();
-    return res.redirect(recipient.url);
+    return res.json({});
   }),
 
   cancel_friend_request_post: asyncHandler(async (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
+    if (!req.user) {
+      const err = new Error('Unauthorized access');
+      err.status = 401;
+      return next(err);
+    }
     const [recipient, friendRequest] = await Promise.all([
-      User.findById(req.body.id).exec(),
+      User.findById(req.params.id).exec(),
       FriendRequest.findOne({
-        sender: req.user._id, recipient: req.body.id,
+        sender: req.user._id, recipient: req.params.id,
       }).exec(),
     ]);
     if (!recipient || !friendRequest) {
@@ -117,6 +142,6 @@ module.exports = {
       return next(err);
     }
     await friendRequest.deleteOne();
-    return res.redirect(recipient.url);
+    return res.json({});
   }),
 };

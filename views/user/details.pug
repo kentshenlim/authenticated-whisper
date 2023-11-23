@@ -16,13 +16,9 @@ block content
                 else if (relationship === 'sent_pending')
                     button#trigger-popup-btn(class='text-white bg-neutral-400') Request sent
                 else if (relationship === 'receive_pending')
-                    form(action=user.url + '/accept-friend' method='post')
-                        input(type='hidden' name='id' value=user._id required=true)
-                        button(class='text-white bg-orange-400' type='submit') Accept request
+                    button(id=user._id data-friend-request-type='accept' class='text-white bg-orange-400 friend-request') Accept request
                 else if (relationship === 'stranger')
-                    form(action=user.url + '/request-friend' method='post')
-                        input(type='hidden' name='id' value=user._id required=true) 
-                        button(class='text-white bg-purple-400' type='submit') Add
+                    button(id=user._id data-friend-request-type='request' class='text-white bg-purple-400 friend-request') Add
 
         section(class='mb-6')
             include ../components/posts
@@ -32,23 +28,24 @@ block content
         if (relationship === 'friend' || relationship === 'sent_pending')
             if (relationship === 'friend')
                 section#delete-section(class='absolute z-10 hidden w-3/4 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2')
-                    form(action=user.url + '/remove-friend' method='post' class='font-medium text-center rounded-lg bg-slate-100')
+                    div(class='font-medium text-center rounded-lg bg-slate-100')
                         h1(class='py-6') Remove this friend permanently?
-                        input(type='hidden' value=user._id name='id' required=true)
                         div(class='border-t-2 flex [&>*]:flex-auto [&>*]:py-2 [&>*:hover]:bg-gray-200')
                             button#cancel-btn(type='button' class='border-r') Cancel
-                            button(type='submit' class='border-l text-warning') Remove
+                            button(id=user._id data-friend-request-type='remove' class='border-l text-warning friend-request') Remove
             else
                 section#delete-section(class='absolute z-10 hidden w-3/4 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2')
-                    form(action=user.url + '/cancel-friend-request' method='post' class='font-medium text-center rounded-lg bg-slate-100')
+                    div(class='font-medium text-center rounded-lg bg-slate-100')
                         h1(class='py-6') Withdraw friend request?
-                        input(type='hidden' value=user._id name='id' required=true)
                         div(class='border-t-2 flex [&>*]:flex-auto [&>*]:py-2 [&>*:hover]:bg-gray-200')
                             button#cancel-btn(type='button' class='border-r') Keep
-                            button(type='submit' class='border-l text-warning') Withdraw
+                            button(id=user._id data-friend-request-type='cancel' class='border-l text-warning friend-request') Withdraw
 
 
             section#overlay-section(class='hidden')
                 div(class='absolute inset-0 bg-black/50')
 
             script(src='/javascripts/deleteOverlay.js' defer)
+        
+        if (relationship !== 'self')
+            script(src='/javascripts/friend-request.js' defer) 

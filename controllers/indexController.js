@@ -3,6 +3,14 @@ const User = require('../models/user');
 const Post = require('../models/post');
 
 module.exports = {
+  me_get: (req, res, next) => {
+    if (!req.user) return res.redirect('/sign-in');
+    return res.render('home/me', {
+      title: 'Profile',
+      current: 'me',
+    });
+  },
+
   home_get: asyncHandler(async (req, res, next) => {
     if (!req.user) return res.redirect('/sign-in');
     const user = await User.findById(req.user._id).exec();
@@ -21,17 +29,9 @@ module.exports = {
 
   discover_get: asyncHandler(async (req, res, next) => {
     if (!req.user) return res.redirect('/sign-in');
-    return res.render('home/index', {
+    return res.render('home/discover', {
       title: 'Discover',
       current: 'discover',
     });
   }),
-
-  me_get: (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
-    return res.render('home/me', {
-      title: 'Profile',
-      current: 'me',
-    });
-  },
 };

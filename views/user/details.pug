@@ -20,7 +20,9 @@ block content
                         input(type='hidden' name='id' value=user._id required=true)
                         button(class='text-white bg-orange-400' type='submit') Accept request
                 else if (relationship === 'stranger')
-                    button(class='text-white bg-purple-400') Add
+                    form(action=user.url + '/request-friend' method='post')
+                        input(type='hidden' name='id' value=user._id required=true) 
+                        button(class='text-white bg-purple-400' type='submit') Add
 
         section(class='mb-6')
             include ../components/posts

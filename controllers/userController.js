@@ -87,8 +87,20 @@ module.exports = {
     return res.redirect(friend.url);
   }),
 
-  add_friend_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: this path should be fetched by frontend callback');
+  request_friend_post: asyncHandler(async (req, res, next) => {
+    if (!req.user) return res.redirect('/sign-in');
+    const recipient = await User.findById(req.body.id).exec();
+    if (!recipient) {
+      const err = new Error('Resource not found');
+      err.status = 404;
+      return next(err);
+    }
+    const friendRequest = new FriendRequest({
+      sender: req.user._id,
+      recipient: req.body.id,
+    });
+    await friendRequest.save();
+    return res.redirect(recipient.url);
   }),
 
   cancel_friend_request_post: asyncHandler(async (req, res, next) => {

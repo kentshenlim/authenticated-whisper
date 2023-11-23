@@ -76,11 +76,6 @@ userSchema.virtual('joinedAgo').get(function () {
 });
 
 // Instances
-userSchema.methods.addFriend = async function (friendID) {
-  this.friends.push(friendID);
-  await this.save();
-};
-
 userSchema.methods.isFriend = function (friendID) {
   const { friends } = this;
   for (let i = 0; i < friends.length; i += 1) {
@@ -90,6 +85,22 @@ userSchema.methods.isFriend = function (friendID) {
     if (friends[i].toString() === friendID.toString()) return true;
   }
   return false;
+};
+
+userSchema.methods.addFriend = async function (friendID) {
+  this.friends.push(friendID);
+  await this.save();
+};
+
+userSchema.methods.removeFriend = async function (friendID) {
+  const { friends } = this;
+  for (let i = 0; i < friends.length; i += 1) {
+    if (friends[i].toString() === friendID) {
+      friends.splice(i, 1);
+      break;
+    }
+  }
+  await this.save();
 };
 
 userSchema.methods.canViewHisPost = function (userID) {
@@ -103,9 +114,14 @@ userSchema.methods.canViewHisPost = function (userID) {
 // For example await User.beFriend(id1, id2), then catch.
 // Catching error here is useless, need next(err)
 userSchema.statics.beFriend = async function (id1, id2) {
-  const [user1, user2] = await Promise.all([this.findById(id1), this.findById(id2)]);
+  const [user1, user2] = await Promise.all([this.findById(id1).exec(), this.findById(id2).exec()]);
   if (user1.isFriend(id2)) return;
   await Promise.all([user1.addFriend(id2), user2.addFriend(id1)]);
+};
+
+userSchema.statics.unFriend = async function (id1, id2) {
+  const [user1, user2] = await Promise.all([this.findById(id1).exec(), this.findById(id2).exec()]);
+  await Promise.all([user1.removeFriend(id2), user2.removeFriend(id1)]);
 };
 
 module.exports = mongoose.model('User', userSchema);

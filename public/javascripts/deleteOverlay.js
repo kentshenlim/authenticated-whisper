@@ -1,6 +1,6 @@
 (() => {
   const [binBtn, cancelBtn, deleteSection, overlaySection] = [
-    document.getElementById('bin-btn'),
+    document.getElementById('trigger-popup-btn'),
     document.getElementById('cancel-btn'),
     document.getElementById('delete-section'),
     document.getElementById('overlay-section'),

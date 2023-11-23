@@ -73,11 +73,12 @@ module.exports = {
       User.findById(req.params.id).exec(),
       FriendRequest.findOne({ sender: req.params.id, recipient: req.user._id }).exec(),
     ]);
-    if (!friendNew || !friendRequest) {
+    if (!friendNew) { // If user does not exist
       const err = new Error('Resource not found');
       err.status = 404;
       return next(err);
     }
+    if (!friendRequest) return res.json({}); // Refresh page
     await Promise.all([
       User.beFriend(req.user._id, req.params.id),
       friendRequest.deleteOne(),
@@ -110,12 +111,16 @@ module.exports = {
       err.status = 401;
       return next(err);
     }
-    const recipient = await User.findById(req.params.id).exec();
+    const [recipient, reverseRequest] = await Promise.all([
+      User.findById(req.params.id).exec(),
+      FriendRequest.findOne({ sender: req.params.id, recipient: req.user._id }).exec(),
+    ]);
     if (!recipient) {
       const err = new Error('Resource not found');
       err.status = 404;
       return next(err);
     }
+    if (reverseRequest) return res.json({}); // Just refresh the page
     const friendRequest = new FriendRequest({
       sender: req.user._id,
       recipient: req.params.id,
@@ -136,11 +141,12 @@ module.exports = {
         sender: req.user._id, recipient: req.params.id,
       }).exec(),
     ]);
-    if (!recipient || !friendRequest) {
+    if (!recipient) {
       const err = new Error('Resource not found');
       err.status = 404;
       return next(err);
     }
+    if (!friendRequest) return res.json({}); // Consider it done
     await friendRequest.deleteOne();
     return res.json({});
   }),

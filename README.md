@@ -16,7 +16,7 @@ Place where you vent your feelings without judgement.
 ## TODO
 
 - TODO: req.user repetition
-- TODO: change password
+- TODO: change password, display name, set username, email address
 - TODO: create two sample profile for demo, exposing the password
 - TODO: limit email sender rate strictly to avoid spam
 - TODO: truncate possibly long field input by user

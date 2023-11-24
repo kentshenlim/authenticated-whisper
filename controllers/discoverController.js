@@ -1,5 +1,4 @@
 const asyncHandler = require('express-async-handler');
-const { body, validationResult } = require('express-validator');
 const FriendRequest = require('../models/friendRequest');
 const User = require('../models/user');
 
@@ -40,30 +39,28 @@ module.exports = {
 
   username_search_post: [
     (req, res, next) => {
-      if (!req.user) res.redirect('/sign-in');
-      else next();
+      if (!req.user) {
+        const err = new Error('Unauthorized access');
+        err.status = 404;
+        next(err);
+      } else next();
     },
-    body('username')
-      .trim()
-      .isLength({ min: 1 }),
     asyncHandler(async (req, res, next) => {
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        return res.render('discover/username-search', {
-          title: 'Search',
+      const username = req.params.username || '';
+      if (!username.length) {
+        return res.json({
           failureText: 'Username cannot be empty',
-          filled: req.body.username,
         });
       }
       const userFound = await User.findOne(
-        { username: req.body.username },
+        { username },
         { username: 1, displayName: 1 },
       ).exec();
-      return res.render('discover/username-search', {
-        title: 'Search',
-        filled: req.body.username,
-        userFound,
-        failureText: userFound ? null : 'No result',
+      if (!userFound) return res.json({ failureText: 'No result' });
+      return res.json({
+        displayName: userFound.displayName,
+        dp: userFound.displayPicture,
+        url: userFound.url,
       });
     }),
   ],

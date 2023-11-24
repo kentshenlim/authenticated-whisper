@@ -105,4 +105,29 @@ module.exports = {
     await post.save();
     return res.json({ updatedPatCount: post.patCount, pattedNow });
   }),
+
+  public_toggle_post: asyncHandler(async (req, res, next) => {
+    if (!req.user) {
+      const err = new Error('Unauthorized access');
+      err.status = 401;
+      return next(err);
+    }
+    const postID = req.params.id; // Frontend will encode this into URL
+    const post = await Post.findById(postID).exec();
+    if (!post) {
+      const err = new Error('Resource not found');
+      err.status = 404;
+      return next(err);
+    }
+    if (post.user.toString() !== req.user._id) {
+      const err = new Error('Forbidden access');
+      err.status = 403;
+      return next(err);
+    }
+    post.isPublic = !post.isPublic;
+    await post.save();
+    return res.json({ // Pass this to frontend
+      isNowPublic: post.isPublic,
+    });
+  }),
 };

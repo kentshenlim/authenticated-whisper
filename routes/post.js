@@ -11,6 +11,8 @@ router.post('/delete', controller.delete_post);
 
 router.post('/:id/pat-toggle', controller.pat_toggle_post);
 
+router.post('/:id/toggle-is-public', controller.public_toggle_post);
+
 router.get('/:id', controller.detail_get);
 
 module.exports = router;

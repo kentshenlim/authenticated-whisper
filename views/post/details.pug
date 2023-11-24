@@ -16,6 +16,9 @@ block content
                         if (isOwner)
                             button#trigger-popup-btn(class='ml-2')
                                 img(src='/images/trash-outline.svg' alt='Trash icon' class='w-3')
+                            button#togglePostPublic(data-post-id=post._id class='ml-2')
+                                img(src='/images/lock-open-outline.svg' alt='Open lock icon' class=`w-3 ${post.isPublic ? '' : 'hidden'}`)
+                                img(src='/images/lock-closed-outline.svg' alt='Closed lock icon' class=`w-3 ${post.isPublic ? 'hidden' : ''}`)
                     include ../components/pat-bar
 
         if (isOwner)
@@ -32,6 +35,7 @@ block content
 
     if (isOwner)
         script(src='/javascripts/deleteOverlay.js' defer)
+        script(src='/javascripts/postIsPublic.js' defer)
     script(src='/javascripts/patClicker.js' defer)
 
 

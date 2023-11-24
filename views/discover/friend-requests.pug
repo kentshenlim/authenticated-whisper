@@ -1,0 +1,19 @@
+extends ../layout/layout_no_menu
+
+block content
+    div(class='[&>*]:px-side')
+        section(class='mt-4')
+            if (!allReceivedRequests || !allReceivedRequests.length)
+                p(class='italic') Looks like you haven't received any friend requests yet. Whisper to get discovered!
+            else
+                ul
+                    each request in allReceivedRequests
+                        li(class='[&:not(:last-child)]:mb-2')
+                            a(href=request.sender.url class='flex gap-2') 
+                                img(src=request.sender.displayPicture alt='User DP' class='w-10')
+                                div(class='flex items-center flex-auto gap-2 border-b border-stone-300')
+                                    p(class='flex-auto')= request.sender.displayName
+                                    button(class='px-2 rounded-md bg-neutral-200 hover:bg-neutral-300') View
+                            
+            
+        include ../components/rule

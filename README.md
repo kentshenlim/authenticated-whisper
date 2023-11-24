@@ -15,10 +15,10 @@ Place where you vent your feelings without judgement.
 
 ## TODO
 
-- TODO: friends feature, display friend request (discover)
+- TODO: display friend request (discover)
 - TODO: search by username (discover)
+- TODO: req.user repetition
 - TODO: change password
-- TODO: MVC
 - TODO: create two sample profile for demo, exposing the password
 - TODO: limit email sender rate strictly to avoid spam
 - TODO: truncate possibly long field input by user

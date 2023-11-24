@@ -41,6 +41,11 @@
     @apply min-w-[50%] text-center px-3 py-2 rounded-md bg-green-300/50 fixed backdrop-blur-sm font-semibold text-emerald-600 flex items-center gap-2;
     @apply transition-opacity delay-[2000ms] pointer-events-none;
   }
+  .panel-anchor {
+    @apply flex flex-col items-center justify-center rounded-lg aspect-square;
+    @apply [&>img]:w-1/2;
+    @apply [&>p]:font-medium [&>p]:text-center [&>p]:w-3/4;
+  }
 }
 
 /* Classes added dynamically, always include into output */

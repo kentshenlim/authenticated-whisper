@@ -1,0 +1,19 @@
+//- Ungrouped posts (no date at LHS)
+//- Expose the following for this component:
+//- postArr: array of posts
+ul
+    each onePost in postArr
+        li(class='flex items-start gap-1 py-2 mb-3 border-b border-purple-300')
+            a(href=onePost.user.url class='flex-none w-12') 
+                img(src=onePost.user.displayPicture alt='User DP')
+            div(class='[&>*:not(:last-child)]:mb-1')
+                a(href=onePost.user.url class='text-link') 
+                    p= onePost.user.displayName
+                a(href=onePost.url) 
+                    h1= onePost.content
+                h1(class='text-sm text-gray-500 first-letter:uppercase')= onePost.agoString + ' ago'
+                //- Need to define variables specific to post
+                //- Required by pat-bar components to render correctly
+                - const post = onePost;
+                - const hasUserPatted = onePost.hasUserPatted(user._id);
+                include ./pat-bar

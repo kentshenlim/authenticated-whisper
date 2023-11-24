@@ -8,22 +8,8 @@ block content
     section(class='mt-4')
       if (friendPosts && friendPosts.length)
         h1(class='mb-3') Whispers from your friends and yourself
-        ul
-          each friendPost in friendPosts
-            li(class='flex items-start gap-1 py-2 mb-3 border-b border-purple-300')
-              a(href=friendPost.user.url class='flex-none w-12') 
-                img(src=friendPost.user.displayPicture alt='User DP')
-              div(class='[&>*:not(:last-child)]:mb-1')
-                a(href=friendPost.user.url class='text-link') 
-                  p= friendPost.user.displayName
-                a(href=friendPost.url) 
-                  h1= friendPost.content
-                h1(class='text-sm text-gray-500 first-letter:uppercase')= friendPost.agoString + ' ago'
-                //- Need to define variables specific to post
-                //- Required by pat-bar components to render correctly
-                - const post = friendPost;
-                - const hasUserPatted = friendPost.hasUserPatted(user._id);
-                include ../components/pat-bar
+        - const postArr = friendPosts
+        include ../components/posts-ungrouped
       else
         h1(class='italic') It seems like none of your friends has whispered yet...
 

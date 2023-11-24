@@ -31,11 +31,16 @@ module.exports = {
   discover_get: asyncHandler(async (req, res, next) => {
     if (!req.user) return res.redirect('/sign-in');
     // Check if there is new friend request
-    const newFR = await FriendRequest.findOne({ recipient: req.user._id, isRead: false }).exec();
+    const [newFR, globalPosts] = await Promise.all([
+      FriendRequest.findOne({ recipient: req.user._id, isRead: false }).exec(),
+      Post.find({ isPublic: true }).sort({ created: -1 }).limit(10).populate('user', 'displayName username')
+        .exec(),
+    ]);
     return res.render('home/discover', {
       title: 'Discover',
       current: 'discover',
       hasNewFR: !!newFR,
+      globalPosts,
     });
   }),
 };

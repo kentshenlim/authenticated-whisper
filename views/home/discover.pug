@@ -15,11 +15,10 @@ block content
 
         section(class='mb-6')
             h1(class='mb-4') Or explore some whispers by other users
-            if (postsArr && postsArr.length)
-                include ../components/posts
-
+            if (globalPosts && globalPosts.length)
+                - const postArr = globalPosts
+                include ../components/posts-ungrouped
             else
                 p(class='italic') No one has whispered yet...
 
-
-
+    script(src='/javascripts/patClicker.js' defer)

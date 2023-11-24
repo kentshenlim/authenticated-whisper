@@ -14,10 +14,10 @@ module.exports = {
       err.status = 404;
       return next(err);
     }
-    // Does not have view permission
+    // Does not have view permission (not friend and the post is not public)
     const postOwner = post.user;
     const crtUser = await User.findById(req.user._id).exec();
-    if (!(crtUser.canViewHisPost(postOwner._id))) {
+    if (!crtUser.canViewHisPost(postOwner._id) && !post.isPublic) {
       const err = new Error('Forbidden access');
       err.status = 403;
       return next(err);

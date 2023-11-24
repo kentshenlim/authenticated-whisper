@@ -15,7 +15,6 @@ Place where you vent your feelings without judgement.
 
 ## TODO
 
-- TODO: search by username (discover)
 - TODO: req.user repetition
 - TODO: change password
 - TODO: create two sample profile for demo, exposing the password

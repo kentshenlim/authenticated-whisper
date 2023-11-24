@@ -1,5 +1,7 @@
 const asyncHandler = require('express-async-handler');
+const { body, validationResult } = require('express-validator');
 const FriendRequest = require('../models/friendRequest');
+const User = require('../models/user');
 
 module.exports = {
   friend_request_get: asyncHandler(async (req, res, next) => {
@@ -25,7 +27,44 @@ module.exports = {
       title: 'Friend Requests',
       allReceivedRequests,
       fRNew,
-      mustRefreshBack: true,
+      mustRefreshBack: true, // Needed by layout_no_menu, control behavior of back button
     });
   }),
+
+  username_search_get: (req, res, next) => {
+    if (!req.user) return res.redirect('/sign-in');
+    return res.render('discover/username-search', {
+      title: 'Search',
+    });
+  },
+
+  username_search_post: [
+    (req, res, next) => {
+      if (!req.user) res.redirect('/sign-in');
+      else next();
+    },
+    body('username')
+      .trim()
+      .isLength({ min: 1 }),
+    asyncHandler(async (req, res, next) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.render('discover/username-search', {
+          title: 'Search',
+          failureText: 'Username cannot be empty',
+          filled: req.body.username,
+        });
+      }
+      const userFound = await User.findOne(
+        { username: req.body.username },
+        { username: 1, displayName: 1 },
+      ).exec();
+      return res.render('discover/username-search', {
+        title: 'Search',
+        filled: req.body.username,
+        userFound,
+        failureText: userFound ? null : 'No result',
+      });
+    }),
+  ],
 };

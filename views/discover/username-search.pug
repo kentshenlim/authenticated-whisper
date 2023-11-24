@@ -1,0 +1,24 @@
+extends ../layout/layout_no_menu
+
+block content
+    div(class='[&>*]:px-side')
+        section(class='mt-4 mb-6')
+            form(action='/discover/user-search' method='post') 
+                div(class='label-input-wrapper')
+                    label(for='username' class='form-label') Username
+                    input#username(type='text' name='username' placeholder='Username' autofocus=true required=true value=(filled || '') class='form-input')
+                    if (failureText)
+                        p(class='text-warning')!= failureText
+                button(type='submit' class='mt-2 mb-2 text-white form-button bg-purple-500/70') Search User
+
+        if (userFound)
+            section
+                h1(class='mb-2 text-lg font-medium') User found:
+                a(href=userFound.url class='flex items-center gap-2 px-2 py-1 rounded-sm bg-slate-200')
+                    img(src=userFound.displayPicture alt='User DP' class='w-10')
+                    p(class='flex-auto')= userFound.displayName
+                    button(class='px-2 rounded-md bg-stone-300') View
+            
+        
+        
+

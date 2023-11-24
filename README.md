@@ -15,7 +15,6 @@ Place where you vent your feelings without judgement.
 
 ## TODO
 
-- TODO: display friend request (discover)
 - TODO: search by username (discover)
 - TODO: req.user repetition
 - TODO: change password

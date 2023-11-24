@@ -4,7 +4,9 @@ block content
     div(class='[&>*]:px-side')
         section(class='mt-4 mb-6')
             div(class='flex [&>*]:flex-1 gap-4')
-                a(href='/discover/friend-requests' class='bg-yellow-400/70 panel-anchor') 
+                a(href='/discover/friend-requests' class='relative bg-yellow-400/70 panel-anchor') 
+                    if (hasNewFR)
+                        span(class='absolute top-0 right-0 w-5 h-5 bg-red-300 rounded-full animate-ping')
                     img(src='/images/mail-outline.svg' alt='Mail icon')
                     p(class='text-stone-600') Friend Request
                 a(href='/discover/user-search' class='panel-anchor bg-emerald-400/70') 

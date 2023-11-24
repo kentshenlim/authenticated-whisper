@@ -7,8 +7,8 @@ block content
                 p(class='italic') Looks like you haven't received any friend requests yet. Whisper to get discovered!
             else
                 ul
-                    each request in allReceivedRequests
-                        li(class='[&:not(:last-child)]:mb-2')
+                    each request, index in allReceivedRequests
+                        li(class=`[&:not(:last-child)]:mb-2 ${fRNew.has(index) ? 'font-semibold' : ''}`)
                             a(href=request.sender.url class='flex gap-2') 
                                 img(src=request.sender.displayPicture alt='User DP' class='w-10')
                                 div(class='flex items-center flex-auto gap-2 border-b border-stone-300')
@@ -17,3 +17,4 @@ block content
                             
             
         include ../components/rule
+        

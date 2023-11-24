@@ -19,6 +19,10 @@ const fRSchema = new Schema({
     type: Date,
     default: new Date(),
   },
+  isRead: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model('Friend_request', fRSchema);

@@ -6,7 +6,6 @@ const getRelationship = require('../middlewares/getRelationship');
 
 module.exports = {
   details_get: asyncHandler(async (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
     const [user, postsArr] = await Promise.all([
       User.findById(req.params.id).exec(),
       searchGroupPosts(req.params.id),
@@ -64,11 +63,6 @@ module.exports = {
   // Because the redirect is now handled by browser, need to recheck the URL
   // used in client-sided JS (friend-request.js)
   accept_friend_post: asyncHandler(async (req, res, next) => {
-    if (!req.user) {
-      const err = new Error('Unauthorized access');
-      err.status = 401;
-      return next(err);
-    }
     const [friendNew, friendRequest] = await Promise.all([
       User.findById(req.params.id).exec(),
       FriendRequest.findOne({ sender: req.params.id, recipient: req.user._id }).exec(),
@@ -87,11 +81,6 @@ module.exports = {
   }),
 
   remove_friend_post: asyncHandler(async (req, res, next) => {
-    if (!req.user) {
-      const err = new Error('Unauthorized access');
-      err.status = 401;
-      return next(err);
-    }
     const friend = await User.findById(req.params.id).exec();
     // User does not exist
     if (!friend) {
@@ -106,11 +95,6 @@ module.exports = {
   }),
 
   request_friend_post: asyncHandler(async (req, res, next) => {
-    if (!req.user) {
-      const err = new Error('Unauthorized access');
-      err.status = 401;
-      return next(err);
-    }
     const [recipient, reverseRequest] = await Promise.all([
       User.findById(req.params.id).exec(),
       FriendRequest.findOne({ sender: req.params.id, recipient: req.user._id }).exec(),
@@ -130,11 +114,6 @@ module.exports = {
   }),
 
   cancel_friend_request_post: asyncHandler(async (req, res, next) => {
-    if (!req.user) {
-      const err = new Error('Unauthorized access');
-      err.status = 401;
-      return next(err);
-    }
     const [recipient, friendRequest] = await Promise.all([
       User.findById(req.params.id).exec(),
       FriendRequest.findOne({

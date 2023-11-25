@@ -1,7 +1,10 @@
 const express = require('express');
 const controller = require('../controllers/meController');
+const checkAuthenticated = require('../middlewares/checkAuthenticated');
 
 const router = express.Router();
+
+router.use(checkAuthenticated); // All routes below for authenticated users only
 
 router.get('/about', controller.about_get);
 

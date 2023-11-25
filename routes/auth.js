@@ -3,6 +3,22 @@ const controller = require('../controllers/authController');
 
 const router = express.Router();
 
+const loginPaths = [
+  '/sign-in',
+  '/sign-up',
+  '/sign-in/federated/google',
+  '/oauth2/redirect/google',
+  '/sign-in/federated/facebook',
+  '/oauth2/redirect/facebook',
+  '/sign-in/email',
+  '/sign-in/email/verify',
+];
+
+router.use((req, res, next) => { // Redirect user if already logged in
+  if (req.isAuthenticated() && loginPaths.includes(req.path)) return res.redirect('/');
+  return next();
+});
+
 router.get('/sign-in', controller.sign_in_get);
 
 router.post('/sign-in', controller.sign_in_local_post);

@@ -5,15 +5,11 @@ const User = require('../models/user');
 const searchGroupPosts = require('../middlewares/searchGroupPosts');
 
 module.exports = {
-  about_get: (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
-    return res.render('me/about', {
-      title: 'About Us',
-    });
-  },
+  about_get: (req, res, next) => res.render('me/about', {
+    title: 'About Us',
+  }),
 
   my_posts_get: asyncHandler(async (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
     const postsArr = await searchGroupPosts(req.user._id);
     return res.render('me/posts', {
       title: 'My Whispers',
@@ -22,7 +18,6 @@ module.exports = {
   }),
 
   my_friends_get: asyncHandler(async (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
     const user = await User.findById(req.user._id, { friends: 1 }).populate('friends', 'displayName username').exec();
     const { friends } = user;
     // Grouping
@@ -47,10 +42,7 @@ module.exports = {
     });
   }),
 
-  settings_get: (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
-    return res.render('me/settings', {
-      title: 'Settings',
-    });
-  },
+  settings_get: (req, res, next) => res.render('me/settings', {
+    title: 'Settings',
+  }),
 };

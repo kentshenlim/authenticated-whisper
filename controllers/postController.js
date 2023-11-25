@@ -5,7 +5,6 @@ const Post = require('../models/post');
 
 module.exports = {
   detail_get: asyncHandler(async (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
     // Need to check if current user has view permission
     const post = await Post.findById(req.params.id).populate('user', 'username displayName').exec();
     // Post does not even exist
@@ -29,18 +28,11 @@ module.exports = {
     });
   }),
 
-  create_form_get: (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
-    return res.render('post/create_form', {
-      title: 'Whisper',
-    });
-  },
+  create_form_get: (req, res, next) => res.render('post/create_form', {
+    title: 'Whisper',
+  }),
 
   create_form_post: [
-    (req, res, next) => {
-      if (!req.user) return res.redirect('/sign-in');
-      return next();
-    },
     body('content')
       .trim()
       .isLength({ min: 1 })
@@ -71,7 +63,6 @@ module.exports = {
 
   delete_post: asyncHandler(async (req, res, next) => {
     // Current post must belong to current user
-    if (!req.user) return res.redirect('/sign-in');
     const postID = req.body.id;
     const post = await Post.findById(postID).exec();
     if (!post) return res.redirect('/'); // Consider done
@@ -85,7 +76,6 @@ module.exports = {
   }),
 
   pat_toggle_post: asyncHandler(async (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
     const post = await Post.findById(req.params.id); // Stored in URl, from id added to pad DOM
     if (!post) {
       const err = new Error('Resource not found');
@@ -107,11 +97,6 @@ module.exports = {
   }),
 
   public_toggle_post: asyncHandler(async (req, res, next) => {
-    if (!req.user) {
-      const err = new Error('Unauthorized access');
-      err.status = 401;
-      return next(err);
-    }
     const postID = req.params.id; // Frontend will encode this into URL
     const post = await Post.findById(postID).exec();
     if (!post) {

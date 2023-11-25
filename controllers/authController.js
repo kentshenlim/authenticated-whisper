@@ -9,15 +9,12 @@ const User = require('../models/user');
 
 module.exports = {
   sign_in_get: (req, res, next) => {
-    if (req.user) res.redirect('/'); // Already logged in
-    else {
-      const { notify } = req.query;
-      res.render('auth/sign-in', {
-        title: 'Sign In',
-        errorMessage: req.flash('error')[0], // Wrong credentials message
-        notify,
-      });
-    }
+    const { notify } = req.query;
+    res.render('auth/sign-in', {
+      title: 'Sign In',
+      errorMessage: req.flash('error')[0], // Wrong credentials message
+      notify,
+    });
   },
 
   sign_in_local_post: [

@@ -4,7 +4,6 @@ const User = require('../models/user');
 
 module.exports = {
   friend_request_get: asyncHandler(async (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
     const allReceivedRequests = await FriendRequest
       .find({ recipient: req.user._id })
       .sort({ created: -1 })
@@ -30,21 +29,11 @@ module.exports = {
     });
   }),
 
-  username_search_get: (req, res, next) => {
-    if (!req.user) return res.redirect('/sign-in');
-    return res.render('discover/username-search', {
-      title: 'Search',
-    });
-  },
+  username_search_get: (req, res, next) => res.render('discover/username-search', {
+    title: 'Search',
+  }),
 
   username_search_post: [
-    (req, res, next) => {
-      if (!req.user) {
-        const err = new Error('Unauthorized access');
-        err.status = 404;
-        next(err);
-      } else next();
-    },
     asyncHandler(async (req, res, next) => {
       const username = req.params.username || '';
       if (!username.length) {

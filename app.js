@@ -52,12 +52,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', indexRouter);
 app.use('/', authRouter);
-app.use('/', meRouter);
-app.use('/discover', discoverRouter);
-app.use('/user', userRouter);
-app.use('/post', postRouter);
+app.use('/', indexRouter); // Authenticated path
+app.use('/', meRouter); // Authenticated path
+app.use('/discover', discoverRouter); // Authenticated path
+app.use('/user', userRouter); // Authenticated path
+app.use('/post', postRouter); // Authenticated path
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -136,14 +136,20 @@ module.exports = {
       )
       .isLength({ max: 255 })
       .withMessage('Username cannot have more than 255 characters'),
-    body('password').custom((value) => {
-      const testScheme = [/[a-z]/, /[A-Z]/, /[0-9]/, /[!@#$%^&*(),.?":{}|<>]/];
-      let score = 0;
-      testScheme.forEach((test) => {
-        if (test.test(value)) score += 1;
-      });
-      if (value.length < 8 || score < 2) { throw new Error('Password must meet complexity requirements'); } else return true; // Must have this, see https://github.com/express-validator/express-validator/issues/619
-    }),
+    body('password')
+      .custom((value) => {
+        const testScheme = [/[a-z]/, /[A-Z]/, /[0-9]/, /[!@#$%^&*(),.?":{}|<>]/];
+        let score = 0;
+        testScheme.forEach((test) => {
+          if (test.test(value)) score += 1;
+        });
+        if (value.length < 8 || score < 2) { throw new Error('Password must meet complexity requirements'); } else return true; // Must have this, see https://github.com/express-validator/express-validator/issues/619
+      }),
+    body('passwordConfirm')
+      .custom((value, { req }) => {
+        if (value !== req.body.password) throw new Error('Password does not match');
+        return true;
+      }),
     asyncHandler(async (req, res, next) => {
       const user = await User.findById(req.user._id).exec();
       if (!user) {
@@ -158,6 +164,7 @@ module.exports = {
           usernameOld: user.username,
           usernameNew: req.body.username,
           password: req.body.password,
+          passwordConfirm: req.body.passwordConfirm,
           errors: errors.mapped(),
         });
       }

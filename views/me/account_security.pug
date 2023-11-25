@@ -26,6 +26,12 @@ block content
                     else
                         p(class='text-sm text-gray-600') Password must contain at least 8 characters, with at least 3 of the following: lowercase letter, uppercase letter, digit and special character
 
+                div(class='label-input-wrapper')
+                    label(for='password-confirm' class='form-label') Confirm Password
+                    input#password-confirm(type='password' name='passwordConfirm' placeholder='Confirm password' required autocomplete='off' class='form-input' value=(passwordConfirm || ''))
+                    if (errors && errors.passwordConfirm)
+                        p(class='text-sm text-warning')!= errors.passwordConfirm.msg
+
                 p(class='text-sm text-warning') You will be asked to log in again after credentials have been updated successfully.
 
                 button(type="submit" class='mt-2 mb-2 text-white bg-purple-500 form-button hover:bg-purple-400') Update Credentials

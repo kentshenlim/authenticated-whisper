@@ -15,12 +15,6 @@ Place where you vent your feelings without judgement.
 
 ## TODO
 
-- TODO: change password, display name, set username, email address
-  username (show only if not set)
-  password (protect sampled document)
-  email
-  else only password
-
 - TODO: create two sample profile for demo, exposing the password
 - TODO: limit email sender rate strictly to avoid spam
 - TODO: truncate possibly long field input by user

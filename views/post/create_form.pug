@@ -3,7 +3,7 @@ extends ../layout/layout_no_menu
 block content
     div(class='[&>*]:px-side mt-4')
         form(action='/post/create' method='post' class='flex flex-col') 
-            textarea#content(name='content' autofocus rows=10 class='w-full px-2 py-1 border-2 border-purple-200 outline-none focus:caret-purple-400') #{filled ? filled.content : ''}
+            textarea#content(name='content' autofocus rows=10 class='form-textarea') #{filled ? filled.content : ''}
             if (errors && errors.length)
                 ul
                     each error in errors

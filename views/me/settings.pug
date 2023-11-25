@@ -2,7 +2,11 @@ extends ../layout/layout_no_menu
 
 block content
     div
-        section
-            div(class='py-1 text-center bg-white') 
-                a(href='/sign-out' class='block') Log Out
+        section(class='[&>*]:py-2 text-center [&>*]:bg-white my-2 [&>*:not(:last-child)]:border-b [&>*]:border-b-slate-200 [&_a]:block')
+            div 
+                a(href='/user-info') User Info
+            div 
+                a(href='/account-security') Account Security
+            div 
+                a(href='/sign-out' class='text-warning') Log Out
         

@@ -45,4 +45,8 @@ module.exports = {
   settings_get: (req, res, next) => res.render('me/settings', {
     title: 'Settings',
   }),
+
+  user_info_get: (req, res, next) => res.render('me/user_info', {
+    title: 'User Info',
+  }),
 };

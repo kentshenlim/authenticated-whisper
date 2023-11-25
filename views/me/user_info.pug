@@ -1,0 +1,23 @@
+extends ../layout/layout_no_menu
+
+block content
+    div(class='[&>*]:px-side')
+        section
+            h1(class='my-3 text-lg italic') Update your user info
+            form(action='/user-info/update' method='post') 
+                div(class='label-input-wrapper')
+                    label(for='displayName' class='form-label') Display Name
+                    input#displayName(type='text' name='displayName' placeholder='Display name' autocomplete='off' required class='form-input')
+                    p(class='text-sm text-gray-600') The name visible to other users on your profile
+                div(class='label-input-wrapper')
+                    label(for='gender' class='form-label') Gender
+                    select#gender(name='gender' class='form-input') 
+                        option(value='male') Male
+                        option(value='female') Female
+                        option(value='NA') Prefer not to say
+                    p(class='text-sm text-gray-600') If specified, a gender icon will appear next to your display name on your profile
+                div(class='label-input-wrapper')
+                    label(for='bio' class='form-label') Bio
+                    textarea#bio(name='bio' rows=4 class='form-textarea') 
+                    p(class='text-sm text-gray-600') A brief description about yourself, or your favorite QOTD
+                button(type="submit" class='mt-2 mb-2 text-white bg-purple-500 form-button hover:bg-purple-400') Update Info

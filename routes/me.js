@@ -14,4 +14,6 @@ router.get('/my/friends', controller.my_friends_get);
 
 router.get('/settings', controller.settings_get);
 
+router.get('/user-info', controller.user_info_get);
+
 module.exports = router;

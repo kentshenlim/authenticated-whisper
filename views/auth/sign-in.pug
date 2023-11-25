@@ -14,21 +14,22 @@ block content
             input#password(type='password', name='password' placeholder='Enter your password' required value=(filled ? filled.password : '') class='form-input')
             if (errors && errors.password)
                 p(class='text-warning')!= errors.password.msg
-        button(type='submit' class='mt-2 mb-2 text-white bg-purple-500/70 form-button hover:bg-purple-300') Log In
-        a(href='/sign-up' class='block text-center border form-button bg-slate-100 border-slate-400 hover:bg-slate-300') Sign Up
+        div(class='sm:flex sm:items-center sm:gap-4')
+            button(type='submit' class='mt-2 mb-2 font-medium text-white bg-violet-400 form-button hover:bg-violet-500') Log In
+            a(href='/sign-up' class='block font-medium text-center border text-slate-800 bg-slate-100 form-button hover:bg-slate-200 border-slate-300') Sign Up
     h2(class='hr-with-text')
         span or
     form(action='/sign-in/federated/google' method='post') 
-        button(type='submit' class='flex items-center mt-2 mb-2 text-white bg-red-600/80 form-button hover:bg-red-400')
+        button(type='submit' class='flex items-center mt-2 mb-2 text-white bg-red-400 form-button hover:bg-red-500')
             ion-icon(name='logo-google')
-            p(class='w-full') Log In with Google
+            p(class='w-full') Continue with Google
     form(action='/sign-in/federated/facebook' method='post') 
-        button(type='submit' class='flex items-center text-white bg-blue-600/80 form-button hover:bg-blue-400') 
+        button(type='submit' class='flex items-center text-white bg-blue-400 form-button hover:bg-blue-500') 
             ion-icon(name='logo-facebook')
-            p(class='w-full') Log In with Facebook
+            p(class='w-full') Continue with Facebook
     h2(class='hr-with-text')
         span or
-    a(href='/sign-in/email' class='flex items-center text-center border bg-yellow-50/80 form-button hover:bg-yellow-100') 
+    a(href='/sign-in/email' class='flex items-center text-center border bg-stone-200 border-stone-300 form-button hover:bg-stone-300') 
         ion-icon(name='color-wand-outline')
         p(class='w-full') Email Me a Link
     if (errorMessage)

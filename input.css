@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  img {
+    @apply pointer-events-none;
+  }
+}
+
 @layer components {
   .form-label {
     @apply block mb-2 font-semibold;
@@ -21,8 +27,8 @@
     @apply w-full mb-2;
   }
   .hr-with-text {
-    @apply text-center border-b-2 leading-[0.1rem] border-purple-500 my-4;
-    @apply [&>span]:main-bg [&>span]:px-1;
+    @apply text-center border-b-2 leading-[0.1rem] border-slate-300 my-4 sm:my-5;
+    @apply [&>span]:main-bg sm:[&>span]:bg-form [&>span]:px-1 [&>span]:uppercase sm:[&>span]:px-2;
   }
   .text-link {
     @apply font-semibold text-link-color;
@@ -68,9 +74,12 @@
     @apply text-purple-500;
   }
   .main-bg {
-    @apply bg-purple-100;
+    @apply bg-slate-50;
   }
   .px-side {
     @apply px-3;
+  }
+  .bg-form {
+    @apply bg-indigo-50;
   }
 }

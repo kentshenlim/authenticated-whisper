@@ -4,9 +4,13 @@ const Post = require('../models/post');
 const FriendRequest = require('../models/friendRequest');
 
 module.exports = {
-  me_get: (req, res, next) => res.render('home/me', {
-    title: 'Profile',
-    current: 'me',
+  me_get: asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.user._id, { displayName: 1 }).exec();
+    res.render('home/me', {
+      title: 'Profile',
+      current: 'me',
+      displayName: user.displayName, // User might change username, cannot use session
+    });
   }),
 
   home_get: asyncHandler(async (req, res, next) => {

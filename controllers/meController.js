@@ -1,6 +1,5 @@
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
-const qs = require('qs');
 const User = require('../models/user');
 const searchGroupPosts = require('../middlewares/searchGroupPosts');
 
@@ -53,13 +52,11 @@ module.exports = {
       err.status = 404;
       return next(err);
     }
-    const { notify } = req.query;
     return res.render('me/user_info', {
       title: 'User Info',
       displayName: user.displayName,
       gender: user.gender,
       bio: user.bio,
-      notify,
     });
   }),
 
@@ -96,9 +93,7 @@ module.exports = {
       user.gender = req.body.gender;
       user.bio = req.body.bio;
       await user.save();
-      const qStr = qs.stringify({ notify: 'User info updated!' });
-      return res.redirect(`/user-info?${qStr}`);
+      return res.redirect('/me');
     }),
-
   ],
 };

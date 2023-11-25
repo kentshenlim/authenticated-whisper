@@ -6,7 +6,7 @@ block content
             a(href='/user/' + user._id class='flex py-4')
                 img(src=user.displayPicture alt='DP' class='w-1/5') 
                 div(class='flex-auto px-3')
-                    h1(class='text-lg font-semibold') #{user.displayName}
+                    h1(class='text-lg font-semibold') #{displayName}
                     p Username: #{user.username || 'N/A'}
 
         section(class='mb-4')

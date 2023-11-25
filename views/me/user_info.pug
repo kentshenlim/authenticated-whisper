@@ -4,10 +4,10 @@ block content
     div(class='[&>*]:px-side')
         section(class='relative')
             h1(class='my-3 text-lg italic') Update your user info
-            form(action='/user-info/update' method='post') 
+            form(action='/user-info/update' method='post')
                 div(class='label-input-wrapper')
                     label(for='displayName' class='form-label') Display Name
-                    input#displayName(type='text' name='displayName' placeholder='Display name' autocomplete='off' required class='form-input' value=displayName)
+                    input#displayName(type='text' name='displayName' placeholder='Display name' required autocomplete='off' class='form-input' value=displayName)
                     if (errors && errors.displayName)
                         p(class='text-warning')!= errors.displayName.msg
                     else
@@ -31,8 +31,3 @@ block content
                         p(class='text-sm text-gray-600') A brief description about yourself, or your favorite QOTD
                 button(type="submit" class='mt-2 mb-2 text-white bg-purple-500 form-button hover:bg-purple-400') Update Info
             
-            if (notify)
-                include ../components/pop-up-notification
-                script(type='module' src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js')
-                script(nomodule src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js')
-

@@ -16,4 +16,6 @@ router.get('/settings', controller.settings_get);
 
 router.get('/user-info', controller.user_info_get);
 
+router.post('/user-info/update', controller.user_info_update_post);
+
 module.exports = router;

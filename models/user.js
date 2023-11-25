@@ -40,7 +40,8 @@ const userSchema = new Schema({
   },
   gender: {
     type: String,
-    enum: ['male', 'female'],
+    enum: ['male', 'female', 'NA'],
+    default: 'NA',
   },
   bio: {
     type: String,

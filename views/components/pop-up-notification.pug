@@ -1,0 +1,10 @@
+//- Pop-up notification
+//- Expose the following for this component:
+//- notify: message
+//- In addition, two ionicons scripts are required
+div#pop-up-notification(class='fixed font-semibold text-center translate-x-1/2 top-5 right-1/2 transition-opacity delay-[2000ms] pointer-events-none w-full flex justify-center') 
+    div(class='flex items-center gap-2 px-3 py-2 rounded-md bg-green-300/50 backdrop-blur-sm text-emerald-600')
+        ion-icon(name='checkmark-circle-outline')
+        p #{notify}
+
+script(src='/javascripts/popUpNotification.js' defer)

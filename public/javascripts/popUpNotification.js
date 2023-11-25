@@ -1,7 +1,4 @@
 (() => {
-  const notifications = document.querySelectorAll('.pop-up-notification');
-  notifications.forEach((node) => {
-    const ref = node;
-    ref.style.opacity = 0;
-  });
+  const notification = document.getElementById('pop-up-notification');
+  notification.style.opacity = 0;
 })();

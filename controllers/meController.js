@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
-const mongoose = require('mongoose');
-const Post = require('../models/post');
+const { body, validationResult } = require('express-validator');
+const qs = require('qs');
 const User = require('../models/user');
 const searchGroupPosts = require('../middlewares/searchGroupPosts');
 
@@ -46,7 +46,59 @@ module.exports = {
     title: 'Settings',
   }),
 
-  user_info_get: (req, res, next) => res.render('me/user_info', {
-    title: 'User Info',
+  user_info_get: asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.user._id).exec();
+    if (!user) {
+      const err = new Error('Resource not found');
+      err.status = 404;
+      return next(err);
+    }
+    const { notify } = req.query;
+    return res.render('me/user_info', {
+      title: 'User Info',
+      displayName: user.displayName,
+      gender: user.gender,
+      bio: user.bio,
+      notify,
+    });
   }),
+
+  user_info_update_post: [
+    body('displayName')
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage('Display name cannot be empty!')
+      .isLength({ max: 100 })
+      .withMessage('Display name cannot have more than 100 characters'),
+    body('gender', 'Invalid gender, must be one of "male", "female", or "NA')
+      .isIn(['male', 'female', 'NA']),
+    body('bio', 'Bio cannot have more than 120 characters')
+      .trim()
+      .isLength({ max: 120 }),
+    asyncHandler(async (req, res, next) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.render('me/user_info', {
+          title: 'User Info',
+          displayName: req.body.displayName,
+          gender: req.body.gender,
+          bio: req.body.bio,
+          errors: errors.mapped(),
+        });
+      }
+      const user = await User.findById(req.user._id);
+      if (!user) {
+        const err = new Error('Resource not found');
+        err.status = 404;
+        return next(err);
+      }
+      user.displayName = req.body.displayName;
+      user.gender = req.body.gender;
+      user.bio = req.body.bio;
+      await user.save();
+      const qStr = qs.stringify({ notify: 'User info updated!' });
+      return res.redirect(`/user-info?${qStr}`);
+    }),
+
+  ],
 };

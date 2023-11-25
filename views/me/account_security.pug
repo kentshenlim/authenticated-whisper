@@ -1,0 +1,32 @@
+extends ../layout/layout_no_menu
+
+block content
+    div(class='[&>*]:px-side')
+        section
+            h1(class='my-3 text-lg italic') Control your account security
+            form(action='/account-security/update' method='post')
+                div(class='label-input-wrapper')
+                    label(for='username' class='form-label') Username
+                    input#username(type='text' name='username' placeholder='Username' autocomplete='off' class='form-input' disabled=(!!usernameOld) value=(usernameOld || usernameNew))
+                    if (errors && errors.username)
+                        p(class='text-sm text-warning')!= errors.username.msg
+                    else
+                        if (usernameOld) 
+                            p(class='text-sm text-gray-600') Username has been finalized and can no longer be changed
+                        else
+                            p(class='text-sm text-gray-600') Username for logging in; 
+                                span(class='font-medium') cannot be changed once finalized;
+                                |   at least 6 characters
+
+                div(class='label-input-wrapper')
+                    label(for='username' class='form-label') Password
+                    input#password(type='password' name='password' placeholder='New password' required autocomplete='off' class='form-input' value=(password || ''))
+                    if (errors && errors.password)
+                        p(class='text-sm text-warning')!= errors.password.msg
+                    else
+                        p(class='text-sm text-gray-600') Password must contain at least 8 characters, with at least 3 of the following: lowercase letter, uppercase letter, digit and special character
+
+                p(class='text-sm text-warning') You will be asked to log in again after credentials have been updated successfully.
+
+                button(type="submit" class='mt-2 mb-2 text-white bg-purple-500 form-button hover:bg-purple-400') Update Credentials
+            

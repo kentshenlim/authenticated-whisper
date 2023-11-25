@@ -18,4 +18,8 @@ router.get('/user-info', controller.user_info_get);
 
 router.post('/user-info/update', controller.user_info_update_post);
 
+router.get('/account-security', controller.account_security_get);
+
+router.post('/account-security/update', controller.account_security_update_post);
+
 module.exports = router;

@@ -21,3 +21,4 @@ Place where you vent your feelings without judgement.
 - TODO: image all pointer none
 - TODO: need to fix width when large screen + pop up notification
 - TODO: change all username and password to fulfill complexity req
+- TODO: signing in with email, test on deployment

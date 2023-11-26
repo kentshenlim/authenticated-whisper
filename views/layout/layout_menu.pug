@@ -5,16 +5,20 @@ html
     link(rel='stylesheet', href='/stylesheets/output.css')
     link(rel='shortcut icon', href='/images/favicon.ico', type='image/x-icon')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  body
-    div(class='flex flex-col h-screen bg-slate-50 [&>:nth-child(2)]:flex-auto [&>:not(:first-child):not(:last-child)]:overflow-auto container mx-auto')
-      section(class='flex-none bg-purple-50')
-        div(class='py-2 text-center')
-          h2(class='font-semibold capitalize text-md') #{title}
+  body(class='relative flex flex-col items-stretch h-screen bg-neutral-50')
+    section(class='flex-none border-contrast bg-accent md:border-b-2')
+      div(class='items-center max-w-screen-xl gap-2 px-3 py-2 mx-auto text-center md:flex md:text-left md:font-bold md:text-lg')
+        img(src='/images/app-icon.png' alt='App icon' class='hidden w-10 md:inline-block')
+        h2(class='font-semibold capitalize text-md md:text-purple-700 md:text-lg')
+          p(class='md:hidden') #{title}
+          p(class='hidden md:block') Authenticated Whisper
 
-      block content
+    div(class='flex flex-col flex-auto w-full max-w-screen-xl mx-auto overflow-auto bg-slate-50 sm:flex-row-reverse')
+      div(class='[&>*]:overflow-auto overflow-auto flex-auto')
+        block content
 
-      section(class='flex-none bg-purple-100')
-        nav(class='flex justify-between px-4 pb-1.5 pt-2 [&>a]:flex [&>a]:flex-col [&>a]:items-center [&_img]:w-6 [&_p]:text-xs [&_p]:font-semibold')
+      section(class='flex-none bg-violet-100 sm-border-r-2 border-contrast')
+        nav(class='flex justify-between px-4 pb-1.5 pt-2 [&>a:not(:last-child)]:flex [&>a]:flex-col [&>a]:items-center [&_img]:w-6 [&_p]:text-xs [&_p]:font-semibold sm:flex-col sm:px-2 sm:justify-start h-full sm:[&>a]:py-2 sm:[&>a]:border-b-2 [&>a]:border-b-purple-300 sm:[&>a:hover]:bg-purple-200 md:hidden')
           a(href='/discover')
               if (current == 'discover')
                 img(src='/images/planet.svg', alt='filled planet icon')
@@ -36,3 +40,46 @@ html
               else
                 img(src='/images/person-outline.svg', alt='person icon')
                 p Me
+          a(href='/post/create' class='hidden sm:flex')
+              img(src='/images/add-circle-outline.svg', alt='plus icon')
+              p Whisper
+        
+        nav(class='hidden px-3 py-4 font-medium w-36 lg:w-48 md:flex flex-col [&>a:not(:last-child)]:mb-2 [&>a]:block text-slate-700 border-contrast border-r-2 h-full bg-accent')
+          a(href='/discover')
+              if (current == 'discover')
+                p(class='font-bold text-purple-500') Discover
+              else
+                p Discover
+          a(href='/')
+              if (current == 'home')
+                p(class='font-bold text-purple-500') Home
+              else
+                p Home
+          a(href='/me')
+              if (current == 'me')
+                p(class='font-bold text-purple-500') Profile
+              else
+                p Profile
+          hr(class='my-3 border border-contrast')
+          a(href='/post/create')
+              p Whisper
+          a(href='/my/posts')
+              p My Posts
+          a(href='/my/friends')
+              p Friends
+          hr(class='my-3 border border-contrast')
+          a(href='/settings')
+              p Settings
+          a(href='/sign-out')
+              p(class='text-red-500') Log Out
+          hr(class='my-3 border border-contrast mt-[auto]')
+          a(href='/about')
+              p About
+
+    //- Decorative shapes
+    div(class='absolute bottom-0 items-end hidden h-full overflow-hidden pointer-events-none select-none xl:flex -z-10')
+      div(class='w-48 rotate-[25deg] -translate-x-1/2 bg-indigo-100 aspect-square rounded-3xl mb-[20%]')
+    div(class='absolute top-0 right-0 items-start hidden h-full overflow-hidden pointer-events-none select-none xl:flex -z-10')
+      div(class='rotate-[19deg] translate-x-1/2 bg-green-100 aspect-square rounded-3xl mt-[25%] w-56')
+    div(class='absolute top-0 left-0 items-start hidden h-full overflow-hidden pointer-events-none select-none xl:flex -z-10')
+      div(class='w-48 -translate-x-1/2 bg-amber-100 aspect-square rounded-full mt-[10%]')

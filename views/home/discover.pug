@@ -3,7 +3,7 @@ extends ../layout/layout_menu
 block content
     div(class='[&>*]:px-side')
         section(class='mt-4 mb-6')
-            div(class='flex [&>*]:flex-1 gap-4')
+            div(class='[&>*]:flex-1 gap-4 max-w-xs inline-flex')
                 a(href='/discover/friend-requests' class='relative bg-yellow-400/70 panel-anchor') 
                     if (hasNewFR)
                         span(class='absolute top-0 right-0 w-5 h-5 bg-red-300 rounded-full animate-ping')

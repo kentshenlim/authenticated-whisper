@@ -82,4 +82,13 @@
   .bg-form {
     @apply bg-indigo-50;
   }
+  .border-contrast {
+    @apply border-purple-200;
+  }
+  .w-func-btn {
+    @apply w-3 md:w-4;
+  }
+  .bg-accent {
+    @apply bg-purple-100 md:bg-neutral-50;
+  }
 }

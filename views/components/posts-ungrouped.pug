@@ -3,17 +3,20 @@
 //- postArr: array of posts
 ul
     each onePost in postArr
-        li(class='flex items-start gap-1 py-2 mb-3 border-b border-purple-300')
-            a(href=onePost.user.url class='flex-none w-12') 
+        li(class='relative flex items-start gap-1 py-2 mb-3 border-b border-purple-300 md:gap-3 md:border-contrast md:border-b-2')
+            a(href=onePost.url class='absolute inset-0')
+            a(href=onePost.user.url class='z-10 flex-none w-12 md:w-16') 
                 img(src=onePost.user.displayPicture alt='User DP')
-            div(class='[&>*:not(:last-child)]:mb-1')
+            div(class='md:[&>*:not(:last-child)]:mb-1 z-10 [&>a]:block')
                 a(href=onePost.user.url class='text-link') 
                     p= onePost.user.displayName
-                a(href=onePost.url) 
+                a(href=onePost.url)
                     h1= onePost.content
-                h1(class='text-sm text-gray-500 first-letter:uppercase')= onePost.agoString + ' ago'
+                a(href=onePost.url)
+                    h1(class='text-sm text-gray-500 first-letter:uppercase')= onePost.agoString + ' ago'
                 //- Need to define variables specific to post
                 //- Required by pat-bar components to render correctly
                 - const post = onePost;
                 - const hasUserPatted = onePost.hasUserPatted(user._id);
                 include ./pat-bar
+                

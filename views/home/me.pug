@@ -1,31 +1,31 @@
 extends ../layout/layout_menu
 
 block content
-    div(class='[&>*]:px-side [&>*]:bg-white')
+    div(class='[&>*]:px-side [&>*]:bg-white md:[&>*]:bg-neutral-50 [&_a:hover]:bg-neutral-100')
         section(class='mb-4')
             a(href='/user/' + user._id class='flex py-4')
-                img(src=user.displayPicture alt='DP' class='w-1/5') 
+                img(src=user.displayPicture alt='DP' class='w-14 sm:w-16') 
                 div(class='flex-auto px-3')
                     h1(class='text-lg font-semibold') #{displayName}
                     p Username: #{user.username || 'N/A'}
 
         section(class='mb-4')
-            div(class='[&>a]:flex [&>a]:gap-3 py-2 [&_img]:w-6 [&_p]:flex-auto')
-                a(href='/about')
+            div(class='[&>a]:flex [&>a]:gap-3 [&_img]:w-6 [&_p]:flex-auto')
+                a(href='/about' class='py-2 md:border-y border-contrast')
                     img(src='images/bug-outline.svg', alt='Bug icon')
                     p About Us
 
         section(class='mb-4')
             div(class='[&>a]:flex [&>a]:py-2 [&>a]:gap-3 [&_img]:w-6 [&_p]:flex-auto')
-                a(href='/my/posts' class='border-b border-slate-100/70')
+                a(href='/my/posts' class='border-b md:border-y border-slate-100 md:border-contrast')
                     img(src='images/aperture-outline.svg' alt='Aperture icon')
                     p My Posts
-                a(href='/my/friends')
+                a(href='/my/friends' class='md:border-b border-contrast')
                     img(src='images/people-outline.svg' alt='People icon')
                     p Friends
 
         section(class='mb-4')
-            div(class='[&>a]:flex [&>a]:gap-3 py-2 [&_img]:w-6 [&_p]:flex-auto')
-                a(href='/settings')
+            div(class='[&>a]:flex [&>a]:gap-3 [&_img]:w-6 [&_p]:flex-auto')
+                a(href='/settings' class='py-2 md:border-y border-contrast')
                     img(src='images/settings-outline.svg', alt='Settings icon')
                     p Settings

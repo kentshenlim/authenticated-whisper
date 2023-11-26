@@ -5,33 +5,34 @@ html
     link(rel='stylesheet', href='/stylesheets/output.css')
     link(rel='shortcut icon', href='/images/favicon.ico', type='image/x-icon')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  body(class='flex flex-col h-screen bg-slate-50 [&>:nth-child(2)]:flex-auto [&>:nth-child(2)]:overflow-auto')
-    section(class='flex-none bg-purple-50')
-      div(class='py-2 text-center')
-        h2(class='font-semibold capitalize text-md') #{title}
+  body
+    div(class='flex flex-col h-screen bg-slate-50 [&>:nth-child(2)]:flex-auto [&>:not(:first-child):not(:last-child)]:overflow-auto container mx-auto')
+      section(class='flex-none bg-purple-50')
+        div(class='py-2 text-center')
+          h2(class='font-semibold capitalize text-md') #{title}
 
-    block content
+      block content
 
-    section(class='flex-none bg-purple-100')
-      nav(class='flex justify-between px-4 pb-1.5 pt-2 [&>a]:flex [&>a]:flex-col [&>a]:items-center [&_img]:w-6 [&_p]:text-xs [&_p]:font-semibold')
-        a(href='/discover')
-            if (current == 'discover')
-              img(src='/images/planet.svg', alt='filled planet icon')
-              p(class='text-purple-500') Discover
-            else
-              img(src='/images/planet-outline.svg' alt='planet icon')
-              p Discover
-        a(href='/')
-            if (current == 'home')
-              img(src='/images/home.svg', alt='filled home icon')
-              p(class='text-purple-500') Home
-            else
-              img(src='/images/home-outline.svg', alt='home icon')
-              p Home
-        a(href='/me')
-            if (current == 'me')
-              img(src='/images/person.svg', alt='filled person icon')
-              p(class='text-purple-500') Me
-            else
-              img(src='/images/person-outline.svg', alt='person icon')
-              p Me
+      section(class='flex-none bg-purple-100')
+        nav(class='flex justify-between px-4 pb-1.5 pt-2 [&>a]:flex [&>a]:flex-col [&>a]:items-center [&_img]:w-6 [&_p]:text-xs [&_p]:font-semibold')
+          a(href='/discover')
+              if (current == 'discover')
+                img(src='/images/planet.svg', alt='filled planet icon')
+                p(class='text-purple-500') Discover
+              else
+                img(src='/images/planet-outline.svg' alt='planet icon')
+                p Discover
+          a(href='/')
+              if (current == 'home')
+                img(src='/images/home.svg', alt='filled home icon')
+                p(class='text-purple-500') Home
+              else
+                img(src='/images/home-outline.svg', alt='home icon')
+                p Home
+          a(href='/me')
+              if (current == 'me')
+                img(src='/images/person.svg', alt='filled person icon')
+                p(class='text-purple-500') Me
+              else
+                img(src='/images/person-outline.svg', alt='person icon')
+                p Me

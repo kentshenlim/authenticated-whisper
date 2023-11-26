@@ -538,6 +538,40 @@ img {
   --tw-backdrop-sepia:  ;
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .form-label {
   margin-bottom: 0.5rem;
   display: block;
@@ -1013,6 +1047,14 @@ img {
 
 .max-w-\[55ch\] {
   max-width: 55ch;
+}
+
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.max-w-7xl {
+  max-width: 80rem;
 }
 
 .flex-auto {
@@ -1538,6 +1580,11 @@ img {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-indigo-500 {
+  --tw-text-opacity: 1;
+  color: rgb(99 102 241 / var(--tw-text-opacity));
+}
+
 .accent-purple-500 {
   accent-color: #a855f7;
 }
@@ -1824,6 +1871,10 @@ img {
 .\[\&\>\*\]\:px-side>* {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.\[\&\>\:not\(\:first-child\)\:not\(\:last-child\)\]\:overflow-auto>:not(:first-child):not(:last-child) {
+  overflow: auto;
 }
 
 .\[\&\>\:nth-child\(2\)\]\:flex-auto>:nth-child(2) {

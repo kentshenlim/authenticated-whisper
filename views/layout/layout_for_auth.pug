@@ -5,13 +5,19 @@ html
     link(rel='stylesheet', href='/stylesheets/output.css')
     link(rel='shortcut icon', href='/images/favicon.ico', type='image/x-icon')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  body(class='main-bg')
+  body(class='relative main-bg')
     section(class='relative flex items-center justify-center min-h-screen py-4')
       if (notify)
         include ../components/pop-up-notification
       div(class='flex flex-col items-center gap-1 px-4 py-2 [&>*:not(img)]:w-full max-w-[55ch] sm:w-3/5 sm:border sm:border-indigo-100 sm:shadow-lg shadow-indigo-400 sm:bg-form rounded-lg md:py-4 md:px-6')
         img(src='/images/app-icon.png', alt='App icon' class='w-20')
         block content
+
+    //- Decorative shapes
+    div(class='absolute bottom-0 items-end hidden h-full overflow-hidden pointer-events-none select-none md:flex')
+      div(class='w-48 rotate-[47deg] -translate-x-1/2 bg-indigo-100 aspect-square rounded-3xl lg:w-72 xl:w-80 mb-[20%] 2xl:w-96')
+    div(class='absolute top-0 right-0 items-start hidden h-full overflow-hidden pointer-events-none select-none md:flex')
+      div(class='w-48 rotate-[12deg] translate-x-1/2 bg-green-100 aspect-square rounded-3xl lg:w-72 xl:w-80 mt-[25%] 2xl:w-96')
 
     script(type='module' src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js')
     script(nomodule src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js')

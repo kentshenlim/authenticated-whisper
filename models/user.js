@@ -55,6 +55,10 @@ const userSchema = new Schema({
     type: Date,
     default: new Date(),
   },
+  isSampleDocument: { // Block changing password of sample user
+    type: Boolean,
+    default: false,
+  },
 });
 
 // Virtuals

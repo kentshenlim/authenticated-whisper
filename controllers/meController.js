@@ -158,6 +158,11 @@ module.exports = {
         err.status = 404;
         return next(err);
       }
+      if (user.isSampleDocument) {
+        const err = new Error('Forbidden access: sample account');
+        err.status = 403;
+        return next(err);
+      }
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.render('me/account_security', {

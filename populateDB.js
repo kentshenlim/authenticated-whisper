@@ -43,9 +43,11 @@ async function createUser({
   gender,
   bio,
   friends,
+  created,
+  isSampleDocument,
 }, idx) {
   const user = new User({
-    displayName, username, password, email, gender, bio, friends,
+    displayName, username, password, email, gender, bio, friends, created, isSampleDocument,
   });
   await user.save();
   users[idx] = user;
@@ -116,6 +118,7 @@ async function createUserSampleDocuments() {
       password: allPasswords[0],
       gender: 'female',
       bio: 'Exploring the world one day at a time. Coffee enthusiast and book lover.',
+      isSampleDocument: true,
     }, 0),
     createUser({
       displayName: 'Alex Thompson',
@@ -123,6 +126,7 @@ async function createUserSampleDocuments() {
       password: allPasswords[1],
       gender: 'male',
       bio: 'Tech geek, music lover, and aspiring chef. Let\'s connect!',
+      isSampleDocument: true,
     }, 1),
     createUser({
       displayName: 'Priya Patel',
@@ -130,6 +134,7 @@ async function createUserSampleDocuments() {
       password: allPasswords[2],
       gender: 'female',
       bio: 'Software engineer by day, Bollywood dancer by night. Passionate about technology and the arts.',
+      isSampleDocument: true,
     }, 2),
     createUser({
       displayName: 'Emily Davis',
@@ -137,6 +142,7 @@ async function createUserSampleDocuments() {
       password: allPasswords[3],
       gender: 'female',
       bio: 'Dreamer, artist, and nature lover. Finding beauty in everyday moments.',
+      isSampleDocument: true,
     }, 3),
     createUser({
       displayName: 'Michael Smith',
@@ -144,6 +150,7 @@ async function createUserSampleDocuments() {
       password: allPasswords[4],
       gender: 'male',
       bio: 'Sports fanatic and fitness enthusiast. Living life to the fullest!',
+      isSampleDocument: true,
     }, 4),
     createUser({
       displayName: 'Yuki Tanaka',
@@ -151,6 +158,7 @@ async function createUserSampleDocuments() {
       password: allPasswords[5],
       gender: 'female',
       bio: 'Art enthusiast, anime lover, and sushi connoisseur. Living life with creativity and joy.',
+      isSampleDocument: true,
     }, 5),
     createUser({
       displayName: 'Chen Wei',
@@ -158,6 +166,7 @@ async function createUserSampleDocuments() {
       password: allPasswords[6],
       gender: 'male',
       bio: 'Explorer of traditions and modernity. Tea lover and technology geek.',
+      isSampleDocument: true,
     }, 6),
     createUser({
       displayName: 'Mei Li',
@@ -165,6 +174,7 @@ async function createUserSampleDocuments() {
       password: allPasswords[7],
       gender: 'female',
       bio: 'Passionate about literature, traveling, and trying new cuisines. Embracing diversity.',
+      isSampleDocument: true,
     }, 7),
     createUser({
       displayName: 'Emily Wilson',
@@ -172,6 +182,7 @@ async function createUserSampleDocuments() {
       password: allPasswords[8],
       gender: 'female',
       bio: 'Bookworm, coffee lover, and aspiring world traveler. On a journey to explore the unknown.',
+      isSampleDocument: true,
     }, 8),
     createUser({
       displayName: 'Chris Miller',
@@ -179,6 +190,7 @@ async function createUserSampleDocuments() {
       password: allPasswords[9],
       gender: 'male',
       bio: 'Fitness fanatic and health advocate. Inspiring others to lead an active and balanced lifestyle.',
+      isSampleDocument: true,
     }, 9),
     createUser({
       displayName: 'Eva Rodriguez',
@@ -186,6 +198,7 @@ async function createUserSampleDocuments() {
       password: allPasswords[10],
       gender: 'female',
       bio: 'Tech geek and aspiring entrepreneur. Building a future where innovation knows no bounds.',
+      isSampleDocument: true,
     }, 10),
     createUser({
       displayName: 'Avery Taylor',
@@ -193,36 +206,43 @@ async function createUserSampleDocuments() {
       password: allPasswords[11],
       gender: 'female',
       bio: 'Passionate about social justice and creating a more inclusive world. Advocate for change.',
+      isSampleDocument: true,
     }, 11),
     createUser({
       displayName: 'Jason Lam',
       username: 'jason_lam',
       password: allPasswords[12],
+      isSampleDocument: true,
     }, 12),
     createUser({
       displayName: 'Jonathan Henry',
       username: 'jonathan_henry',
       password: allPasswords[13],
+      isSampleDocument: true,
     }, 13),
     createUser({
       displayName: 'Justin Gate',
       username: 'justin_gate',
       password: allPasswords[14],
+      isSampleDocument: true,
     }, 14),
     createUser({
       displayName: 'Hoki Tobayashi',
       username: 'hoki_tobayashi',
       password: allPasswords[15],
+      isSampleDocument: true,
     }, 15),
     createUser({
       displayName: '丁诚',
       username: 'ding_cheng',
       password: allPasswords[16],
+      isSampleDocument: true,
     }, 16),
     createUser({
       displayName: '吴晓严',
       username: 'xiaoyan',
       password: allPasswords[17],
+      isSampleDocument: true,
     }, 17),
   ]);
 }

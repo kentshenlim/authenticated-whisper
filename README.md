@@ -16,6 +16,6 @@ Place where you vent your feelings without judgement.
 ## TODO
 
 - TODO: create two sample profile for demo, exposing the password
-- TODO: limit email sender rate strictly to avoid spam
 - TODO: change all username and password to fulfill complexity req
+- TODO: limit email sender rate strictly to avoid spam
 - TODO: signing in with email, test on deployment

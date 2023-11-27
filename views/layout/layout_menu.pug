@@ -9,9 +9,9 @@ html
     section(class='flex-none border-contrast bg-accent md:border-b-2')
       div(class='items-center max-w-screen-xl gap-2 px-3 py-2 mx-auto text-center md:flex md:text-left md:font-bold md:text-lg')
         img(src='/images/app-icon.png' alt='App icon' class='hidden w-10 md:inline-block')
-        h2(class='font-semibold capitalize text-md md:text-purple-700 md:text-lg')
-          p(class='md:hidden') #{title}
-          p(class='hidden md:block') Authenticated Whisper
+        h2(class='font-semibold text-md md:text-purple-700 md:text-lg')
+          p(class='capitalize md:hidden') #{title}
+          p(class='hidden md:block') authenticated-whisper
 
     div(class='flex flex-col flex-auto w-full max-w-screen-xl mx-auto overflow-auto bg-slate-50 sm:flex-row-reverse')
       div(class='[&>*]:overflow-auto overflow-auto flex-auto')
@@ -66,7 +66,7 @@ html
           a(href='/my/posts')
               p My Posts
           a(href='/my/friends')
-              p Friends
+              p My Friends
           hr(class='my-3 border border-contrast')
           a(href='/settings')
               p Settings
@@ -77,9 +77,9 @@ html
               p About
 
     //- Decorative shapes
-    div(class='absolute bottom-0 items-end hidden h-full overflow-hidden pointer-events-none select-none xl:flex -z-10')
-      div(class='w-48 rotate-[25deg] -translate-x-1/2 bg-indigo-100 aspect-square rounded-3xl mb-[20%]')
-    div(class='absolute top-0 right-0 items-start hidden h-full overflow-hidden pointer-events-none select-none xl:flex -z-10')
-      div(class='rotate-[19deg] translate-x-1/2 bg-green-100 aspect-square rounded-3xl mt-[25%] w-56')
-    div(class='absolute top-0 left-0 items-start hidden h-full overflow-hidden pointer-events-none select-none xl:flex -z-10')
+    div(class='absolute bottom-0 items-end hidden h-full overflow-hidden pointer-events-none select-none 2xl:flex -z-10')
+      div(class='w-48 rotate-[25deg] -translate-x-1/2 bg-emerald-100 aspect-square rounded-3xl mb-[20%]')
+    div(class='absolute top-0 right-0 items-start hidden h-full overflow-hidden pointer-events-none select-none 2xl:flex -z-10')
+      div(class='rotate-[19deg] translate-x-1/2 bg-lime-100 aspect-square rounded-3xl mt-[25%] w-56')
+    div(class='absolute top-0 left-0 items-start hidden h-full overflow-hidden pointer-events-none select-none 2xl:flex -z-10')
       div(class='w-48 -translate-x-1/2 bg-amber-100 aspect-square rounded-full mt-[10%]')

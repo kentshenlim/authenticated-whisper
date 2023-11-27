@@ -1,7 +1,7 @@
 extends ../layout/layout_no_menu
 
 block content
-    div(class='[&>*]:px-side')
+    div(class='[&>*]:px-side max-w-prose mx-auto')
         section
             h1(class='my-3 text-lg italic') Update your user info
             form(action='/user-info/update' method='post')
@@ -11,7 +11,7 @@ block content
                     if (errors && errors.displayName)
                         p(class='text-warning')!= errors.displayName.msg
                     else
-                        p(class='text-sm text-gray-600') The name visible to other users on your profile
+                        p(class='text-sm text-gray-600') The name visible to other users
                 div(class='label-input-wrapper')
                     label(for='gender' class='form-label') Gender
                     select#gender(name='gender' class='form-input') 
@@ -21,7 +21,8 @@ block content
                     if (errors && errors.gender)
                         p(class='text-warning')!= errors.gender.msg
                     else
-                        p(class='text-sm text-gray-600') If specified, a gender icon will appear next to your display name on your profile
+                        p(class='text-sm text-gray-600') If specified, a gender icon will appear next to your display name on 
+                            a(href=url class='text-link')  your profile
                 div(class='label-input-wrapper')
                     label(for='bio' class='form-label') Bio
                     textarea#bio(name='bio' rows=4 class='form-textarea')= bio
@@ -29,5 +30,5 @@ block content
                         p(class='text-warning')!= errors.bio.msg
                     else 
                         p(class='text-sm text-gray-600') A brief description about yourself, or your favorite QOTD
-                button(type="submit" class='mt-2 mb-2 text-white bg-purple-500 form-button hover:bg-purple-400') Update Info
+                button(type="submit" class='mt-2 mb-2 text-white bg-violet-400 form-button hover:bg-violet-500') Update Info
             

@@ -6,13 +6,13 @@ block content
             if (friendsGrouped && friendsGrouped.length)
                 ul
                     each group, index in friendsGrouped
-                        h1(class='[&:not(:first-child)]:mt-4 font-medium')= firstChars[index]
-                        ul(class='border-b border-b-gray-300')
+                        h1(class='[&:not(:first-child)]:mt-4 font-medium md:text-lg md:pb-2')= firstChars[index]
+                        ul(class='border-b border-b-gray-300 md:border-contrast')
                             each friend in group
-                                li(class='mb-1 group')
-                                    a(href=friend.url  class='flex') 
-                                        img(src=friend.displayPicture alt='DP' class='flex-none w-10 border rounded-sm border-b-gray-300')
-                                        div(class='flex items-center flex-auto px-1 ml-2 border-b-gray-300 group-[:not(:last-child)]:border-b')
+                                li(class='mb-1 group md:mb-2')
+                                    a(href=friend.url  class='flex hover:bg-neutral-100') 
+                                        img(src=friend.displayPicture alt='DP' class='flex-none w-10 border rounded-sm border-b-gray-300 sm:w-11 md:w-12')
+                                        div(class='flex items-center flex-auto px-1 ml-2 border-b-gray-300 group-[:not(:last-child)]:border-b md:border-contrast')
                                             p= friend.displayName
 
                 div(class='my-4')

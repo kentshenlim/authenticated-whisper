@@ -6,15 +6,15 @@
 ul
     each day, index in postsArr
         if (index === 0 && day[0].yearString != String(new Date().getFullYear()))
-            h1(class='my-5 text-3xl font-medium')= day[0].yearString
+            h1(class='my-5 text-3xl font-medium lg:indent-5 md:text-4xl lg:text-5xl')= day[0].yearString
         else if (index > 0 && day[0].yearString != postsArr[index - 1][0].yearString)
-            h1(class='my-5 text-3xl font-medium')= day[0].yearString
-        li(class='flex [&:not(:last-child)]:mb-3')
-            h2(class='flex-none w-16')
-                span(class='text-2xl font-medium')= day[0].dayString
+            h1(class='my-5 text-3xl font-medium lg:indent-5 md:text-4xl lg:text-5xl')= day[0].yearString
+        li(class='flex [&:not(:last-child)]:mb-3 md:[&:not(:last-child)]:mb-5 max-w-3xl mx-auto')
+            h2(class='flex-none w-16 md:w-20')
+                span(class='text-2xl font-medium md:text-3xl')= day[0].dayString
                 span 
-                span(class='text-sm font-medium')= day[0].monthString
+                span(class='text-sm font-medium md:text-base')= day[0].monthString
             ul(class='flex-auto')
                 each post in day
-                    li(class='[&:not(:last-child)]:mb-1')
-                        a(class='px-1 bg-gray-200/70 line-clamp-2' href=post.url)= post.content
+                    li(class='[&:not(:last-child)]:mb-1 sm:[&:not(:last-child)]:mb-2')
+                        a(class='px-1 bg-gray-200/70 line-clamp-2 sm:line-clamp-3 md:py-1 hover:bg-gray-200' href=post.url)= post.content

@@ -61,6 +61,7 @@ module.exports = {
       displayName: user.displayName,
       gender: user.gender,
       bio: user.bio,
+      url: user.url,
     });
   }),
 

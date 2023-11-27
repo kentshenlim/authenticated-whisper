@@ -9,12 +9,60 @@ html
       script(src='/javascripts/goBackRefresh.js' defer)
     else
       script(src='/javascripts/goBack.js' defer)
-  body(class='flex flex-col h-screen bg-slate-50 [&>:nth-child(2)]:flex-auto [&>:nth-child(2)]:overflow-auto')
-    section(class='flex-none bg-purple-50')
-      div(class='relative py-2 text-center')
-        button(class='absolute font-bold left-2 go-back') &lt;
-        h2(class='font-semibold capitalize text-md') #{title}
+  body(class='relative flex flex-col items-stretch h-screen bg-neutral-50')
+    section(class='flex-none border-contrast bg-accent md:border-b-2')
+      div(class='items-center max-w-screen-xl gap-2 px-3 py-2 mx-auto text-center md:flex md:text-left md:font-bold md:text-lg')
+        button(class='absolute font-bold left-2 go-back sm:hidden') &lt;
+        img(src='/images/app-icon.png' alt='App icon' class='hidden w-10 md:inline-block')
+        h2(class='font-semibold capitalize text-md md:hidden') #{title}
+        p(class='hidden font-semibold md:block md:text-purple-700 md:text-lg') authenticated-whisper
 
-    block content
+    div(class='flex flex-col flex-auto w-full max-w-screen-xl mx-auto overflow-auto bg-slate-50 sm:flex-row-reverse')
+      div(class='[&>*]:overflow-auto overflow-auto flex-auto')
+        block content
 
+      section(class='flex-none bg-violet-100 sm-border-r-2 border-contrast')
+        nav(class='sm:flex justify-between px-4 pb-1.5 pt-2 [&>*]:flex [&>*]:flex-col [&>*]:items-center [&_img]:w-6 [&_p]:text-xs [&_p]:font-semibold sm:flex-col sm:px-2 sm:justify-start h-full sm:[&>*]:py-2 sm:[&>*:not(:first-child)]:border-t-2 [&>*]:border-purple-300 sm:[&>*:hover]:bg-purple-200 hidden md:hidden')
+          button(class='go-back mb-[auto] animate-bounce-lr')
+              img(src='/images/chevron-back-outline.svg' alt='back icon')
+          a(href='/discover')
+              img(src='/images/planet-outline.svg' alt='planet icon')
+              p Discover
+          a(href='/')
+              img(src='/images/home-outline.svg', alt='home icon')
+              p Home
+          a(href='/me')
+              img(src='/images/person-outline.svg', alt='person icon')
+              p Me
+        
+        nav(class='hidden px-3 py-4 font-medium w-36 lg:w-48 md:flex flex-col [&>*:not(:last-child)]:mb-2 [&>*]:block text-slate-700 border-contrast border-r-2 h-full bg-accent')
+          button(class='text-left go-back text-sky-700')
+              p Go Back
+          hr(class='my-3 border border-contrast')
+          a(href='/discover')
+              p Discover
+          a(href='/')
+              p Home
+          a(href='/me')
+              p Profile
+          hr(class='my-3 border border-contrast')
+          a(href='/post/create')
+              p Whisper
+          a(href='/my/posts')
+              p My Posts
+          a(href='/my/friends')
+              p My Friends
+          hr(class='my-3 border border-contrast')
+          a(href='/settings')
+              p Settings
+          a(href='/sign-out')
+              p(class='text-red-500') Log Out
+          hr(class='my-3 border border-contrast mt-[auto]')
+          a(href='/about')
+              p About
 
+    //- Decorative shapes
+    div(class='absolute bottom-0 right-0 items-end hidden h-full overflow-hidden pointer-events-none select-none 2xl:flex -z-10')
+      div(class='translate-x-[30%] -rotate-[27deg] w-44 bg-rose-100 aspect-square rounded-3xl mb-[20%]')
+    div(class='absolute top-0 items-start hidden h-full overflow-hidden pointer-events-none select-none 2xl:flex -z-10')
+      div(class='rotate-[19deg] -translate-x-1/2 bg-amber-100 aspect-square rounded-3xl mt-[25%] w-56')

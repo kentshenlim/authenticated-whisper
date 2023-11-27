@@ -17,7 +17,7 @@ html
       div(class='[&>*]:overflow-auto overflow-auto flex-auto')
         block content
 
-      section(class='flex-none bg-violet-100 sm-border-r-2 border-contrast')
+      section(class='flex-none bg-violet-50 sm-border-r-2 border-contrast')
         nav(class='flex justify-between px-4 pb-1.5 pt-2 [&>a:not(:last-child)]:flex [&>a]:flex-col [&>a]:items-center [&_img]:w-6 [&_p]:text-xs [&_p]:font-semibold sm:flex-col sm:px-2 sm:justify-start h-full sm:[&>a]:py-2 sm:[&>a]:border-b-2 [&>a]:border-b-purple-300 sm:[&>a:hover]:bg-purple-200 md:hidden')
           a(href='/discover')
               if (current == 'discover')
@@ -62,9 +62,9 @@ html
                 p Profile
           hr(class='my-3 border border-contrast')
           a(href='/post/create')
-              p Whisper
+              p Create Whisper
           a(href='/my/posts')
-              p My Posts
+              p My Whispers
           a(href='/my/friends')
               p My Friends
           hr(class='my-3 border border-contrast')

@@ -29,7 +29,7 @@ module.exports = {
   }),
 
   create_form_get: (req, res, next) => res.render('post/create_form', {
-    title: 'Whisper',
+    title: 'Create Whisper',
   }),
 
   create_form_post: [

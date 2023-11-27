@@ -6,9 +6,9 @@
 ul
     each day, index in postsArr
         if (index === 0 && day[0].yearString != String(new Date().getFullYear()))
-            h1(class='my-5 text-3xl font-medium lg:indent-5 md:text-4xl lg:text-5xl')= day[0].yearString
+            h1(class='my-5 text-3xl font-medium lg:indent-5 md:text-4xl lg:text-5xl md:mt-8 md:mb-6 xl:underline')= day[0].yearString
         else if (index > 0 && day[0].yearString != postsArr[index - 1][0].yearString)
-            h1(class='my-5 text-3xl font-medium lg:indent-5 md:text-4xl lg:text-5xl')= day[0].yearString
+            h1(class='my-5 text-3xl font-medium lg:indent-5 md:text-4xl lg:text-5xl md:mt-8 md:mb-6 xl:underline')= day[0].yearString
         li(class='flex [&:not(:last-child)]:mb-3 md:[&:not(:last-child)]:mb-5 max-w-3xl mx-auto')
             h2(class='flex-none w-16 md:w-20')
                 span(class='text-2xl font-medium md:text-3xl')= day[0].dayString

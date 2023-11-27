@@ -6,27 +6,27 @@
 //- friendsCount: optional, total number of friends
 
 section
-    div(class='relative h-[33vh] min-h-[200px] bg-[url("/images/dandelion.png")] bg-bottom bg-cover md:bg-contain mb-10')
-        img(src=user.displayPicture alt='DP' class='absolute bottom-0 w-20 translate-y-1/2 right-[0.5rem] border rounded-md bg-white')
+    div(class='relative h-[33vh] min-h-[200px] bg-[url("/images/dandelion.png")] bg-bottom bg-cover md:bg-contain mb-10 sm:mb-14 md:mb-16')
+        img(src=user.displayPicture alt='DP' class='absolute bottom-0 w-20 translate-y-1/2 right-[0.5rem] border rounded-md bg-white sm:w-24 md:w-28')
 
 section(class='mb-6')
-    div(class='flex gap-2')
+    div(class='flex gap-2 md:[&_span]:text-lg')
         if (totalPatCount !== undefined && totalPatCount !== 0)
             div(class='flex items-center')
-                img(src='/images/heart.svg' alt='Love icon' class='w-3')
+                img(src='/images/heart.svg' alt='Love icon' class='w-func-btn')
                 span(class='font-medium') #{totalPatCount}
         if (totalWhisperCount !== undefined && totalWhisperCount !== 0)
             div(class='flex items-center')
-                img(src='/images/document.svg' alt='Document icon' class='w-3')
+                img(src='/images/document.svg' alt='Document icon' class='w-func-btn')
                 span(class='font-medium') #{totalWhisperCount}
         if (friendsCount !== undefined && friendsCount !== 0)
             div(class='flex items-center')
-                img(src='/images/people.svg' alt='People icon' class='w-3')
+                img(src='/images/people.svg' alt='People icon' class='w-func-btn')
                 span(class='font-medium') #{friendsCount}
-        div(class='flex justify-end flex-auto text-lg font-medium') 
+        div(class='flex items-center justify-end flex-auto text-lg font-medium md:text-2xl') 
             h1(class='text-right') #{user.displayName}
             if (gender)
                 if (gender === 'male')
-                    img(src='/images/male-outline.svg' alt='Male icon' class='w-4')
+                    img(src='/images/male-outline.svg' alt='Male icon' class='w-func-btn')
                 else if (gender === 'female')
-                    img(src='/images/female-outline.svg' alt='Female icon' class='w-4')
+                    img(src='/images/female-outline.svg' alt='Female icon' class='w-func-btn')

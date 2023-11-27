@@ -5,11 +5,12 @@ block content
         section(class='mt-4 mb-6')
             form(action='' method='post')
                 div(class='label-input-wrapper')
-                    label(for='username' class='form-label') Username
+                    label(for='username' class='form-label md:hidden') Username
+                    label(for='username' class='hidden form-label md:block') Search by Username
                     input#username(type='text' name='username' placeholder='Username' autofocus=true autocomplete='off' required=true value=(filled || '') class='form-input')
                     //- Placeholder for frontend JS
                     p#failure-text(class='text-red-400')!= failureText
-                button#search-user(type='submit' class='mt-2 mb-2 text-white form-button bg-purple-500/70') Search User
+                button#search-user(type='submit' class='mt-2 mb-2 text-white form-button bg-violet-400 hover:bg-violet-500') Search User
 
         //- Placeholder for frontend JS
         section#user-found(class='hidden')

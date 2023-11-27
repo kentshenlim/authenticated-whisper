@@ -4,12 +4,12 @@ block content
     div(class='[&>*]:px-side')
         section(class='mt-4 mb-6')
             div(class='[&>*]:flex-1 gap-4 max-w-xs inline-flex')
-                a(href='/discover/friend-requests' class='relative bg-yellow-400/70 panel-anchor') 
+                a(href='/discover/friend-requests' class='relative bg-yellow-200 hover:bg-yellow-300 panel-anchor') 
                     if (hasNewFR)
                         span(class='absolute top-0 right-0 w-5 h-5 bg-red-300 rounded-full animate-ping')
                     img(src='/images/mail-outline.svg' alt='Mail icon')
                     p(class='text-stone-600') Friend Request
-                a(href='/discover/user-search' class='panel-anchor bg-emerald-400/70') 
+                a(href='/discover/user-search' class='panel-anchor bg-emerald-200 hover:bg-emerald-300') 
                     img(src='/images/search-outline.svg' alt='Search icon')
                     p(class='text-stone-600') Search by Username
 

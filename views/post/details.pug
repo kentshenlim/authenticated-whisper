@@ -3,26 +3,26 @@ extends ../layout/layout_no_menu
 block content
     - const isOwner = (user._id == post.user._id);
 
-    div(class='[&>*]:px-side mt-4')
+    div(class='[&>*]:px-side mt-4 max-w-4xl')
         section
             div(class='flex gap-1')
                 a(href=post.user.url class='flex-none') 
-                    img(src=post.user.displayPicture alt='User icon' class='w-12')
-                div(class='flex-auto [&>*:not(:last-child)]:mb-1')
+                    img(src=post.user.displayPicture alt='User icon' class='w-12 sm:w-14 md:w-16')
+                div(class='flex-auto [&>*:not(:last-child)]:mb-1 md:text-lg')
                     a(href=post.user.url class='text-link')= post.user.displayName
                     p= post.content
                     div
-                        span(class='text-sm text-gray-500')= post.displayDateString
+                        span(class='text-sm text-gray-500 md:text-base')= post.displayDateString
                         if (isOwner)
-                            button#trigger-popup-btn(class='ml-2')
-                                img(src='/images/trash-outline.svg' alt='Trash icon' class='w-3')
-                            button#togglePostPublic(data-post-id=post._id class='ml-2')
-                                img(src='/images/lock-open-outline.svg' alt='Open lock icon' class=`w-3 ${post.isPublic ? '' : 'hidden'}`)
-                                img(src='/images/lock-closed-outline.svg' alt='Closed lock icon' class=`w-3 ${post.isPublic ? 'hidden' : ''}`)
+                            button#trigger-popup-btn(class='ml-2 hover:bg-neutral-200')
+                                img(src='/images/trash-outline.svg' alt='Trash icon' class='w-func-btn')
+                            button#togglePostPublic(data-post-id=post._id class='ml-2 hover:bg-neutral-200')
+                                img(src='/images/lock-open-outline.svg' alt='Open lock icon' class=`w-func-btn ${post.isPublic ? '' : 'hidden'}`)
+                                img(src='/images/lock-closed-outline.svg' alt='Closed lock icon' class=`w-func-btn ${post.isPublic ? 'hidden' : ''}`)
                     include ../components/pat-bar
 
         if (isOwner)
-            section#delete-section(class='absolute z-10 hidden w-3/4 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2')
+            section#delete-section(class='absolute z-10 hidden w-3/4 max-w-sm -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2')
                 form(action='/post/delete' method='post' class='font-medium text-center rounded-lg bg-slate-100')
                     h1(class='py-6') Delete this whisper permanently?
                     input(type='hidden' value=post._id name='id' required=true)

@@ -39,7 +39,7 @@ module.exports = {
     const friendsGrouped = keys.map((key) => map[key]);
 
     return res.render('me/friends', {
-      title: 'Friends',
+      title: 'My Friends',
       friendsGrouped,
       firstChars: keys,
     });

@@ -6,12 +6,13 @@ block content
             if (!allReceivedRequests || !allReceivedRequests.length)
                 p(class='italic') Looks like you haven't received any friend requests yet. Whisper to get discovered!
             else
+                h1(class='hidden mb-3 font-medium md:block') Friend Requests
                 ul
                     each request, index in allReceivedRequests
                         li(class=`[&:not(:last-child)]:mb-2 ${fRNew.has(index) ? 'font-semibold' : ''}`)
-                            a(href=request.sender.url class='flex gap-2') 
+                            a(href=request.sender.url class='flex gap-2 hover:bg-neutral-100') 
                                 img(src=request.sender.displayPicture alt='User DP' class='w-10')
-                                div(class='flex items-center flex-auto gap-2 border-b border-stone-300')
+                                div(class='flex items-center flex-auto gap-2 border-b border-stone-300 md:border-contrast')
                                     p(class='flex-auto')= request.sender.displayName
                                     button(class='px-2 rounded-md bg-neutral-200 hover:bg-neutral-300') View
                             

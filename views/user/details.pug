@@ -6,10 +6,10 @@ block content
 
         if (user.bio && user.bio.length)
             section(class='-mt-6')
-                p(class='text-sm text-justify')= user.bio
+                p(class='text-sm text-justify md:text-base')= user.bio
 
         section(class='mt-2 mb-8')
-            div(class='flex text-sm [&_button]:px-1 [&_button]:py-[2px] [&_button]:text-right [&_button]:rounded-md')
+            div(class='flex text-sm md:text-base [&_button]:px-1 [&_button]:py-[2px] [&_button]:text-right [&_button]:rounded-md')
                 p(class='flex-auto text-left text-gray-500') Joined #{user.joinedAgo} ago
                 if (relationship === 'friend')
                     button#trigger-popup-btn(class='text-white bg-green-400') Friend
@@ -27,20 +27,19 @@ block content
 
         if (relationship === 'friend' || relationship === 'sent_pending')
             if (relationship === 'friend')
-                section#delete-section(class='absolute z-10 hidden w-3/4 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2')
+                section#delete-section(class='absolute z-10 hidden w-3/4 max-w-sm -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2')
                     div(class='font-medium text-center rounded-lg bg-slate-100')
                         h1(class='py-6') Remove this friend permanently?
                         div(class='border-t-2 flex [&>*]:flex-auto [&>*]:py-2 [&>*:hover]:bg-gray-200')
                             button#cancel-btn(type='button' class='border-r') Cancel
                             button(id=user._id data-friend-request-type='remove' class='border-l text-warning friend-request') Remove
             else
-                section#delete-section(class='absolute z-10 hidden w-3/4 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2')
+                section#delete-section(class='absolute z-10 hidden w-3/4 max-w-sm -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2')
                     div(class='font-medium text-center rounded-lg bg-slate-100')
                         h1(class='py-6') Withdraw friend request?
                         div(class='border-t-2 flex [&>*]:flex-auto [&>*]:py-2 [&>*:hover]:bg-gray-200')
                             button#cancel-btn(type='button' class='border-r') Keep
                             button(id=user._id data-friend-request-type='cancel' class='border-l text-warning friend-request') Withdraw
-
 
             section#overlay-section(class='hidden')
                 div(class='absolute inset-0 bg-black/50')

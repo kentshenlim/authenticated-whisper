@@ -15,13 +15,13 @@ html
         button(class='absolute font-bold left-2 go-back sm:hidden') &lt;
         img(src='/images/app-icon.png' alt='App icon' class='hidden w-10 md:inline-block')
         h2(class='font-semibold capitalize text-md md:hidden') #{title}
-        p(class='hidden font-semibold md:block md:text-purple-700 md:text-lg') authenticated-whisper
+        p(class='hidden font-semibold md:block md:text-purple-700 md:text-lg') authenticated-whisper • #{title}
 
     div(class='flex flex-col flex-auto w-full max-w-screen-xl mx-auto overflow-auto bg-slate-50 sm:flex-row-reverse')
       div(class='[&>*]:overflow-auto overflow-auto flex-auto')
         block content
 
-      section(class='flex-none bg-violet-100 sm-border-r-2 border-contrast')
+      section(class='flex-none bg-violet-50 sm-border-r-2 border-contrast')
         nav(class='sm:flex justify-between px-4 pb-1.5 pt-2 [&>*]:flex [&>*]:flex-col [&>*]:items-center [&_img]:w-6 [&_p]:text-xs [&_p]:font-semibold sm:flex-col sm:px-2 sm:justify-start h-full sm:[&>*]:py-2 sm:[&>*:not(:first-child)]:border-t-2 [&>*]:border-purple-300 sm:[&>*:hover]:bg-purple-200 hidden md:hidden')
           button(class='go-back mb-[auto] animate-bounce-lr')
               img(src='/images/chevron-back-outline.svg' alt='back icon')
@@ -47,9 +47,9 @@ html
               p Profile
           hr(class='my-3 border border-contrast')
           a(href='/post/create')
-              p Whisper
+              p Create Whisper
           a(href='/my/posts')
-              p My Posts
+              p My Whispers
           a(href='/my/friends')
               p My Friends
           hr(class='my-3 border border-contrast')

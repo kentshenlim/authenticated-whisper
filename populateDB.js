@@ -114,27 +114,30 @@ async function createUserSampleDocuments() {
   await Promise.all([
     createUser({
       displayName: 'Sophie Johnson',
-      username: 'sophieJ',
+      username: 'sophie_j23',
       password: allPasswords[0],
       gender: 'female',
       bio: 'Exploring the world one day at a time. Coffee enthusiast and book lover.',
       isSampleDocument: true,
+      created: new Date('2021-04-10T14:54:00'),
     }, 0),
     createUser({
       displayName: 'Alex Thompson',
-      username: 'alex_t',
+      username: 'alex991023',
       password: allPasswords[1],
       gender: 'male',
       bio: 'Tech geek, music lover, and aspiring chef. Let\'s connect!',
       isSampleDocument: true,
+      created: new Date('2021-04-02T09:23:00'),
     }, 1),
     createUser({
       displayName: 'Priya Patel',
-      username: 'priya123',
+      username: 'priya94',
       password: allPasswords[2],
       gender: 'female',
       bio: 'Software engineer by day, Bollywood dancer by night. Passionate about technology and the arts.',
       isSampleDocument: true,
+      created: new Date('2022-11-01T09:12:04'),
     }, 2),
     createUser({
       displayName: 'Emily Davis',
@@ -143,6 +146,7 @@ async function createUserSampleDocuments() {
       gender: 'female',
       bio: 'Dreamer, artist, and nature lover. Finding beauty in everyday moments.',
       isSampleDocument: true,
+      created: new Date('2023-04-04T10:32:31'),
     }, 3),
     createUser({
       displayName: 'Michael Smith',
@@ -151,14 +155,16 @@ async function createUserSampleDocuments() {
       gender: 'male',
       bio: 'Sports fanatic and fitness enthusiast. Living life to the fullest!',
       isSampleDocument: true,
+      created: new Date('2022-03-21T07:21:52'),
     }, 4),
     createUser({
       displayName: 'Yuki Tanaka',
-      username: 'yuki_t',
+      username: 'tanaka997',
       password: allPasswords[5],
       gender: 'female',
       bio: 'Art enthusiast, anime lover, and sushi connoisseur. Living life with creativity and joy.',
       isSampleDocument: true,
+      created: new Date('2022-01-13T11:46:25'),
     }, 5),
     createUser({
       displayName: 'Chen Wei',
@@ -167,14 +173,16 @@ async function createUserSampleDocuments() {
       gender: 'male',
       bio: 'Explorer of traditions and modernity. Tea lover and technology geek.',
       isSampleDocument: true,
+      created: new Date('2023-07-24T15:21:25'),
     }, 6),
     createUser({
       displayName: 'Mei Li',
-      username: 'mei_li',
+      username: 'pretty487',
       password: allPasswords[7],
       gender: 'female',
       bio: 'Passionate about literature, traveling, and trying new cuisines. Embracing diversity.',
       isSampleDocument: true,
+      created: new Date('2023-01-02T09:12:01'),
     }, 7),
     createUser({
       displayName: 'Emily Wilson',
@@ -183,6 +191,7 @@ async function createUserSampleDocuments() {
       gender: 'female',
       bio: 'Bookworm, coffee lover, and aspiring world traveler. On a journey to explore the unknown.',
       isSampleDocument: true,
+      created: new Date('2020-11-25T23:05:12'),
     }, 8),
     createUser({
       displayName: 'Chris Miller',
@@ -191,6 +200,7 @@ async function createUserSampleDocuments() {
       gender: 'male',
       bio: 'Fitness fanatic and health advocate. Inspiring others to lead an active and balanced lifestyle.',
       isSampleDocument: true,
+      created: new Date('2021-02-12T22:12:15'),
     }, 9),
     createUser({
       displayName: 'Eva Rodriguez',
@@ -199,48 +209,56 @@ async function createUserSampleDocuments() {
       gender: 'female',
       bio: 'Tech geek and aspiring entrepreneur. Building a future where innovation knows no bounds.',
       isSampleDocument: true,
+      created: new Date('2022-03-09T03:05:19'),
     }, 10),
     createUser({
       displayName: 'Avery Taylor',
-      username: 'avery_taylor',
+      username: 'taylor410',
       password: allPasswords[11],
       gender: 'female',
       bio: 'Passionate about social justice and creating a more inclusive world. Advocate for change.',
       isSampleDocument: true,
+      created: new Date('2023-07-09T12:31:52'),
     }, 11),
     createUser({
       displayName: 'Jason Lam',
       username: 'jason_lam',
       password: allPasswords[12],
       isSampleDocument: true,
+      created: new Date('2022-09-11T11:41:12'),
     }, 12),
     createUser({
       displayName: 'Jonathan Henry',
       username: 'jonathan_henry',
       password: allPasswords[13],
       isSampleDocument: true,
+      created: new Date('2022-03-21T11:21:18'),
     }, 13),
+
     createUser({
       displayName: 'Justin Gate',
-      username: 'justin_gate',
+      username: 'jGate11',
       password: allPasswords[14],
       isSampleDocument: true,
+      created: new Date('2023-01-19T05:12:51'),
     }, 14),
     createUser({
       displayName: 'Hoki Tobayashi',
       username: 'hoki_tobayashi',
       password: allPasswords[15],
       isSampleDocument: true,
+      created: new Date('2022-01-31T12:53:57'),
     }, 15),
     createUser({
       displayName: '丁诚',
-      username: 'ding_cheng',
+      username: 'dingcheng98',
       password: allPasswords[16],
       isSampleDocument: true,
+      created: new Date('2022-07-12T14:51:39'),
     }, 16),
     createUser({
       displayName: '吴晓严',
-      username: 'xiaoyan',
+      username: 'xiaoyan10',
       password: allPasswords[17],
       isSampleDocument: true,
     }, 17),
@@ -275,11 +293,13 @@ async function createPostSampleDocuments() {
     createPost({
       content: 'Heartbroken and trying to make sense of it all.',
       user: users[3],
+      isPublic: true,
       created: new Date('2023-05-04T12:03:31'),
     }, 3),
     createPost({
       content: "Frustrated with setbacks, but I won't let them define me. Every obstacle is a stepping stone.",
       user: users[4],
+      isPublic: true,
       created: new Date('2022-12-05T08:52:12'),
     }, 4),
     createPost({
@@ -341,11 +361,13 @@ async function createPostSampleDocuments() {
     createPost({
       content: 'Enjoying a peaceful weekend getaway. Sometimes, you just need a break.',
       user: users[1],
+      isPublic: true,
       created: new Date('2021-08-14T22:31:23'),
     }, 16),
     createPost({
       content: 'Trying out a new hobby – painting. It’s so therapeutic!',
       user: users[8],
+      isPubic: true,
       created: new Date('2021-09-02T15:29:21'),
     }, 17),
     createPost({
@@ -368,8 +390,69 @@ async function createPostSampleDocuments() {
       content: 'Got nothing to say...',
       user: users[15],
       created: new Date('2022-02-01T12:04:42'),
+      isPublic: true,
       pat: [users[15]],
     }, 21),
+    createPost({
+      content: 'Stuck in traffic again. This commute is draining my energy!',
+      user: users[4],
+      created: new Date('2022-05-12T08:15:45'),
+      isPublic: true,
+    }, 22),
+    createPost({
+      content: 'Feeling accomplished after a productive day of work. Ready to unwind now.',
+      user: users[4],
+      created: new Date('2022-06-18T19:30:12'),
+      isPublic: true,
+    }, 23),
+    createPost({
+      content: 'Had an argument with a friend. Misunderstandings are tough to handle.',
+      user: users[13],
+      created: new Date('2022-07-01T16:40:55'),
+      isPublic: true,
+    }, 24),
+    createPost({
+      content: 'Just got rejected after a job interview. Feeling disheartened.',
+      user: users[9],
+      created: new Date('2022-08-08T11:05:30'),
+      isPublic: true,
+    }, 25),
+    createPost({
+      content: 'Excited about the weekend plans with friends. It\'s been a while!',
+      user: users[5],
+      created: new Date('2022-09-25T14:20:00'),
+      isPublic: true,
+    }, 26),
+    createPost({
+      content: 'Feeling inspired after attending a motivational seminar. Ready to take on new challenges!',
+      user: users[12],
+      created: new Date('2022-10-15T21:12:30'),
+      isPublic: true,
+    }, 27),
+    createPost({
+      content: 'Woke up with a terrible headache. Need some rest and relaxation.',
+      user: users[2],
+      created: new Date('2022-11-02T07:45:00'),
+      isPublic: true,
+    }, 28),
+    createPost({
+      content: 'Feeling nostalgic listening to old songs. Memories flooding in...',
+      user: users[16],
+      created: new Date('2022-12-10T17:30:20'),
+      isPublic: true,
+    }, 29),
+    createPost({
+      content: 'Struggling with imposter syndrome at work. Doubting my own capabilities.',
+      user: users[7],
+      created: new Date('2023-01-08T10:55:45'),
+      isPublic: true,
+    }, 30),
+    createPost({
+      content: 'Feeling grateful for supportive friends. They make the tough times bearable.',
+      user: users[14],
+      created: new Date('2023-02-20T15:40:10'),
+      isPublic: true,
+    }, 31),
   ]);
 }
 
@@ -377,17 +460,20 @@ async function createPostSampleDocuments() {
 async function createSampleConnections() {
   console.log('Adding connections between users');
   const connections = [
-    [0, 1],
-    [1, 5],
-    [3, 5],
     [0, 3],
-    [2, 7],
     [0, 8],
     [0, 9],
     [0, 10],
     [0, 11],
     [0, 12],
     [0, 17],
+    [1, 4],
+    [1, 5],
+    [1, 9],
+    [1, 10],
+    [1, 14],
+    [2, 7],
+    [3, 5],
   ];
   const arr = [];
   connections.forEach(([n1, n2]) => {

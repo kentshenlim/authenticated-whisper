@@ -2,6 +2,9 @@
 
 Place where you vent your feelings without judgement.
 
+User 1: `sophie_j23`, `b@wy,fb#B^Ct=3`
+User 2: `alex991023`, `)edX8A@dRk}@5`
+
 ## Tools
 
 - Passport.js
@@ -15,7 +18,5 @@ Place where you vent your feelings without judgement.
 
 ## TODO
 
-- TODO: create two sample profile for demo, exposing the password
-- TODO: change all username and password to fulfill complexity req
 - TODO: limit email sender rate strictly to avoid spam
 - TODO: signing in with email, test on deployment

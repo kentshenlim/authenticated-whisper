@@ -8,8 +8,8 @@ Place where you vent (whisper) your feelings to strangers.
     </a>
 </p>
 
-Feel free to test the app using the following credentials, or create own
-account.
+Feel free to test the app using the following credentials of sample accounts, or
+create own account.
 
 - Username: `sophie_j23`; password: `b@wy,fb#B^Ct=3`
 - Username: `alex991023`; password: `)edX8A@dRk}@5`

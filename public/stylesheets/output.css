@@ -713,6 +713,13 @@ img {
   font-weight: 500;
 }
 
+.disabled-form-btn {
+  cursor: not-allowed !important;
+  background-color: rgb(212 212 212 / 0.7) !important;
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+
 .pointer-events-none {
   pointer-events: none;
 }

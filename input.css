@@ -51,6 +51,9 @@
     @apply [&>img]:w-1/2;
     @apply [&>p]:font-medium [&>p]:text-center [&>p]:w-3/4;
   }
+  .disabled-form-btn {
+    @apply cursor-not-allowed bg-neutral-300/70 text-white !important;
+  }
 }
 
 /* Classes added dynamically, always include into output */

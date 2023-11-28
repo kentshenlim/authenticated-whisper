@@ -35,8 +35,3 @@ create own account.
 - _Friend features_. Only approved friends can view your private whispers.
 - _Like system_.
 - _Responsive design_.
-
-## TODO
-
-- TODO: limit email sender rate strictly to avoid spam
-- TODO: signing in with email, test on deployment

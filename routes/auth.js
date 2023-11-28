@@ -1,5 +1,6 @@
 const express = require('express');
 const controller = require('../controllers/authController');
+const createLimiter = require('../middlewares/createLimiter');
 
 const router = express.Router();
 
@@ -21,23 +22,23 @@ router.use((req, res, next) => { // Redirect user if already logged in
 
 router.get('/sign-in', controller.sign_in_get);
 
-router.post('/sign-in', controller.sign_in_local_post);
+router.post('/sign-in', createLimiter(5), controller.sign_in_local_post);
 
 router.get('/sign-up', controller.sign_up_local_get);
 
-router.post('/sign-up', controller.sign_up_local_post);
+router.post('/sign-up', createLimiter(5), controller.sign_up_local_post);
 
-router.post('/sign-in/federated/google', controller.sign_in_google_post);
+router.post('/sign-in/federated/google', createLimiter(5), controller.sign_in_google_post);
 
 router.get('/oauth2/redirect/google', controller.signed_in_google_get);
 
-router.post('/sign-in/federated/facebook', controller.sign_in_facebook_post);
+router.post('/sign-in/federated/facebook', createLimiter(5), controller.sign_in_facebook_post);
 
 router.get('/oauth2/redirect/facebook', controller.signed_in_facebook_get);
 
 router.get('/sign-in/email', controller.sign_in_email_get);
 
-router.post('/sign-in/email', controller.sign_in_email_post);
+router.post('/sign-in/email', createLimiter(3), controller.sign_in_email_post);
 
 router.get('/sign-in/email/verify', controller.signed_in_email_get);
 

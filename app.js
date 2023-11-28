@@ -11,6 +11,9 @@ const session = require('express-session');
 const flash = require('express-flash');
 const passport = require('passport');
 
+const compression = require('compression');
+const helmet = require('helmet');
+
 const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index');
 const meRouter = require('./routes/me');
@@ -45,6 +48,22 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Deployment setup
+// Compress response before sending
+app.use(compression());
+// Helmet HTTP headers, allowing only certain cross-site scripts
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", 'unpkg.com'],
+        connectSrc: ["'self'", 'unpkg.com'],
+      },
+    },
+  }),
+);
 
 // Pass user to local environment
 app.use((req, res, next) => {

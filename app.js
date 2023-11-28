@@ -60,8 +60,10 @@ app.use(
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'", 'unpkg.com'],
         connectSrc: ["'self'", 'unpkg.com'],
+        formAction: ["'self'", 'accounts.google.com', 'www.facebook.com'],
       },
     },
+    crossOriginEmbedderPolicy: false,
   }),
 );
 

@@ -52,7 +52,7 @@
     @apply [&>p]:font-medium [&>p]:text-center [&>p]:w-3/4;
   }
   .disabled-form-btn {
-    @apply cursor-not-allowed bg-neutral-300/70 text-white !important;
+    @apply cursor-not-allowed pointer-events-none bg-neutral-300/70 text-white !important;
   }
 }
 

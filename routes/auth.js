@@ -28,6 +28,10 @@ router.get('/sign-up', controller.sign_up_local_get);
 
 router.post('/sign-up', createLimiter(5), controller.sign_up_local_post);
 
+/*
+DISABLE ON PRODUCTION
+*/
+/*
 router.post('/sign-in/federated/google', createLimiter(5), controller.sign_in_google_post);
 
 router.get('/oauth2/redirect/google', controller.signed_in_google_get);
@@ -41,6 +45,7 @@ router.get('/sign-in/email', controller.sign_in_email_get);
 router.post('/sign-in/email', createLimiter(3), controller.sign_in_email_post);
 
 router.get('/sign-in/email/verify', controller.signed_in_email_get);
+*/
 
 router.get('/sign-out', controller.sign_out);
 

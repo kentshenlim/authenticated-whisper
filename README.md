@@ -1,9 +1,10 @@
 # authenticated-whisper
 
-Place where you vent (whisper) your feelings to strangers.
+Place where you vent (whisper) your feelings to strangers. [Live demo
+here](https://authenticated-whisper-b6194854ff4c.herokuapp.com/).
 
 <p align="center">
-    <a href="https://www.google.com" target="_blank" rel="noreferrer">
+    <a href="https://authenticated-whisper-b6194854ff4c.herokuapp.com/" target="_blank" rel="noreferrer">
         <img src="./design/app-icon.png" alt="Icon" width="175">
     </a>
 </p>
@@ -26,11 +27,14 @@ create own account.
 - _Authentication/authorization_. Available login methods:
 
   - username and password
-  - Google OAuth
-  - Facebook OAuth
-  - email magic link
+  - Google OAuth (disabled on production)
+  - Facebook OAuth (disabled on production)
+  - email magic link (disabled on production)
 
   Username and password can be set later if first logged in with another method.
+
+  Only username and password allowed on production; OAuths require registration;
+  nodemailer is blocked by account security issues.
 
 - _Friend features_. Only approved friends can view your private whispers.
 - _Like system_.

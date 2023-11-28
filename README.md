@@ -26,11 +26,14 @@ create own account.
 - _Authentication/authorization_. Available login methods:
 
   - username and password
-  - Google OAuth
-  - Facebook OAuth
-  - email magic link
+  - Google OAuth (disabled on production)
+  - Facebook OAuth (disabled on production)
+  - email magic link (disabled on production)
 
   Username and password can be set later if first logged in with another method.
+
+  Only username and password allowed on production; OAuth requires registration;
+  nodemailer is blocked by IP issues.
 
 - _Friend features_. Only approved friends can view your private whispers.
 - _Like system_.

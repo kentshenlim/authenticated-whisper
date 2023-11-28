@@ -114,7 +114,7 @@ async function createUserSampleDocuments() {
   await Promise.all([
     createUser({
       displayName: 'Sophie Johnson',
-      username: 'sophie_j23',
+      username: 'sophie123',
       password: allPasswords[0],
       gender: 'female',
       bio: 'Exploring the world one day at a time. Coffee enthusiast and book lover.',
@@ -123,7 +123,7 @@ async function createUserSampleDocuments() {
     }, 0),
     createUser({
       displayName: 'Alex Thompson',
-      username: 'alex991023',
+      username: 'alex123',
       password: allPasswords[1],
       gender: 'male',
       bio: 'Tech geek, music lover, and aspiring chef. Let\'s connect!',

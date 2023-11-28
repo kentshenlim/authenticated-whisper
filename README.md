@@ -12,8 +12,8 @@ here](https://authenticated-whisper-b6194854ff4c.herokuapp.com/).
 Feel free to test the app using the following credentials of sample accounts, or
 create own account. Welcome any issue or suggestion.
 
-- Username: `sophie_j23`; password: `b@wy,fb#B^Ct=3`
-- Username: `alex991023`; password: `)edX8A@dRk}@5`
+- Username: `sophie123`; password: `@sophie123`
+- Username: `alex123`; password: `@alex123`
 
 ## Tools
 

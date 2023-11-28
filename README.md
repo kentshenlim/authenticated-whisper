@@ -1,6 +1,6 @@
 # authenticated-whisper
 
-Place where you vent (whisper) your feelings to strangers. [Live demo
+Place where you vent (whisper) your feelings to strangers. [Live site
 here](https://authenticated-whisper-b6194854ff4c.herokuapp.com/).
 
 <p align="center">
@@ -10,7 +10,7 @@ here](https://authenticated-whisper-b6194854ff4c.herokuapp.com/).
 </p>
 
 Feel free to test the app using the following credentials of sample accounts, or
-create own account.
+create own account. Welcome any issue or suggestion.
 
 - Username: `sophie_j23`; password: `b@wy,fb#B^Ct=3`
 - Username: `alex991023`; password: `)edX8A@dRk}@5`

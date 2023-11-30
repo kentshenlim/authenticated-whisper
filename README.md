@@ -15,6 +15,13 @@ create own account. Welcome any issue or suggestion.
 - Username: `sophie123`; password: `@sophie123`
 - Username: `alex123`; password: `@alex123`
 
+> **Google Chrome security issue**. This issue is believed to be linked to the
+> 'Continue with Google' button (which has been disabled in the production
+> environment). Given that this project emphasizes authentication, the author is
+> reluctant to completely remove the button. If you feel confident in the
+> security measures, you are welcome to proceed; otherwise, visit the site with
+> different browser.
+
 ## Tools
 
 - Express.js
